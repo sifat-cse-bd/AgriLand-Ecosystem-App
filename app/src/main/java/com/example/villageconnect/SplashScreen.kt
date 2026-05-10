@@ -10,10 +10,7 @@ import android.widget.ImageView
 import android.widget.ProgressBar
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintSet
-import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
-import androidx.core.view.WindowInsetsCompat
 
 @Suppress("INFERRED_TYPE_VARIABLE_INTO_EMPTY_INTERSECTION_WARNING")
 class SplashScreen : AppCompatActivity() {
@@ -77,7 +74,7 @@ class SplashScreen : AppCompatActivity() {
             override fun onFinish() {
                 progessBar.progress = 100
 
-                startActivity(Intent(this@SplashScreen, MainActivity::class.java))
+                startActivity(Intent(this@SplashScreen, OnBoarding::class.java))
                finish()
             }
         }
