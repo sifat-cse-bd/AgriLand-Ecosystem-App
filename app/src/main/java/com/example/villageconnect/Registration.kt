@@ -2,6 +2,7 @@ package com.example.villageconnect
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.text.TextWatcher
@@ -38,9 +39,8 @@ class Registration : AppCompatActivity() {
     lateinit var cmbRole: AutoCompleteTextView
     lateinit var edtPassword: EditText
     lateinit var tvErrorPassword: TextView
-
-
     lateinit var btnRegister: MaterialButton
+    lateinit var tvSignIn: TextView
 
 
     @SuppressLint("MissingInflatedId")
@@ -73,6 +73,7 @@ class Registration : AppCompatActivity() {
         tvErrorPassword = findViewById<TextView>(R.id.tvErrorPassword)
 
         btnRegister = findViewById<MaterialButton>(R.id.btnRegister)
+        tvSignIn = findViewById<TextView>(R.id.tvSignIn)
 
         //validation text field
         setUpValidation(edtPhone, tvErrorPhone, { it.matches(Regex("^01[3-9][0-9]{8}$")) }, "Valid phone number", "Invalid phone number")
@@ -90,6 +91,11 @@ class Registration : AppCompatActivity() {
         //action of registration button
         btnRegister.setOnClickListener{
 
+        }
+
+        //action of sign in for existing user
+        tvSignIn.setOnClickListener {
+            startActivity(Intent(this, Login::class.java))
         }
 
 
