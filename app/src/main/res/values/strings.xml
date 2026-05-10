@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">Village Connect</string>
+    <string name="app_version">Version 1.0.0</string>
+
+    <string name="card_1_title">Agriculture"</string>
+    <string name="card_2_title">Rural Transportation"</string>
+    <string name="card_3_title">"Cottage Hub" </string>
+
+
+    <string name="card_Farmers_title">For Farmers</string>
+    <string name="card_Landowner_title">For Landowner</string>
+    <string name="card_EquipmentRent_title">For Equipment Rent</string>
+
+    <string name="card_1_desc">Easily find and hire skilled farmers in your specific district. Browse profiles and manage your hire requests in one place.</string>
+    <string name="card_2_desc">Set your availability, showcase your skills, and get hired by landowners nearby. Boost your income with consistent work.</string>
+    <string name="card_3_desc">List your agricultural machinery like tractors and harvesters for rent or sale. Manage your inventory and track orders digitally.</string>
+
+    <string name="footer_desc">Empowering agricultural communities with digital solutions for a sustainable future.</string>
+    <string name="footer_contact_title">Contact us</string>
+    <string name="admin_email">admin@villageconn.com</string>
+    <string name="phone">+880 1713386933</string>
+    <string name="address">Bashundhara R/A, Dhaka, Bangladesh</string>
+    <string name="copyright">© 2024 Village Connect. All rights reserved.</string>
+    
+    
+    // register strings
+    <string name="already_a_member_sign_in">Already a member? Sign In</string>
+    <string name="register_button">Create Account</string>
+    <string name="ErrorPassword">Password must be at least 8 characters</string>
+
+
+    <string name="register_name_hint">Full Name</string>
+    <string name="register_phone_hint">Phone Number</string>
+    <string name="register_nid_hint">Enter NID (10 or 17 digits)</string>
+    <string name="register_dob_hint">Select Date of Birth</string>
+    <string name="register_district_hint">Select District</string>
+    <string name="register_role_hint">Pick your role (Farmer / Landowner / Agri-Merchant)</string>
+    <string name="register_email_hint">Email Address</string>
+    <string name="register_password_hint">Password</string>
+</resources>
