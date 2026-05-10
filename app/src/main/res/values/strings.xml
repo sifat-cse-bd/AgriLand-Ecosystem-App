@@ -37,4 +37,6 @@
     <string name="register_role_hint">Pick your role (Farmer / Landowner / Agri-Merchant)</string>
     <string name="register_email_hint">Email Address</string>
     <string name="register_password_hint">Password</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
