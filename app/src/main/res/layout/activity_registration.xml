@@ -67,7 +67,7 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Full Name"
+                    android:hint="@string/register_name_hint"
                     app:boxCornerRadiusBottomEnd="12dp"
                     app:boxCornerRadiusBottomStart="12dp"
                     app:boxCornerRadiusTopEnd="12dp"
@@ -88,7 +88,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:hint="Enter Mobile Number"
+                    android:hint="@string/register_phone_hint"
                     app:boxCornerRadiusBottomEnd="12dp"
                     app:boxCornerRadiusBottomStart="12dp"
                     app:boxCornerRadiusTopEnd="12dp"
@@ -118,7 +118,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:hint="Enter NID Number"
+                    android:hint="@string/register_nid_hint"
                     app:boxCornerRadiusBottomEnd="12dp"
                     app:boxCornerRadiusBottomStart="12dp"
                     app:boxCornerRadiusTopEnd="12dp"
@@ -204,7 +204,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
                         android:layout_weight="1"
-                        android:hint="District">
+                        android:hint="@string/register_district_hint">
 
                         <AutoCompleteTextView
                             android:id="@+id/cmbDistrict"
@@ -218,7 +218,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:hint="Role">
+                        android:hint="@string/register_role_hint">
 
                         <AutoCompleteTextView
                             android:id="@+id/cmbRole"
@@ -235,7 +235,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:hint="Password"
+                    android:hint="@string/register_password_hint"
                     app:boxCornerRadiusBottomEnd="12dp"
                     app:boxCornerRadiusBottomStart="12dp"
                     app:boxCornerRadiusTopEnd="12dp"
@@ -254,7 +254,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
                     android:layout_marginTop="2dp"
-                    android:text="Password must be at least 8 characters"
+                    android:text="@string/ErrorPassword"
                     android:textColor="#B00020"
                     android:textSize="12sp"
                     android:visibility="gone" />
@@ -267,7 +267,7 @@
             android:layout_height="60dp"
             android:layout_marginTop="24dp"
             android:backgroundTint="#2E7D32"
-            android:text="Create Account"
+            android:text="@string/register_button"
             android:textAllCaps="false"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -280,9 +280,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="32dp"
-            android:text="Already a member? Sign In"
+            android:text="@string/already_a_member_sign_in"
             android:textColor="#1B5E20"
             android:textStyle="bold"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
