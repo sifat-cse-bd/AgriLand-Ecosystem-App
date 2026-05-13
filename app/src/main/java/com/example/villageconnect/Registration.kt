@@ -96,7 +96,7 @@ class Registration : AppCompatActivity() {
 
         //action of sign in for existing user
         tvSignIn.setOnClickListener {
-            startActivity(Intent(this, Login::class.java))
+//            startActivity(Intent(this, Login::class.java))
         }
 
 
