@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Agricultural Palette - Dark Mode -->
+    <color name="colorPrimary">#2E7D32</color> <!-- Darker Green -->
+    <color name="colorPrimaryVariant">#1B3F1F</color> <!-- Deep Forest -->
+    <color name="colorSecondary">#43954A</color> <!-- Nature Green -->
+
+    <color name="colorBackground">#121212</color> <!-- Dark Surface -->
+    <color name="colorSurface">#1E1E1E</color> <!-- Slightly lighter dark -->
+
+    <color name="colorTextPrimary">#EDEDED</color> <!-- Off-white Text -->
+    <color name="colorTextSecondary">#B0B0B0</color> <!-- Grey Text -->
+
+    <color name="colorButtonPrimary">#2E7D32</color>
+    <color name="colorButtonSecondary">#2C2C2C</color>
+
+    <color name="colorError">#CF6679</color>
+
+    <!-- Utility Colors -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="transparent_overlay">#88000000</color>
+    <color name="card_stroke">#33FFFFFF</color>
+
+    <!-- Gradient Colors (Darker for night mode) -->
+    <color name="gradient_start">#1B3F1F</color>
+    <color name="gradient_center">#121212</color>
+    <color name="gradient_end">#121212</color>
+</resources>
