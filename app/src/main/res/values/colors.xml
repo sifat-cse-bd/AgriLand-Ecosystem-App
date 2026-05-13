@@ -1,5 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- Agricultural Palette - Light Mode -->
+
+    <!-- Primary Colors: Deep Forest & Emerald -->
+    <color name="colorPrimary">#1B5E20</color> <!-- Dark Emerald Green (Professional look) -->
+    <color name="colorPrimaryVariant">#144317</color> <!-- Stronger Deep Green -->
+    <color name="colorSecondary">#5DBB63</color> <!-- Soft Leaf Green -->
+
+    <!-- Surfaces: Pure White & Soft Grey -->
+    <color name="colorBackground">#F8FAF8</color> <!-- Extremely subtle green-white (Premium feel) -->
+    <color name="colorSurface">#FFFFFF</color> <!-- Pure White for cards -->
+
+    <!-- Typography: Charcoal & Slate -->
+    <color name="colorTextPrimary">#1A1C19</color> <!-- Deep Charcoal (Better than pure black) -->
+    <color name="colorTextSecondary">#5C625A</color> <!-- Muted Slate for descriptions -->
+
+    <!-- Buttons & Interactions -->
+    <color name="colorButtonPrimary">#1B5E20</color>
+    <color name="colorButtonSecondary">#F1F5F1</color> <!-- Ghost Green Button background -->
+
+    <!-- Semantic Colors -->
+    <color name="colorError">#BA1A1A</color> <!-- Modern Material Red -->
+
+    <!-- Utility Colors -->
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="transparent_overlay">#1A000000</color> <!-- Very light dark overlay -->
+    <color name="card_stroke">#E0E4DE</color> <!-- Subtle border for aesthetic cards -->
+
+    <!-- Premium Gradient: Fresh & Clean -->
+    <color name="gradient_start">#E9F5EA</color> <!-- Mint Frost -->
+    <color name="gradient_center">#F8FAF8</color>
+    <color name="gradient_end">#FFFFFF</color>
 </resources>
