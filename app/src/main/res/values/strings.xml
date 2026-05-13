@@ -1,26 +1,8 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Village Connect</string>
+    <string name="app_tagline">Smart village, easy life</string>
     <string name="app_version">Version 1.0.0</string>
 
-    <string name="card_1_title">Agriculture"</string>
-    <string name="card_2_title">Rural Transportation"</string>
-    <string name="card_3_title">"Cottage Hub" </string>
-
-
-    <string name="card_Farmers_title">For Farmers</string>
-    <string name="card_Landowner_title">For Landowner</string>
-    <string name="card_EquipmentRent_title">For Equipment Rent</string>
-
-    <string name="card_1_desc">Easily find and hire skilled farmers in your specific district. Browse profiles and manage your hire requests in one place.</string>
-    <string name="card_2_desc">Set your availability, showcase your skills, and get hired by landowners nearby. Boost your income with consistent work.</string>
-    <string name="card_3_desc">List your agricultural machinery like tractors and harvesters for rent or sale. Manage your inventory and track orders digitally.</string>
-
-    <string name="footer_desc">Empowering agricultural communities with digital solutions for a sustainable future.</string>
-    <string name="footer_contact_title">Contact us</string>
-    <string name="admin_email">admin@villageconn.com</string>
-    <string name="phone">+880 1713386933</string>
-    <string name="address">Bashundhara R/A, Dhaka, Bangladesh</string>
-    <string name="copyright">© 2024 Village Connect. All rights reserved.</string>
 
 
     // register strings
@@ -39,4 +21,85 @@
     <string name="register_password_hint">Password</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    //onboarding
+    <string name="btn_skip">Skip</string>
+    <string name="btn_getstarted">Get Started</string>
+    <string name="btn_overview">App overview</string>
+
+
+    //overview fragment
+    <string name="btn_back">← Back</string>
+
+    <!-- Agriculture Strings -->
+    <string name="agri_card_title">🌱 Agriculture</string>
+    <string name="agri_description">Agriculture is the first development phase of AgroVenture. In this section, landowners, farmers, and agri-merchants can work together through one offline Android app.</string>
+    <string name="agri_features_title">Agriculture Features</string>
+    <string name="agri_features_list">
+        • Landowners can hire farmers\n
+        • Farmers can view and apply for jobs\n
+        • Farmers can rent agricultural equipment\n
+        • Agri-Merchants can manage tractor and equipment rental\n
+        • Irrigation service management\n
+        • Cultivation service management\n
+        • Harvesting service management\n
+        • Ratings and feedback system\n
+        • Admin can verify users\n
+        • Admin can approve or reject services\n
+        • Offline SQLite-based local storage
+    </string>
+
+    <!-- Rural Transport Strings -->
+    <string name="transport_card_title">🚜 Rural Transport</string>
+    <string name="transport_description">Rural Transport will help village people request local transport services for goods, crops, farming tools, and daily movement.</string>
+    <string name="transport_features_title">Possible Transport Features</string>
+    <string name="transport_features_list">
+        • Crop transport request\n
+        • Local vehicle booking\n
+        • Tractor or van availability\n
+        • Goods delivery inside village\n
+        • Transport provider profile\n
+        • Service request tracking\n
+        • Ratings and feedback
+    </string>
+
+    <!-- Cottage Services Strings -->
+    <string name="cottage_card_title">🏡 Cottage Services</string>
+    <string name="cottage_description">Cottage Services will create employment opportunities for different types of village people. Anyone with a skill can provide services, and general users can take those services.</string>
+    <string name="cottage_features_title">Possible Cottage Service Features</string>
+    <string name="cottage_features_list">
+        • Small industry service listing\n
+        • Nokshi Kantha service\n
+        • Handmade craft service\n
+        • Tailoring service\n
+        • Food processing service\n
+        • Skilled worker profile\n
+        • Customer service request\n
+        • Local earning opportunity\n
+        • Ratings and feedback
+    </string>
+
+    <!-- Booth Service Strings -->
+    <string name="booth_card_title">🏢 Village Booth Service</string>
+    <string name="booth_description">Each village can have a booth service to help users who cannot use the app properly. Booth operators can assist farmers, landowners, service providers, and general users.</string>
+    <string name="booth_features_title">Booth Service Features</string>
+    <string name="booth_features_list">
+        • Help users create accounts\n
+        • Help farmers apply for jobs\n
+        • Help landowners request services\n
+        • Help agri-merchants manage listings\n
+        • Provide app support for village people\n
+        • Collect local service requests\n
+        • Support offline users
+    </string>
+
+    <!-- Footer Strings -->
+    <string name="footer_desc">A smart village service platform for agriculture, rural transport, cottage services, and booth support.</string>
+    <string name="footer_contact_title">Contact us</string>
+    <string name="footer_email">Email: support@villageconnect.com</string>
+    <string name="footer_phone">Phone: +880 1234 567890</string>
+    <string name="footer_office">Head Office: Bashundhara R/A, Dhaka, Bangladesh</string>
+    <string name="footer_copyright">© 2026 Village Connect. All rights reserved.</string>
+
+
 </resources>

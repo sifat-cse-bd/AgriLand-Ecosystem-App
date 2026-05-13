@@ -1,0 +1,39 @@
+[33m2b6df86[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mlogin[m[33m)[m HEAD@{0}: reset: moving to origin/main
+[33m97b4ff0[m HEAD@{1}: checkout: moving from main to main
+[33m97b4ff0[m HEAD@{2}: commit: Onboarding UI update. attach a bottom sheet under the buttons
+[33m2b6df86[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mlogin[m[33m)[m HEAD@{3}: checkout: moving from login to main
+[33m2b6df86[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mlogin[m[33m)[m HEAD@{4}: checkout: moving from main to login
+[33m2b6df86[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mlogin[m[33m)[m HEAD@{5}: checkout: moving from onboarding to main
+[33m3612796[m[33m ([m[1;31morigin/onboarding[m[33m, [m[1;32monboarding[m[33m)[m HEAD@{6}: checkout: moving from login to onboarding
+[33m2b6df86[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mlogin[m[33m)[m HEAD@{7}: checkout: moving from onboarding to login
+[33m3612796[m[33m ([m[1;31morigin/onboarding[m[33m, [m[1;32monboarding[m[33m)[m HEAD@{8}: checkout: moving from login to onboarding
+[33m2b6df86[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mlogin[m[33m)[m HEAD@{9}: checkout: moving from register to login
+[33m314ba6c[m[33m ([m[1;31morigin/register[m[33m, [m[1;32mregister[m[33m)[m HEAD@{10}: checkout: moving from login to register
+[33m2b6df86[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mlogin[m[33m)[m HEAD@{11}: checkout: moving from main to login
+[33m2b6df86[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mlogin[m[33m)[m HEAD@{12}: checkout: moving from register to main
+[33m314ba6c[m[33m ([m[1;31morigin/register[m[33m, [m[1;32mregister[m[33m)[m HEAD@{13}: checkout: moving from main to register
+[33m2b6df86[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mlogin[m[33m)[m HEAD@{14}: checkout: moving from register to main
+[33m314ba6c[m[33m ([m[1;31morigin/register[m[33m, [m[1;32mregister[m[33m)[m HEAD@{15}: checkout: moving from main to register
+[33m2b6df86[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mlogin[m[33m)[m HEAD@{16}: commit: Move Files: dropdown data files move into models
+[33mc0f8081[m HEAD@{17}: checkout: moving from main to main
+[33mc0f8081[m HEAD@{18}: commit: Update register: interaction of sign in of tv
+[33m7965814[m HEAD@{19}: merge register: Merge made by the 'ort' strategy.
+[33m6b95ecd[m HEAD@{20}: checkout: moving from register to main
+[33m314ba6c[m[33m ([m[1;31morigin/register[m[33m, [m[1;32mregister[m[33m)[m HEAD@{21}: commit: Add Dropdown Data and item for Registration field
+[33m1dd2539[m HEAD@{22}: checkout: moving from main to register
+[33m6b95ecd[m HEAD@{23}: pull origin main: Merge made by the 'ort' strategy.
+[33md3f7b7a[m HEAD@{24}: commit: Add project resources and configuration files in values folder
+[33mcad2828[m HEAD@{25}: checkout: moving from register to main
+[33m1dd2539[m HEAD@{26}: commit: regtration UI modification with hint
+[33m6283d2b[m HEAD@{27}: commit: Add basic registration UI and backend filled validation
+[33mcad2828[m HEAD@{28}: checkout: moving from main to register
+[33mcad2828[m HEAD@{29}: pull: Merge made by the 'ort' strategy.
+[33m955eca4[m HEAD@{30}: checkout: moving from splash to main
+[33m02e0322[m[33m ([m[1;31morigin/splash[m[33m, [m[1;32msplash[m[33m)[m HEAD@{31}: commit: refactor: rename main activity to onboarding flow
+[33mee7fe84[m HEAD@{32}: checkout: moving from onboarding to splash
+[33m3612796[m[33m ([m[1;31morigin/onboarding[m[33m, [m[1;32monboarding[m[33m)[m HEAD@{33}: commit: add onboarding flow for first-time users
+[33mee7fe84[m HEAD@{34}: checkout: moving from splash to onboarding
+[33mee7fe84[m HEAD@{35}: commit: Added Splash Screen with animations
+[33m955eca4[m HEAD@{36}: checkout: moving from main to splash
+[33m955eca4[m HEAD@{37}: commit: Project configuration and Gradle files added
+[33md72dd0c[m HEAD@{38}: clone: from https://github.com/sifat-cse-bd/AgriLand-Ecosystem-App.git
