@@ -22,7 +22,7 @@
             android:name=".OnBoarding"
             android:exported="false" />
         <activity
-            android:name=".Registration"
+            android:name=".auth.Registration"
             android:exported="false" />
     </application>
 
