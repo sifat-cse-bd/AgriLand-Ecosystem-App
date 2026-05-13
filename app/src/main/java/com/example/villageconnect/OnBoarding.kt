@@ -75,7 +75,7 @@ class OnBoarding : AppCompatActivity() {
     }
 
     private fun playVideoBackground() {
-        val videoUri = Uri.parse("android.resource://$packageName/${R.raw.onboard_screenplay}")
+        val videoUri = Uri.parse("android.resource://$packageName/${R.raw.onboarding_film}")
         bgVideo.setVideoURI(videoUri)
 
         bgVideo.setOnPreparedListener { mediaPlayer ->
