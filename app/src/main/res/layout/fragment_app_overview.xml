@@ -1,495 +1,513 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackground">
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="18dp">
-
+        android:background="@color/colorSurface"
+        android:paddingHorizontal="18dp">
         <!-- Back Button -->
         <TextView
             android:id="@+id/btnBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
+            android:padding="8dp"
             android:text="@string/btn_back"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
-            android:textStyle="bold"
-            android:padding="8dp" />
+            android:textStyle="bold" />
 
         <!-- Page Title -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:text="Village Connect Overview"
             android:textColor="@color/colorTextPrimary"
             android:textSize="28sp"
-            android:textStyle="bold"
-            android:layout_marginTop="10dp" />
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="18dp"
+            android:lineSpacingExtra="4dp"
             android:text="@string/app_tagline"
             android:textColor="@color/colorTextSecondary"
-            android:textSize="15sp"
-            android:lineSpacingExtra="4dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="18dp" />
+            android:textSize="15sp" />
 
-        <!-- Agriculture Feature Card -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardAgriculture"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="14dp"
-            app:cardCornerRadius="18dp"
-            app:cardElevation="5dp"
-            app:strokeColor="@color/colorSecondary"
-            app:strokeWidth="1dp"
-            app:cardBackgroundColor="@color/colorSurface">
+    </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <!-- Header -->
-                <LinearLayout
-                    android:id="@+id/headerAgriculture"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:padding="18dp">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/agri_card_title"
-                        android:textColor="@color/colorTextPrimary"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-
-                    <ImageView
-                        android:id="@+id/arrowAgriculture"
-                        android:layout_width="26dp"
-                        android:layout_height="26dp"
-                        android:src="@drawable/ic_keyboard_arrow_down"
-                        app:tint="@color/colorPrimary" />
-
-                </LinearLayout>
-
-                <!-- Expandable Details -->
-                <LinearLayout
-                    android:id="@+id/detailsAgriculture"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:visibility="gone"
-                    android:paddingHorizontal="18dp"
-                    android:paddingBottom="18dp">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="170dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/agri_banner"
-                        android:background="@color/colorSecondary" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/agri_description"
-                        android:textColor="@color/colorTextSecondary"
-                        android:textSize="15sp"
-                        android:lineSpacingExtra="5dp"
-                        android:layout_marginTop="14dp"
-                        android:justificationMode="inter_word" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/agri_features_title"
-                        android:textColor="@color/colorTextPrimary"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:layout_marginTop="16dp" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/agri_features_list"
-                        android:textColor="@color/colorTextSecondary"
-                        android:textSize="15sp"
-                        android:lineSpacingExtra="6dp"
-                        android:layout_marginTop="8dp" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <!-- Rural Transport Feature Card -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardTransport"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="14dp"
-            app:cardCornerRadius="18dp"
-            app:cardElevation="5dp"
-            app:strokeColor="@color/colorSecondary"
-            app:strokeWidth="1dp"
-            app:cardBackgroundColor="@color/colorSurface">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <!-- Header -->
-                <LinearLayout
-                    android:id="@+id/headerTransport"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:padding="18dp">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/transport_card_title"
-                        android:textColor="@color/colorTextPrimary"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-
-                    <ImageView
-                        android:id="@+id/arrowTransport"
-                        android:layout_width="26dp"
-                        android:layout_height="26dp"
-                        android:src="@drawable/ic_keyboard_arrow_down"
-                        app:tint="@color/colorPrimary" />
-
-                </LinearLayout>
-
-                <!-- Expandable Details -->
-                <LinearLayout
-                    android:id="@+id/detailsTransport"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:visibility="gone"
-                    android:paddingHorizontal="18dp"
-                    android:paddingBottom="18dp">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="170dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/transport_banner"
-                        android:background="@color/colorSecondary" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/transport_description"
-                        android:textColor="@color/colorTextSecondary"
-                        android:textSize="15sp"
-                        android:lineSpacingExtra="5dp"
-                        android:layout_marginTop="14dp"
-                        android:justificationMode="inter_word" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/transport_features_title"
-                        android:textColor="@color/colorTextPrimary"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:layout_marginTop="16dp" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/transport_features_list"
-                        android:textColor="@color/colorTextSecondary"
-                        android:textSize="15sp"
-                        android:lineSpacingExtra="6dp"
-                        android:layout_marginTop="8dp" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <!-- Cottage Service Feature Card -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardCottage"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="14dp"
-            app:cardCornerRadius="18dp"
-            app:cardElevation="5dp"
-            app:strokeColor="@color/colorSecondary"
-            app:strokeWidth="1dp"
-            app:cardBackgroundColor="@color/colorSurface">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <!-- Header -->
-                <LinearLayout
-                    android:id="@+id/headerCottage"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:padding="18dp">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/cottage_card_title"
-                        android:textColor="@color/colorTextPrimary"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-
-                    <ImageView
-                        android:id="@+id/arrowCottage"
-                        android:layout_width="26dp"
-                        android:layout_height="26dp"
-                        android:src="@drawable/ic_keyboard_arrow_down"
-                        app:tint="@color/colorPrimary" />
-
-                </LinearLayout>
-
-                <!-- Expandable Details -->
-                <LinearLayout
-                    android:id="@+id/detailsCottage"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:visibility="gone"
-                    android:paddingHorizontal="18dp"
-                    android:paddingBottom="18dp">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="170dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/cottage_banner"
-                        android:background="@color/colorSecondary" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/cottage_description"
-                        android:textColor="@color/colorTextSecondary"
-                        android:textSize="15sp"
-                        android:lineSpacingExtra="5dp"
-                        android:layout_marginTop="14dp"
-                        android:justificationMode="inter_word" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/cottage_features_title"
-                        android:textColor="@color/colorTextPrimary"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:layout_marginTop="16dp" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/cottage_features_list"
-                        android:textColor="@color/colorTextSecondary"
-                        android:textSize="15sp"
-                        android:lineSpacingExtra="6dp"
-                        android:layout_marginTop="8dp" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <!-- Village Booth Service Feature Card -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardBooth"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="28dp"
-            app:cardCornerRadius="18dp"
-            app:cardElevation="5dp"
-            app:strokeColor="@color/colorSecondary"
-            app:strokeWidth="1dp"
-            app:cardBackgroundColor="@color/colorSurface">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <!-- Header -->
-                <LinearLayout
-                    android:id="@+id/headerBooth"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:padding="18dp">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/booth_card_title"
-                        android:textColor="@color/colorTextPrimary"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-
-                    <ImageView
-                        android:id="@+id/arrowBooth"
-                        android:layout_width="26dp"
-                        android:layout_height="26dp"
-                        android:src="@drawable/ic_keyboard_arrow_down"
-                        app:tint="@color/colorPrimary" />
-
-                </LinearLayout>
-
-                <!-- Expandable Details -->
-                <LinearLayout
-                    android:id="@+id/detailsBooth"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:visibility="gone"
-                    android:paddingHorizontal="18dp"
-                    android:paddingBottom="18dp">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="170dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/booth_banner"
-                        android:background="@color/colorSecondary" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/booth_description"
-                        android:textColor="@color/colorTextSecondary"
-                        android:textSize="15sp"
-                        android:lineSpacingExtra="5dp"
-                        android:layout_marginTop="14dp"
-                        android:justificationMode="inter_word" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/booth_features_title"
-                        android:textColor="@color/colorTextPrimary"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:layout_marginTop="16dp" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/booth_features_list"
-                        android:textColor="@color/colorTextSecondary"
-                        android:textSize="15sp"
-                        android:lineSpacingExtra="6dp"
-                        android:layout_marginTop="8dp" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <!-- START OF FOOTER SECTION -->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/colorSecondary"
-            android:layout_marginBottom="24dp"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:background="@color/colorBackground">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingBottom="20dp">
+            android:padding="18dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                android:text="@string/footer_contact_title"
-                android:textColor="@color/colorPrimary"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/footer_desc"
-                android:textColor="@color/colorTextSecondary"
-                android:textSize="15sp"
-                android:layout_marginBottom="4dp"
-                android:justificationMode="inter_word" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/footer_email"
-                android:textColor="@color/colorTextSecondary"
-                android:textSize="14sp"
-                android:layout_marginBottom="4dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/footer_phone"
-                android:textColor="@color/colorTextSecondary"
-                android:textSize="14sp"
-                android:layout_marginBottom="4dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/footer_office"
-                android:textColor="@color/colorTextSecondary"
-                android:textSize="14sp"
-                android:layout_marginBottom="24dp"/>
-
-            <TextView
+            <!-- Agriculture Feature Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardAgriculture"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/footer_copyright"
-                android:textColor="@color/colorTextSecondary"
-                android:textSize="12sp"
-                android:gravity="center"
-                android:alpha="0.7"/>
+                android:layout_marginBottom="14dp"
+                app:cardBackgroundColor="@color/colorSurface"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="5dp"
+                app:strokeColor="@color/colorSecondary"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- Header -->
+                    <LinearLayout
+                        android:id="@+id/headerAgriculture"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="18dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/agri_card_title"
+                            android:textColor="@color/colorTextPrimary"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:id="@+id/arrowAgriculture"
+                            android:layout_width="26dp"
+                            android:layout_height="26dp"
+                            android:src="@drawable/ic_keyboard_arrow_down"
+                            app:tint="@color/colorPrimary" />
+
+                    </LinearLayout>
+
+                    <!-- Expandable Details -->
+                    <LinearLayout
+                        android:id="@+id/detailsAgriculture"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="18dp"
+                        android:paddingBottom="18dp"
+                        android:visibility="gone">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="170dp"
+                            android:background="@color/colorSecondary"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/agri_banner" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="14dp"
+                            android:justificationMode="inter_word"
+                            android:lineSpacingExtra="5dp"
+                            android:text="@string/agri_description"
+                            android:textColor="@color/colorTextSecondary"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:text="@string/agri_features_title"
+                            android:textColor="@color/colorTextPrimary"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:lineSpacingExtra="6dp"
+                            android:text="@string/agri_features_list"
+                            android:textColor="@color/colorTextSecondary"
+                            android:textSize="15sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Rural Transport Feature Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardTransport"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                app:cardBackgroundColor="@color/colorSurface"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="5dp"
+                app:strokeColor="@color/colorSecondary"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- Header -->
+                    <LinearLayout
+                        android:id="@+id/headerTransport"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="18dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/transport_card_title"
+                            android:textColor="@color/colorTextPrimary"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:id="@+id/arrowTransport"
+                            android:layout_width="26dp"
+                            android:layout_height="26dp"
+                            android:src="@drawable/ic_keyboard_arrow_down"
+                            app:tint="@color/colorPrimary" />
+
+                    </LinearLayout>
+
+                    <!-- Expandable Details -->
+                    <LinearLayout
+                        android:id="@+id/detailsTransport"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="18dp"
+                        android:paddingBottom="18dp"
+                        android:visibility="gone">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="170dp"
+                            android:background="@color/colorSecondary"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/transport_banner" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="14dp"
+                            android:justificationMode="inter_word"
+                            android:lineSpacingExtra="5dp"
+                            android:text="@string/transport_description"
+                            android:textColor="@color/colorTextSecondary"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:text="@string/transport_features_title"
+                            android:textColor="@color/colorTextPrimary"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:lineSpacingExtra="6dp"
+                            android:text="@string/transport_features_list"
+                            android:textColor="@color/colorTextSecondary"
+                            android:textSize="15sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Cottage Service Feature Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardCottage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                app:cardBackgroundColor="@color/colorSurface"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="5dp"
+                app:strokeColor="@color/colorSecondary"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- Header -->
+                    <LinearLayout
+                        android:id="@+id/headerCottage"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="18dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/cottage_card_title"
+                            android:textColor="@color/colorTextPrimary"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:id="@+id/arrowCottage"
+                            android:layout_width="26dp"
+                            android:layout_height="26dp"
+                            android:src="@drawable/ic_keyboard_arrow_down"
+                            app:tint="@color/colorPrimary" />
+
+                    </LinearLayout>
+
+                    <!-- Expandable Details -->
+                    <LinearLayout
+                        android:id="@+id/detailsCottage"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="18dp"
+                        android:paddingBottom="18dp"
+                        android:visibility="gone">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="170dp"
+                            android:background="@color/colorSecondary"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/cottage_banner" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="14dp"
+                            android:justificationMode="inter_word"
+                            android:lineSpacingExtra="5dp"
+                            android:text="@string/cottage_description"
+                            android:textColor="@color/colorTextSecondary"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:text="@string/cottage_features_title"
+                            android:textColor="@color/colorTextPrimary"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:lineSpacingExtra="6dp"
+                            android:text="@string/cottage_features_list"
+                            android:textColor="@color/colorTextSecondary"
+                            android:textSize="15sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Village Booth Service Feature Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardBooth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="28dp"
+                app:cardBackgroundColor="@color/colorSurface"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="5dp"
+                app:strokeColor="@color/colorSecondary"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- Header -->
+                    <LinearLayout
+                        android:id="@+id/headerBooth"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="18dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/booth_card_title"
+                            android:textColor="@color/colorTextPrimary"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:id="@+id/arrowBooth"
+                            android:layout_width="26dp"
+                            android:layout_height="26dp"
+                            android:src="@drawable/ic_keyboard_arrow_down"
+                            app:tint="@color/colorPrimary" />
+
+                    </LinearLayout>
+
+                    <!-- Expandable Details -->
+                    <LinearLayout
+                        android:id="@+id/detailsBooth"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="18dp"
+                        android:paddingBottom="18dp"
+                        android:visibility="gone">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="170dp"
+                            android:background="@color/colorSecondary"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/booth_banner" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="14dp"
+                            android:justificationMode="inter_word"
+                            android:lineSpacingExtra="5dp"
+                            android:text="@string/booth_description"
+                            android:textColor="@color/colorTextSecondary"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:text="@string/booth_features_title"
+                            android:textColor="@color/colorTextPrimary"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:lineSpacingExtra="6dp"
+                            android:text="@string/booth_features_list"
+                            android:textColor="@color/colorTextSecondary"
+                            android:textSize="15sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- START OF FOOTER SECTION -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="24dp"
+                android:background="@color/colorSecondary" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:text="@string/footer_contact_title"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:justificationMode="inter_word"
+                    android:text="@string/footer_desc"
+                    android:textColor="@color/colorTextSecondary"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="@string/footer_email"
+                    android:textColor="@color/colorTextSecondary"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="@string/footer_phone"
+                    android:textColor="@color/colorTextSecondary"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="24dp"
+                    android:text="@string/footer_office"
+                    android:textColor="@color/colorTextSecondary"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.7"
+                    android:gravity="center"
+                    android:text="@string/footer_copyright"
+                    android:textColor="@color/colorTextSecondary"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+            <!-- END OF FOOTER SECTION -->
 
         </LinearLayout>
-        <!-- END OF FOOTER SECTION -->
 
-    </LinearLayout>
+    </ScrollView>
 
-</ScrollView>
+</LinearLayout>
+
