@@ -1,52 +1,99 @@
 package com.example.villageconnect
 
 import android.content.Intent
+import android.graphics.Color
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.FrameLayout
 import android.widget.LinearLayout
+import android.widget.TextView
+import android.widget.VideoView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.villageconnect.fragments.AppOverview
 
 class OnBoarding : AppCompatActivity() {
-    lateinit var btnSignUp: Button
+    lateinit var btnSkip: TextView
     lateinit var btnGetStarted: Button
-    lateinit var card1: com.google.android.material.card.MaterialCardView
-    lateinit var additionalLayout: LinearLayout
+    lateinit var btnOverview: Button
 
-
+    lateinit var bgVideo: VideoView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         enableEdgeToEdge()
+        window.navigationBarColor = Color.TRANSPARENT
+        window.statusBarColor = Color.TRANSPARENT
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+
         setContentView(R.layout.activity_onboarding)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+
+
+        val mainLayout = findViewById<FrameLayout>(R.id.main)
+        //val bottomButtons = findViewById<LinearLayout>(R.id.bottomButtonsLayout)
+
+        ViewCompat.setOnApplyWindowInsetsListener(mainLayout) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+
+            v.setPadding(0, 0, 0, 0)
+
+            playVideoBackground()
             insets
+
         }
 
-        btnSignUp = findViewById(R.id.btnSignUp)
 
+
+
+        btnSkip = findViewById(R.id.btnSkip)
         btnGetStarted = findViewById(R.id.btnGetStarted)
-        card1 = findViewById(R.id.card1)
-        additionalLayout = findViewById(R.id.additionalLayout)
+        btnOverview = findViewById(R.id.btnOverview)
+        bgVideo = findViewById(R.id.bgVideo)
 
-        card1.setOnClickListener {
-            additionalLayout.visibility = View.VISIBLE
+
+
+        btnSkip.setOnClickListener {
+            startActivity(Intent(this, Login::class.java))
+            finish()
         }
-        startRegistration()
-
+        btnGetStarted.setOnClickListener {
+            startActivity(Intent(this, Registration::class.java))
+            finish()
+        }
+        btnOverview.setOnClickListener {
+            supportFragmentManager.beginTransaction()
+                .replace(android.R.id.content, AppOverview())
+                .addToBackStack(null)
+                .commit()
+        }
     }
 
+    private fun playVideoBackground() {
+        val videoUri = Uri.parse("android.resource://$packageName/${R.raw.onboard_screenplay}")
+        bgVideo.setVideoURI(videoUri)
 
-    fun startRegistration() {
-        val clickListener = View.OnClickListener {
-            startActivity(Intent(this, Registration::class.java))
+        bgVideo.setOnPreparedListener { mediaPlayer ->
+            mediaPlayer.isLooping = true
+            mediaPlayer.setVolume(0f, 0f)
+
+
+
+            bgVideo.start()
         }
+    }
 
-        btnGetStarted.setOnClickListener(clickListener)
-        btnSignUp.setOnClickListener(clickListener)
+    override fun onResume() {
+        super.onResume()
+        bgVideo.start()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        bgVideo.pause()
     }
 }
