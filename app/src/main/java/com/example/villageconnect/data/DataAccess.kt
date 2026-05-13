@@ -4,8 +4,9 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.widget.Toast
+import com.example.villageconnect.auth.Registration
 
-class DataAccess {
+object DataAccess {
     private var dbHelper: DBHelper? = null
     private var database: SQLiteDatabase? = null
 

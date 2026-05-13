@@ -8,7 +8,14 @@
     // register strings
     <string name="already_a_member_sign_in">Already a member? Sign In</string>
     <string name="register_button">Create Account</string>
+
+    <!-- Register Error Strings -->
     <string name="ErrorPassword">Password must be at least 8 characters</string>
+    <string name="error_name_required">Name is required</string>
+    <string name="error_invalid_phone">Invalid phone number</string>
+    <string name="error_invalid_nid">Invalid NID</string>
+    <string name="error_invalid_dob">Invalid date of birth</string>
+    <string name="error_role_required">Please select a role</string>
 
 
     <string name="register_name_hint">Full Name</string>
