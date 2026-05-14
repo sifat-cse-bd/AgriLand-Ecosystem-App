@@ -9,6 +9,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VillageConnect">
         <activity
+            android:name=".landowner.LandownerMainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".auth.Login"
+            android:exported="false" />
+        <activity
             android:name=".SplashScreen"
             android:exported="true"
             android:theme="@style/Theme.AppSplash">
