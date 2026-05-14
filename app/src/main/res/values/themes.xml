@@ -1,26 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme for Dark Mode. -->
+    <!-- Base application theme with Premium Agriculture Palette -->
     <style name="Base.Theme.VillageConnect" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
-        <item name="colorSecondary">@color/colorSecondary</item>
+        <!-- Primary Brand Colors -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorOnPrimary">@color/onPrimary</item>
+        <item name="colorPrimaryContainer">@color/primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/onPrimaryContainer</item>
 
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor">@color/colorPrimaryVariant</item>
+        <!-- Secondary Accents -->
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="colorOnSecondary">@color/onSecondary</item>
+        <item name="colorSecondaryContainer">@color/secondaryContainer</item>
+        <item name="colorOnSecondaryContainer">@color/onSecondaryContainer</item>
 
-        <!-- Text and Background colors -->
-        <item name="android:windowBackground">@color/colorBackground</item>
-        <item name="colorSurface">@color/colorSurface</item>
+        <!-- Tertiary Sky Accents -->
+        <item name="colorTertiary">@color/tertiary</item>
+        <item name="colorOnTertiary">@color/onTertiary</item>
+        <item name="colorTertiaryContainer">@color/tertiaryContainer</item>
+        <item name="colorOnTertiaryContainer">@color/onTertiaryContainer</item>
+
+        <!-- Background & Surface -->
+        <item name="android:windowBackground">@color/background</item>
+        <item name="colorSurface">@color/surface</item>
+        <item name="colorOnSurface">@color/onSurface</item>
+        <item name="colorSurfaceVariant">@color/surfaceVariant</item>
+        <item name="colorOnSurfaceVariant">@color/onSurfaceVariant</item>
+
+        <!-- Outline & Borders -->
+        <item name="colorOutline">@color/outline</item>
+        <item name="colorOutlineVariant">@color/outlineVariant</item>
+
+        <!-- Status & System Bars -->
+        <item name="android:statusBarColor">@color/background</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="android:navigationBarColor">@color/background</item>
+
+        <!-- Error Colors -->
+        <item name="colorError">@color/error</item>
+        <item name="colorOnError">@color/onError</item>
     </style>
 
     <style name="Theme.VillageConnect" parent="Base.Theme.VillageConnect" />
 
+    <!-- Splash Screen Theme -->
     <style name="Theme.AppSplash" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="android:windowBackground">@color/colorBackground</item>
+        <item name="android:windowBackground">@color/background</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 </resources>
