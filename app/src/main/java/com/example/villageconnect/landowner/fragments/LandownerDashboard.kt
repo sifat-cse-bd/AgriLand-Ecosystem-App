@@ -1,19 +1,24 @@
 package com.example.villageconnect.landowner.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.villageconnect.BuildConfig
 import com.example.villageconnect.R
 import com.example.villageconnect.data.DBHelper
 import com.example.villageconnect.data.DataAccess
+import com.example.villageconnect.data.weather.WeatherRetrofitClient
 import com.example.villageconnect.landowner.LandownerMainActivity
 import com.example.villageconnect.landowner.adapters.DashboardAdapter
 import com.example.villageconnect.landowner.models.DashboardItem
 import com.example.villageconnect.utils.SessionManager
-import java.time.LocalTime
+import kotlinx.coroutines.launch
 import java.util.Calendar
 
 class LandownerDashboard : Fragment(R.layout.fragment_landowner_dashboard) {
@@ -25,6 +30,12 @@ class LandownerDashboard : Fragment(R.layout.fragment_landowner_dashboard) {
     private lateinit var tvServiceCount: TextView
     private lateinit var tvOrderCount: TextView
     private lateinit var rvDashboardCards: RecyclerView
+
+    private lateinit var imgWeatherAnimation: ImageView
+    private lateinit var tvWeatherTemperature: TextView
+    private lateinit var tvWeatherStatus: TextView
+    private lateinit var tvWeatherMeta: TextView
+    private lateinit var tvWeatherAdvice: TextView
 
     private var landownerId = -1
     private var villageName: String? = null
@@ -38,11 +49,18 @@ class LandownerDashboard : Fragment(R.layout.fragment_landowner_dashboard) {
         tvOrderCount = view.findViewById(R.id.tvOrderCount)
         rvDashboardCards = view.findViewById(R.id.rvDashboardCards)
 
+        imgWeatherAnimation = view.findViewById(R.id.imgWeatherAnimation)
+        tvWeatherTemperature = view.findViewById(R.id.tvWeatherTemperature)
+        tvWeatherStatus = view.findViewById(R.id.tvWeatherStatus)
+        tvWeatherMeta = view.findViewById(R.id.tvWeatherMeta)
+        tvWeatherAdvice = view.findViewById(R.id.tvWeatherAdvice)
+
         landownerId = SessionManager(requireContext()).getUserId()
 
         loadLandownerInfo()
         loadCounts()
         setupDashboardCards()
+        loadWeatherInfo()
     }
 
     private fun loadLandownerInfo() {
@@ -66,15 +84,17 @@ class LandownerDashboard : Fragment(R.layout.fragment_landowner_dashboard) {
 
                 tvGreeting.text = getGreeting()
                 tvLandownerName.text = name
-                tvVillage.text = "Village: ${villageName ?: "Not updated"}"
+                tvVillage.text = getString(
+                    R.string.village_label,
+                    villageName ?: getString(R.string.not_updated)
+                )
             }
         }
     }
 
     private fun getGreeting(): String {
         val hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
-        return when(hour)
-        {
+        return when (hour) {
             in 5..11 -> "Good Morning,"
             in 12..16 -> "Good Afternoon,"
             in 17..20 -> "Good Evening,"
@@ -117,6 +137,97 @@ class LandownerDashboard : Fragment(R.layout.fragment_landowner_dashboard) {
         return count
     }
 
+    private fun loadWeatherInfo() {
+        val apiKey = BuildConfig.OPEN_WEATHER_API_KEY
+
+        // Dhaka/Bhatara area fixed location
+        val lat = 23.8103
+        val lon = 90.4125
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            try {
+                val current = WeatherRetrofitClient.api.getCurrentWeather(
+                    lat = lat,
+                    lon = lon,
+                    apiKey = apiKey
+                )
+
+                val forecast = WeatherRetrofitClient.api.getForecastWeather(
+                    lat = lat,
+                    lon = lon,
+                    apiKey = apiKey
+                )
+
+                val temp = current.main.temp
+                val humidity = current.main.humidity
+                val condition = current.weather.firstOrNull()?.main ?: "Clear"
+
+                val rainChance = forecast.list
+                    .take(4)
+                    .maxOfOrNull { it.pop ?: 0.0 } ?: 0.0
+
+                val rainPercent = (rainChance * 100).toInt()
+
+                updateWeatherCard(
+                    temperature = temp,
+                    humidity = humidity,
+                    rainPercent = rainPercent,
+                    condition = condition
+                )
+
+            } catch (e: Exception) {
+                Log.e("WeatherError", "Failed to load weather: ${e.message}")
+                showWeatherFallback()
+            }
+        }
+    }
+
+    private fun updateWeatherCard(
+        temperature: Double,
+        humidity: Int,
+        rainPercent: Int,
+        condition: String
+    ) {
+        val tempInt = temperature.toInt()
+
+        tvWeatherTemperature.text = getString(R.string.weather_temp, tempInt)
+        tvWeatherMeta.text = getString(R.string.weather_meta, rainPercent, humidity)
+
+        when {
+            rainPercent >= 60 || condition.contains("Rain", ignoreCase = true) -> {
+                tvWeatherStatus.text = getString(R.string.weather_status_rain)
+                tvWeatherAdvice.text = getString(R.string.weather_advice_rain)
+                imgWeatherAnimation.setImageResource(R.drawable.img_weather_rain)
+            }
+
+            tempInt >= 38 -> {
+                tvWeatherStatus.text = getString(R.string.weather_status_heatwave)
+                tvWeatherAdvice.text = getString(R.string.weather_advice_heatwave)
+                imgWeatherAnimation.setImageResource(R.drawable.img_weather_heatwave)
+            }
+
+            tempInt <= 12 -> {
+                tvWeatherStatus.text = getString(R.string.weather_status_coldwave)
+                tvWeatherAdvice.text = getString(R.string.weather_advice_coldwave)
+                imgWeatherAnimation.setImageResource(R.drawable.img_weather_coldwave)
+            }
+
+            else -> {
+                tvWeatherStatus.text = getString(R.string.weather_status_good)
+                tvWeatherAdvice.text = getString(R.string.weather_advice_good)
+                imgWeatherAnimation.setImageResource(R.drawable.img_weather_sunny)
+            }
+        }
+    }
+
+    private fun showWeatherFallback() {
+        tvWeatherTemperature.text = getString(R.string.weather_temp_fallback)
+        tvWeatherStatus.text = getString(R.string.weather_status_unavailable)
+        tvWeatherMeta.text = getString(R.string.weather_meta_error)
+        tvWeatherAdvice.text = getString(R.string.weather_advice_error)
+        imgWeatherAnimation.setImageResource(R.drawable.img_weather_sunny)
+    }
+
     private fun setupDashboardCards() {
         val items = listOf(
             DashboardItem("👨‍🌾", "Find Farmers", "Hire local farmers from your village"),
@@ -131,10 +242,10 @@ class LandownerDashboard : Fragment(R.layout.fragment_landowner_dashboard) {
             val activity = requireActivity() as LandownerMainActivity
 
             when (item.title) {
-                "Find Farmers" -> activity.loadFragment(FarmerListFragment())
-                "Book Agri Service" -> activity.loadFragment(MerchantListFragment())
-                "Agri Market" -> activity.loadFragment(InventoryListFragment())
-                "My Activity" -> activity.loadFragment(HistoryFragment())
+                "Find Farmers" -> activity.loadFragment(FarmerList())
+                "Book Agri Service" -> activity.loadFragment(MerchantList())
+                "Agri Market" -> activity.loadFragment(InventoryList())
+                "My Activity" -> activity.loadFragment(History())
             }
         }
     }

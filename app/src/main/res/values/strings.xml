@@ -120,5 +120,22 @@
     <string name="footer_office">Head Office: Bashundhara R/A, Dhaka, Bangladesh</string>
     <string name="footer_copyright">© 2026 Village Connect. All rights reserved.</string>
 
+    <!-- Dashboard Strings -->
+    <string name="village_label">Village: %1$s</string>
+    <string name="not_updated">Not updated</string>
+    <string name="weather_temp">%1$d°C</string>
+    <string name="weather_meta">Rain %1$d%%  •  Humidity %2$d%%</string>
+    <string name="weather_status_rain">Rain Expected</string>
+    <string name="weather_advice_rain">Advice: Heavy rain likely.\nPause irrigation, cover fertilizer,\nand delay spraying.</string>
+    <string name="weather_status_heatwave">Heatwave Alert</string>
+    <string name="weather_advice_heatwave">Advice: Very hot weather.\nWater crops early morning,\nand avoid midday field work.</string>
+    <string name="weather_status_coldwave">Coldwave Alert</string>
+    <string name="weather_advice_coldwave">Advice: Cold weather risk.\nProtect seedlings and avoid\nlate-night irrigation.</string>
+    <string name="weather_status_good">Good Weather</string>
+    <string name="weather_advice_good">Advice: Weather is suitable.\nContinue normal irrigation\nand field monitoring.</string>
+    <string name="weather_status_unavailable">Weather Unavailable</string>
+    <string name="weather_meta_error">Check internet connection</string>
+    <string name="weather_advice_error">Advice: Could not load weather.\nPlease try again later.</string>
+    <string name="weather_temp_fallback">--°C</string>
 
 </resources>

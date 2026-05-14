@@ -143,6 +143,30 @@
     <color name="colorError">@color/error</color>
 
     <!-- ========================= -->
+    <!-- WEATHER CARD - LIGHT PREMIUM -->
+    <!-- ========================= -->
+    <color name="weatherCardBackground">#F7FCF8</color>
+    <color name="weatherCardBackgroundDeep">#EAF6ED</color>
+    <color name="weatherCardBorder">#DDEBDD</color>
+
+    <color name="weatherTextPrimary">#102A18</color>
+    <color name="weatherTextSecondary">#52645A</color>
+    <color name="weatherTextMuted">#7D8F84</color>
+
+    <color name="weatherAccentGreen">#2E7D32</color>
+    <color name="weatherAccentBlue">#38BDF8</color>
+    <color name="weatherDivider">#D8E6DD</color>
+
+    <color name="weatherIconBg">#E8F5E9</color>
+
+    <!-- ========================= -->
+    <!-- WEATHER OVERLAY - LIGHT -->
+    <!-- ========================= -->
+    <color name="weatherOverlayStart">#F2F7FCF8</color>
+    <color name="weatherOverlayCenter">#DDF7FCF8</color>
+    <color name="weatherOverlayEnd">#33E0F7FF</color>
+
+    <!-- ========================= -->
     <!-- BASIC COLORS -->
     <!-- ========================= -->
     <color name="white">#FFFFFF</color>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/weatherAdviceCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="18dp"
+    app:cardBackgroundColor="?attr/weatherCardBg"
+    app:cardCornerRadius="26dp"
+    app:cardElevation="8dp"
+    app:strokeColor="?attr/weatherCardBorderColor"
+    app:strokeWidth="1dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="210dp">
+
+        <!-- Weather animation/banner preview -->
+        <ImageView
+            android:id="@+id/imgWeatherAnimation"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:alpha="0.78"
+            android:contentDescription="Weather animation"
+            android:scaleType="centerCrop"
+            android:src="@drawable/img_weather_rain"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Overlay for readable text -->
+        <View
+            android:id="@+id/weatherOverlay"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/bg_weather_card_overlay"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Main content -->
+        <LinearLayout
+            android:id="@+id/weatherContent"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingStart="18dp"
+            android:paddingTop="16dp"
+            android:paddingEnd="18dp"
+            android:paddingBottom="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <!-- Title row -->
+            <LinearLayout
+                android:id="@+id/weatherTitleRow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvWeatherIcon"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    android:background="@drawable/bg_weather_small_icon"
+                    android:gravity="center"
+                    android:text="☁"
+                    android:textColor="?attr/weatherAccentBlueColor"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tvWeatherTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="Weather &amp; Advice"
+                    android:textColor="?attr/weatherTextPrimaryColor"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <!-- Temperature -->
+            <TextView
+                android:id="@+id/tvWeatherTemperature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="17dp"
+                android:includeFontPadding="false"
+                android:text="29°C"
+                android:textColor="?attr/weatherTextPrimaryColor"
+                android:textSize="50sp"
+                android:textStyle="bold" />
+
+            <!-- Weather status -->
+            <TextView
+                android:id="@+id/tvWeatherStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="Rain Expected"
+                android:textColor="?attr/weatherAccentGreenColor"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <!-- Weather meta -->
+            <TextView
+                android:id="@+id/tvWeatherMeta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
+                android:text="Rain 85%  •  Humidity 91%"
+                android:textColor="?attr/weatherTextSecondaryColor"
+                android:textSize="14sp" />
+
+            <!-- Divider -->
+            <View
+                android:id="@+id/weatherDivider"
+                android:layout_width="190dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="13dp"
+                android:background="?attr/weatherDividerColor" />
+
+            <!-- Advice row -->
+            <LinearLayout
+                android:id="@+id/weatherAdviceRow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="13dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvAdviceIcon"
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
+                    android:background="@drawable/bg_weather_advice_icon"
+                    android:gravity="center"
+                    android:text="🌱"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tvWeatherAdvice"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_weight="1"
+                    android:lineSpacingExtra="2dp"
+                    android:text="Advice: Heavy rain likely.\nPause irrigation, cover fertilizer,\nand delay spraying."
+                    android:textColor="?attr/weatherTextSecondaryColor"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
