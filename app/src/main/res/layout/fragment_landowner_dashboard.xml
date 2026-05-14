@@ -74,13 +74,20 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:paddingHorizontal="20dp"
-            android:paddingBottom="20dp"
-            android:layout_marginTop="-38dp">
+            android:layout_marginTop="-48dp">
+
+
+            <include
+                android:id="@+id/weatherAdvicePanel"
+                layout="@layout/item_weather_advice_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
             <!-- Summary Card -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardBackgroundColor="@color/cardBackground"
+                android:layout_marginTop="10dp"
                 app:cardCornerRadius="28dp"
                 app:cardElevation="8dp"
                 app:strokeColor="@color/cardBorder"
@@ -190,28 +197,21 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-            <include
-                android:id="@+id/weatherAdvicePanel"
-                layout="@layout/item_weather_advice_card"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Landowner Services"
                 android:textColor="@color/colorTextPrimary"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
-                android:layout_marginTop="24dp" />
+                android:layout_marginTop="16dp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvDashboardCards"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:layout_marginTop="12dp"
                 android:padding="8dp"
                 android:clipToPadding="false" />
         </LinearLayout>
