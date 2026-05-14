@@ -33,7 +33,7 @@
     <string name="login_password_hint">Password</string>
     <string name="login_button">Login</string>
     <string name="forgot_password">Forgot Password?</string>
-    <string name="dont_have_account_sign_up">Don&apos;t have an account? Sign Up</string>
+    <string name="dont_have_account_sign_up">Don\'t have an account? Sign Up</string>
     <string name="error_password_required">Password is required</string>
     <string name="login_invalid_message">Invalid phone number or password</string>
     <string name="login_success_message">Login Successful</string>

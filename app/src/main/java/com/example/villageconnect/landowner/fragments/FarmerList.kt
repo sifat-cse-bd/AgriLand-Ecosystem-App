@@ -90,7 +90,7 @@ class FarmerListFragment : Fragment(R.layout.fragment_farmer_list) {
         }
 
         rvFarmers.adapter = FarmerAdapter(farmers) { farmer ->
-            val fragment = FarmerDetails.newInstance(farmer.id)
+            val fragment = FarmerDetailsFragment.newInstance(farmer.id)
             (requireActivity() as LandownerMainActivity).loadFragment(fragment)
         }
     }

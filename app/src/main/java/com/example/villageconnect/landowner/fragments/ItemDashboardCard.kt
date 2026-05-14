@@ -35,7 +35,7 @@ class ItemDashboardCard : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_item_dashboard_card, container, false)
+        return inflater.inflate(R.layout.item_dashboard_card, container, false)
     }
 
     companion object {
