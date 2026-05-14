@@ -131,10 +131,10 @@ class LandownerDashboard : Fragment(R.layout.fragment_landowner_dashboard) {
             val activity = requireActivity() as LandownerMainActivity
 
             when (item.title) {
-                "Find Farmers" -> activity.loadFragment(FarmerList())
-                "Book Agri Service" -> activity.loadFragment(MerchantList())
-                "Agri Market" -> activity.loadFragment(InventoryList())
-                "My Activity" -> activity.loadFragment(History())
+                "Find Farmers" -> activity.loadFragment(FarmerListFragment())
+                "Book Agri Service" -> activity.loadFragment(MerchantListFragment())
+                "Agri Market" -> activity.loadFragment(InventoryListFragment())
+                "My Activity" -> activity.loadFragment(HistoryFragment())
             }
         }
     }
