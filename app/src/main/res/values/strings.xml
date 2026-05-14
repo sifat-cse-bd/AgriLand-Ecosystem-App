@@ -4,8 +4,7 @@
     <string name="app_version">Version 1.0.0</string>
 
 
-
-    // register strings
+    <!-- register strings -->
     <string name="already_a_member_sign_in">Already a member? Sign In</string>
     <string name="register_button">Create Account</string>
 
@@ -26,16 +25,29 @@
     <string name="register_role_hint">Pick your role (Farmer / Landowner / Agri-Merchant)</string>
     <string name="register_email_hint">Email Address</string>
     <string name="register_password_hint">Password</string>
+
+    <!-- Login Strings -->
+    <string name="login_title">Welcome Back</string>
+    <string name="login_subtitle">Login to continue your village services</string>
+    <string name="login_phone_hint">Phone Number</string>
+    <string name="login_password_hint">Password</string>
+    <string name="login_button">Login</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="dont_have_account_sign_up">Don&apos;t have an account? Sign Up</string>
+    <string name="error_password_required">Password is required</string>
+    <string name="login_invalid_message">Invalid phone number or password</string>
+    <string name="login_success_message">Login Successful</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    //onboarding
+    <!-- onboarding -->
     <string name="btn_skip">Skip</string>
     <string name="btn_getstarted">Get Started</string>
     <string name="btn_overview">App overview</string>
 
 
-    //overview fragment
+    <!-- overview fragment -->
     <string name="btn_back">← Back</string>
 
     <!-- Agriculture Strings -->
