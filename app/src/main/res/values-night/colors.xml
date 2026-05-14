@@ -1,29 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Agricultural Palette - Dark Mode -->
-    <color name="colorPrimary">#2E7D32</color> <!-- Darker Green -->
-    <color name="colorPrimaryVariant">#1B3F1F</color> <!-- Deep Forest -->
-    <color name="colorSecondary">#43954A</color> <!-- Nature Green -->
 
-    <color name="colorBackground">#121212</color> <!-- Dark Surface -->
-    <color name="colorSurface">#1E1E1E</color> <!-- Slightly lighter dark -->
+    <!-- ========================= -->
+    <!-- PRIMARY - SOFT EARTHY GREEN -->
+    <!-- ========================= -->
+    <color name="primary">#7FA36B</color>
+    <color name="onPrimary">#10230D</color>
+    <color name="primaryContainer">#2D4426</color>
+    <color name="onPrimaryContainer">#DCE8D3</color>
+    <color name="primaryDark">#5F8D4E</color>
+    <color name="primaryBright">#9BCF53</color>
 
-    <color name="colorTextPrimary">#EDEDED</color> <!-- Off-white Text -->
-    <color name="colorTextSecondary">#B0B0B0</color> <!-- Grey Text -->
+    <!-- ========================= -->
+    <!-- SECONDARY - MUTED DARK SAGE -->
+    <!-- No golden / clay tone -->
+    <!-- ========================= -->
+    <color name="secondary">#9AB89A</color>
+    <color name="onSecondary">#142216</color>
+    <color name="secondaryContainer">#2F4230</color>
+    <color name="onSecondaryContainer">#DDE9DD</color>
 
-    <color name="colorButtonPrimary">#2E7D32</color>
-    <color name="colorButtonSecondary">#2C2C2C</color>
+    <!-- ========================= -->
+    <!-- TERTIARY - SOFT SKY BLUE -->
+    <!-- ========================= -->
+    <color name="tertiary">#7DD3FC</color>
+    <color name="onTertiary">#002B3A</color>
+    <color name="tertiaryContainer">#16445A</color>
+    <color name="onTertiaryContainer">#D0F0FF</color>
 
-    <color name="colorError">#CF6679</color>
+    <!-- ========================= -->
+    <!-- BACKGROUND & SURFACE -->
+    <!-- No pure black -->
+    <!-- ========================= -->
+    <color name="background">#121712</color>
+    <color name="onBackground">#F5F3EE</color>
 
-    <!-- Utility Colors -->
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="transparent_overlay">#88000000</color>
-    <color name="card_stroke">#33FFFFFF</color>
+    <color name="surface">#1B241B</color>
+    <color name="onSurface">#F5F3EE</color>
 
-    <!-- Gradient Colors (Darker for night mode) -->
-    <color name="gradient_start">#1B3F1F</color>
-    <color name="gradient_center">#121212</color>
-    <color name="gradient_end">#121212</color>
+    <color name="surfaceVariant">#263326</color>
+    <color name="onSurfaceVariant">#A8B3A1</color>
+
+    <color name="surfaceContainerLowest">#0E120E</color>
+    <color name="surfaceContainerLow">#171F17</color>
+    <color name="surfaceContainer">#1F2A1F</color>
+    <color name="surfaceContainerHigh">#293629</color>
+    <color name="surfaceContainerHighest">#334233</color>
+
+    <!-- ========================= -->
+    <!-- OUTLINE / BORDER / DIVIDER -->
+    <!-- ========================= -->
+    <color name="outline">#374237</color>
+    <color name="outlineVariant">#2D382D</color>
+    <color name="divider">#2D382D</color>
+    <color name="card_stroke">#374237</color>
+
+    <!-- ========================= -->
+    <!-- SEMANTIC STATUS COLORS -->
+    <!-- ========================= -->
+    <color name="error">#F87171</color>
+    <color name="onError">#3B0606</color>
+    <color name="errorContainer">#5F1515</color>
+    <color name="onErrorContainer">#FEE2E2</color>
+
+    <color name="success">#6FCF97</color>
+    <color name="onSuccess">#073016</color>
+    <color name="successContainer">#174D2A</color>
+    <color name="onSuccessContainer">#DFF3E2</color>
+
+    <color name="warning">#E9B44C</color>
+    <color name="onWarning">#3B2500</color>
+    <color name="warningContainer">#5A3A05</color>
+    <color name="onWarningContainer">#FEF3C7</color>
+
+    <!-- ========================= -->
+    <!-- SCRIM / OVERLAY -->
+    <!-- ========================= -->
+    <color name="scrim">#000000</color>
+    <color name="transparent_overlay">#66000000</color>
+    <color name="soft_overlay">#33000000</color>
+
+    <!-- ========================= -->
+    <!-- BUTTON HIERARCHY -->
+    <!-- ========================= -->
+    <color name="buttonPrimary">#7FA36B</color>
+    <color name="buttonPrimaryText">#10230D</color>
+
+    <color name="buttonSecondary">#2F4230</color>
+    <color name="buttonSecondaryText">#DDE9DD</color>
+
+    <color name="buttonGhost">#263326</color>
+    <color name="buttonGhostText">#9BCF53</color>
+
+    <!-- ========================= -->
+    <!-- PREMIUM ORGANIC GRADIENTS -->
+    <!-- ========================= -->
+    <color name="gradient_start">#121712</color>
+    <color name="gradient_center">#1B241B</color>
+    <color name="gradient_end">#263326</color>
+
+    <color name="gradient_organic_start">#1B241B</color>
+    <color name="gradient_organic_center">#2F4230</color>
+    <color name="gradient_organic_end">#3E553E</color>
+
+    <color name="gradient_sky_start">#16445A</color>
+    <color name="gradient_sky_end">#121712</color>
+
+    <color name="gradient_field_start">#263326</color>
+    <color name="gradient_field_end">#121712</color>
+
+    <!-- ========================= -->
+    <!-- COMPATIBILITY ALIASES -->
+    <!-- Existing XML files can use old names -->
+    <!-- ========================= -->
+    <color name="colorPrimary">@color/primary</color>
+    <color name="colorPrimaryVariant">@color/primaryDark</color>
+    <color name="colorSecondary">@color/secondary</color>
+
+    <color name="colorBackground">@color/background</color>
+    <color name="colorSurface">@color/surface</color>
+
+    <color name="colorTextPrimary">@color/onSurface</color>
+    <color name="colorTextSecondary">@color/onSurfaceVariant</color>
+
+    <color name="colorButtonPrimary">@color/buttonPrimary</color>
+    <color name="colorButtonSecondary">@color/buttonSecondary</color>
+
+    <color name="colorError">@color/error</color>
+
+    <!-- ========================= -->
+    <!-- BASIC COLORS -->
+    <!-- ========================= -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
 </resources>

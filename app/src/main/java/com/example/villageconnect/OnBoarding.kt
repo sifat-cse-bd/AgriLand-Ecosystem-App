@@ -4,10 +4,8 @@ import android.content.Intent
 import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
 import android.widget.FrameLayout
-import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.VideoView
 import androidx.activity.enableEdgeToEdge
@@ -15,6 +13,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.villageconnect.auth.Login
+import com.example.villageconnect.auth.Registration
 import com.example.villageconnect.fragments.AppOverview
 import kotlin.jvm.java
 
@@ -59,8 +59,8 @@ class OnBoarding : AppCompatActivity() {
 
 
         btnSkip.setOnClickListener {
-//            startActivity(Intent(this, Login::class.java))
-//            finish()
+            startActivity(Intent(this, Login::class.java))
+            finish()
         }
         btnGetStarted.setOnClickListener {
             startActivity(Intent(this, Registration::class.java))

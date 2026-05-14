@@ -1,35 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Agricultural Palette - Light Mode -->
 
-    <!-- Primary Colors: Deep Forest & Emerald -->
-    <color name="colorPrimary">#1B5E20</color> <!-- Dark Emerald Green (Professional look) -->
-    <color name="colorPrimaryVariant">#144317</color> <!-- Stronger Deep Green -->
-    <color name="colorSecondary">#5DBB63</color> <!-- Soft Leaf Green -->
+    <!-- ========================= -->
+    <!-- PRIMARY - AGRICULTURE GREEN -->
+    <!-- ========================= -->
+    <color name="primary">#2E7D32</color>
+    <color name="onPrimary">#FFFFFF</color>
+    <color name="primaryContainer">#E8F5E9</color>
+    <color name="onPrimaryContainer">#0F2A12</color>
+    <color name="primaryDark">#1B5E20</color>
+    <color name="primaryBright">#43A047</color>
 
-    <!-- Surfaces: Pure White & Soft Grey -->
-    <color name="colorBackground">#F8FAF8</color> <!-- Extremely subtle green-white (Premium feel) -->
-    <color name="colorSurface">#FFFFFF</color> <!-- Pure White for cards -->
+    <!-- ========================= -->
+    <!-- SECONDARY - SOFT SAGE GREEN -->
+    <!-- ========================= -->
+    <color name="secondary">#6F8F72</color>
+    <color name="onSecondary">#FFFFFF</color>
+    <color name="secondaryContainer">#EEF6EE</color>
+    <color name="onSecondaryContainer">#1D2B1F</color>
 
-    <!-- Typography: Charcoal & Slate -->
-    <color name="colorTextPrimary">#1A1C19</color> <!-- Deep Charcoal (Better than pure black) -->
-    <color name="colorTextSecondary">#5C625A</color> <!-- Muted Slate for descriptions -->
+    <!-- ========================= -->
+    <!-- TERTIARY - SOFT SKY BLUE -->
+    <!-- ========================= -->
+    <color name="tertiary">#38BDF8</color>
+    <color name="onTertiary">#003544</color>
+    <color name="tertiaryContainer">#E0F7FF</color>
+    <color name="onTertiaryContainer">#001E28</color>
 
-    <!-- Buttons & Interactions -->
-    <color name="colorButtonPrimary">#1B5E20</color>
-    <color name="colorButtonSecondary">#F1F5F1</color> <!-- Ghost Green Button background -->
+    <!-- ========================= -->
+    <!-- LIGHT BACKGROUND & SURFACES -->
+    <!-- White tone / premium clean -->
+    <!-- ========================= -->
+    <color name="background">#FAFCFA</color>
+    <color name="onBackground">#1E2A1E</color>
 
-    <!-- Semantic Colors -->
-    <color name="colorError">#BA1A1A</color> <!-- Modern Material Red -->
+    <color name="surface">#FFFFFF</color>
+    <color name="onSurface">#1E2A1E</color>
 
-    <!-- Utility Colors -->
-    <color name="black">#000000</color>
+    <color name="surfaceVariant">#F1F5F1</color>
+    <color name="onSurfaceVariant">#5F6B5F</color>
+
+    <color name="surfaceContainer">#F8FAF8</color>
+    <color name="surfaceContainerHigh">#F1F5F1</color>
+    <color name="surfaceContainerHighest">#E8EEE8</color>
+
+    <!-- ========================= -->
+    <!-- TEXT COLORS -->
+    <!-- ========================= -->
+    <color name="textPrimary">#1E2A1E</color>
+    <color name="textSecondary">#5F6B5F</color>
+    <color name="textMuted">#8A948A</color>
+
+    <!-- ========================= -->
+    <!-- BORDERS & DIVIDERS -->
+    <!-- ========================= -->
+    <color name="outline">#DDE5DD</color>
+    <color name="outlineVariant">#E8EEE8</color>
+    <color name="divider">#E8EEE8</color>
+    <color name="borderSoft">#EEF2EE</color>
+    <color name="scrim">#66000000</color>
+
+    <!-- ========================= -->
+    <!-- SEMANTIC COLORS -->
+    <!-- ========================= -->
+    <color name="success">#2E7D32</color>
+    <color name="onSuccess">#FFFFFF</color>
+    <color name="successContainer">#E8F5E9</color>
+
+    <color name="warning">#D97706</color>
+    <color name="onWarning">#FFFFFF</color>
+    <color name="warningContainer">#FFF7E6</color>
+
+    <color name="error">#DC2626</color>
+    <color name="onError">#FFFFFF</color>
+    <color name="errorContainer">#FDE2E2</color>
+
+    <color name="info">#38BDF8</color>
+    <color name="onInfo">#003544</color>
+
+    <!-- ========================= -->
+    <!-- BUTTON COLORS -->
+    <!-- ========================= -->
+    <color name="buttonPrimary">#2E7D32</color>
+    <color name="buttonPrimaryPressed">#1B5E20</color>
+    <color name="buttonSecondary">#EEF6EE</color>
+    <color name="buttonDisabled">#D5DDD5</color>
+
+    <!-- ========================= -->
+    <!-- CARD & ELEVATION -->
+    <!-- ========================= -->
+    <color name="cardBackground">#FFFFFF</color>
+    <color name="cardBorder">#DDE5DD</color>
+    <color name="cardShadow">#12000000</color>
+
+    <!-- ========================= -->
+    <!-- INPUTS -->
+    <!-- ========================= -->
+    <color name="inputBackground">#FFFFFF</color>
+    <color name="inputBorder">#DDE5DD</color>
+    <color name="inputFocusedBorder">#2E7D32</color>
+    <color name="placeholder">#8A948A</color>
+
+    <!-- ========================= -->
+    <!-- LIGHT PREMIUM GRADIENTS -->
+    <!-- Mostly white / soft green -->
+    <!-- ========================= -->
+    <color name="gradient_organic_start">#F8FFF8</color>
+    <color name="gradient_organic_end">#E8F5E9</color>
+
+    <color name="gradient_forest_start">#FAFCFA</color>
+    <color name="gradient_forest_end">#E8F5E9</color>
+
+    <color name="gradient_sunrise_start">#FFFFFF</color>
+    <color name="gradient_sunrise_end">#F1F8F1</color>
+
+    <color name="gradient_rain_start">#F0FBFF</color>
+    <color name="gradient_rain_end">#FAFCFA</color>
+
+    <color name="gradient_soft_start">#FFFFFF</color>
+    <color name="gradient_soft_center">#FAFCFA</color>
+    <color name="gradient_soft_end">#E8F5E9</color>
+
+    <!-- ========================= -->
+    <!-- OVERLAYS -->
+    <!-- ========================= -->
+    <color name="transparent_overlay">#14000000</color>
+    <color name="glass_overlay">#CCFFFFFF</color>
+
+    <!-- ========================= -->
+    <!-- COMPATIBILITY ALIASES -->
+    <!-- ========================= -->
+    <color name="colorPrimary">@color/primary</color>
+    <color name="colorSecondary">@color/secondary</color>
+    <color name="colorSurface">@color/surface</color>
+    <color name="colorBackground">@color/background</color>
+    <color name="colorTextPrimary">@color/textPrimary</color>
+    <color name="colorTextSecondary">@color/textSecondary</color>
+    <color name="colorButtonPrimary">@color/buttonPrimary</color>
+    <color name="colorButtonSecondary">@color/buttonSecondary</color>
+    <color name="card_stroke">@color/cardBorder</color>
+    <color name="colorError">@color/error</color>
+
+    <!-- ========================= -->
+    <!-- BASIC COLORS -->
+    <!-- ========================= -->
     <color name="white">#FFFFFF</color>
-    <color name="transparent_overlay">#1A000000</color> <!-- Very light dark overlay -->
-    <color name="card_stroke">#E0E4DE</color> <!-- Subtle border for aesthetic cards -->
+    <color name="black">#000000</color>
 
-    <!-- Premium Gradient: Fresh & Clean -->
-    <color name="gradient_start">#E9F5EA</color> <!-- Mint Frost -->
-    <color name="gradient_center">#F8FAF8</color>
-    <color name="gradient_end">#FFFFFF</color>
 </resources>
