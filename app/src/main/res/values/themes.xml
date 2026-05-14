@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
+
     <!-- Base application theme with Premium Agriculture Palette -->
     <style name="Base.Theme.VillageConnect" parent="Theme.Material3.DayNight.NoActionBar">
+
         <!-- Primary Brand Colors -->
         <item name="colorPrimary">@color/primary</item>
         <item name="colorOnPrimary">@color/onPrimary</item>
@@ -22,6 +24,9 @@
 
         <!-- Background & Surface -->
         <item name="android:windowBackground">@color/background</item>
+        <item name="android:colorBackground">@color/background</item>
+        <item name="colorOnBackground">@color/onBackground</item>
+
         <item name="colorSurface">@color/surface</item>
         <item name="colorOnSurface">@color/onSurface</item>
         <item name="colorSurfaceVariant">@color/surfaceVariant</item>
@@ -33,12 +38,32 @@
 
         <!-- Status & System Bars -->
         <item name="android:statusBarColor">@color/background</item>
-        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
         <item name="android:navigationBarColor">@color/background</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
 
         <!-- Error Colors -->
         <item name="colorError">@color/error</item>
         <item name="colorOnError">@color/onError</item>
+
+        <!-- App Custom Weather Colors -->
+        <item name="weatherCardBg">@color/weatherCardBackground</item>
+        <item name="weatherCardBgDeep">@color/weatherCardBackgroundDeep</item>
+        <item name="weatherCardBorderColor">@color/weatherCardBorder</item>
+
+        <item name="weatherTextPrimaryColor">@color/weatherTextPrimary</item>
+        <item name="weatherTextSecondaryColor">@color/weatherTextSecondary</item>
+        <item name="weatherTextMutedColor">@color/weatherTextMuted</item>
+
+        <item name="weatherAccentGreenColor">@color/weatherAccentGreen</item>
+        <item name="weatherAccentBlueColor">@color/weatherAccentBlue</item>
+        <item name="weatherDividerColor">@color/weatherDivider</item>
+        <item name="weatherIconBgColor">@color/weatherIconBg</item>
+
+        <item name="weatherOverlayStartColor">@color/weatherOverlayStart</item>
+        <item name="weatherOverlayCenterColor">@color/weatherOverlayCenter</item>
+        <item name="weatherOverlayEndColor">@color/weatherOverlayEnd</item>
+
     </style>
 
     <style name="Theme.VillageConnect" parent="Base.Theme.VillageConnect" />
@@ -51,4 +76,5 @@
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
+
 </resources>

@@ -18,32 +18,32 @@ class LandownerMainActivity : AppCompatActivity() {
         window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
         bottomNavigation = findViewById(R.id.bottomNavigation)
 
-        loadFragment(LandownerDashboardFragment())
+        loadFragment(LandownerDashboard())
 
         bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.navDashboard -> {
-                    loadFragment(LandownerDashboardFragment())
+                    loadFragment(LandownerDashboard())
                     true
                 }
 
                 R.id.navFarmers -> {
-                    loadFragment(FarmerListFragment())
+                    loadFragment(FarmerList())
                     true
                 }
 
                 R.id.navMerchants -> {
-                    loadFragment(MerchantListFragment())
+                    loadFragment(MerchantList())
                     true
                 }
 
                 R.id.navMarket -> {
-                    loadFragment(InventoryListFragment())
+                    loadFragment(InventoryList())
                     true
                 }
 
                 R.id.navProfile -> {
-                    loadFragment(LandownerProfileFragment())
+                    loadFragment(LandownerProfile())
                     true
                 }
 

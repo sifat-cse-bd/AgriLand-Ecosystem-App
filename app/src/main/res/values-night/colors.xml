@@ -13,10 +13,9 @@
 
     <!-- ========================= -->
     <!-- SECONDARY - MUTED DARK SAGE -->
-    <!-- No golden / clay tone -->
     <!-- ========================= -->
     <color name="secondary">#102016</color>
-    <color name="onSecondary">#142216</color>
+    <color name="onSecondary">#DDE9DD</color>
     <color name="secondaryContainer">#2F4230</color>
     <color name="onSecondaryContainer">#DDE9DD</color>
 
@@ -29,8 +28,7 @@
     <color name="onTertiaryContainer">#D0F0FF</color>
 
     <!-- ========================= -->
-    <!-- BACKGROUND & SURFACE -->
-    <!-- No pure black -->
+    <!-- DARK BACKGROUND & SURFACES -->
     <!-- ========================= -->
     <color name="background">#121712</color>
     <color name="onBackground">#F5F3EE</color>
@@ -41,104 +39,131 @@
     <color name="surfaceVariant">#263326</color>
     <color name="onSurfaceVariant">#A8B3A1</color>
 
-    <color name="surfaceContainerLowest">#0E120E</color>
-    <color name="surfaceContainerLow">#171F17</color>
     <color name="surfaceContainer">#1F2A1F</color>
     <color name="surfaceContainerHigh">#293629</color>
     <color name="surfaceContainerHighest">#334233</color>
 
     <!-- ========================= -->
-    <!-- OUTLINE / BORDER / DIVIDER -->
+    <!-- TEXT COLORS -->
+    <!-- ========================= -->
+    <color name="textPrimary">#F5F3EE</color>
+    <color name="textSecondary">#A8B3A1</color>
+    <color name="textMuted">#7E8A78</color>
+
+    <!-- ========================= -->
+    <!-- BORDERS & DIVIDERS -->
     <!-- ========================= -->
     <color name="outline">#374237</color>
     <color name="outlineVariant">#2D382D</color>
     <color name="divider">#2D382D</color>
-    <color name="card_stroke">#374237</color>
+    <color name="borderSoft">#2A352A</color>
+    <color name="scrim">#000000</color>
 
     <!-- ========================= -->
-    <!-- SEMANTIC STATUS COLORS -->
+    <!-- SEMANTIC COLORS -->
     <!-- ========================= -->
-    <color name="error">#F87171</color>
-    <color name="onError">#3B0606</color>
-    <color name="errorContainer">#5F1515</color>
-    <color name="onErrorContainer">#FEE2E2</color>
-
     <color name="success">#6FCF97</color>
     <color name="onSuccess">#073016</color>
     <color name="successContainer">#174D2A</color>
-    <color name="onSuccessContainer">#DFF3E2</color>
 
     <color name="warning">#E9B44C</color>
     <color name="onWarning">#3B2500</color>
     <color name="warningContainer">#5A3A05</color>
-    <color name="onWarningContainer">#FEF3C7</color>
+
+    <color name="error">#F87171</color>
+    <color name="onError">#3B0606</color>
+    <color name="errorContainer">#5F1515</color>
+
+    <color name="info">#7DD3FC</color>
+    <color name="onInfo">#002B3A</color>
 
     <!-- ========================= -->
-    <!-- SCRIM / OVERLAY -->
-    <!-- ========================= -->
-    <color name="scrim">#000000</color>
-    <color name="transparent_overlay">#66000000</color>
-    <color name="soft_overlay">#33000000</color>
-
-    <!-- ========================= -->
-    <!-- BUTTON HIERARCHY -->
+    <!-- BUTTON COLORS -->
     <!-- ========================= -->
     <color name="buttonPrimary">#7FA36B</color>
+    <color name="buttonPrimaryPressed">#5F8D4E</color>
     <color name="buttonPrimaryText">#10230D</color>
+    <color name="buttonSecondary">#2F4230</color>
+    <color name="buttonDisabled">#3A443A</color>
 
     <!-- ========================= -->
-    <!-- CARD & INPUTS (Added) -->
+    <!-- CARD & ELEVATION -->
     <!-- ========================= -->
     <color name="cardBackground">#102628</color>
     <color name="cardBorder">#374237</color>
+    <color name="cardShadow">#33000000</color>
+
+    <!-- ========================= -->
+    <!-- INPUTS -->
+    <!-- ========================= -->
     <color name="inputBackground">#1B241B</color>
+    <color name="inputBorder">#374237</color>
     <color name="inputFocusedBorder">#7FA36B</color>
-
-    <color name="buttonSecondary">#2F4230</color>
-    <color name="buttonSecondaryText">#DDE9DD</color>
-
-    <color name="buttonGhost">#263326</color>
-    <color name="buttonGhostText">#9BCF53</color>
+    <color name="placeholder">#7E8A78</color>
 
     <!-- ========================= -->
-    <!-- PREMIUM ORGANIC GRADIENTS -->
+    <!-- DARK PREMIUM GRADIENTS -->
+    <!-- Same names as light mode -->
     <!-- ========================= -->
-    <color name="gradient_start">#121712</color>
-    <color name="gradient_center">#1B241B</color>
-    <color name="gradient_end">#263326</color>
-
     <color name="gradient_organic_start">#253229</color>
-    <color name="gradient_organic_center">#2F4230</color>
     <color name="gradient_organic_end">#3E553E</color>
 
-    <color name="gradient_sky_start">#16445A</color>
-    <color name="gradient_sky_end">#121712</color>
+    <color name="gradient_forest_start">#121712</color>
+    <color name="gradient_forest_end">#263326</color>
 
-    <color name="gradient_field_start">#263326</color>
-    <color name="gradient_field_end">#121712</color>
+    <color name="gradient_sunrise_start">#1B241B</color>
+    <color name="gradient_sunrise_end">#293629</color>
+
+    <color name="gradient_rain_start">#16445A</color>
+    <color name="gradient_rain_end">#121712</color>
 
     <color name="gradient_soft_start">#091419</color>
     <color name="gradient_soft_center">#0C151A</color>
     <color name="gradient_soft_end">#0C1D20</color>
 
     <!-- ========================= -->
+    <!-- OVERLAYS -->
+    <!-- ========================= -->
+    <color name="transparent_overlay">#66000000</color>
+    <color name="glass_overlay">#331B241B</color>
+
+    <!-- ========================= -->
     <!-- COMPATIBILITY ALIASES -->
-    <!-- Existing XML files can use old names -->
     <!-- ========================= -->
     <color name="colorPrimary">@color/primary</color>
-    <color name="colorPrimaryVariant">@color/primaryDark</color>
     <color name="colorSecondary">@color/secondary</color>
-
-    <color name="colorBackground">@color/background</color>
     <color name="colorSurface">@color/surface</color>
-
-    <color name="colorTextPrimary">@color/onSurface</color>
-    <color name="colorTextSecondary">@color/onSurfaceVariant</color>
-
+    <color name="colorBackground">@color/background</color>
+    <color name="colorTextPrimary">@color/textPrimary</color>
+    <color name="colorTextSecondary">@color/textSecondary</color>
     <color name="colorButtonPrimary">@color/buttonPrimary</color>
     <color name="colorButtonSecondary">@color/buttonSecondary</color>
-
+    <color name="card_stroke">@color/cardBorder</color>
     <color name="colorError">@color/error</color>
+
+    <!-- ========================= -->
+    <!-- WEATHER CARD - DARK PREMIUM -->
+    <!-- ========================= -->
+    <color name="weatherCardBackground">#071F1F</color>
+    <color name="weatherCardBackgroundDeep">#041414</color>
+    <color name="weatherCardBorder">#5B7F55</color>
+
+    <color name="weatherTextPrimary">#F4FFF6</color>
+    <color name="weatherTextSecondary">#C9D8CE</color>
+    <color name="weatherTextMuted">#8EA69A</color>
+
+    <color name="weatherAccentGreen">#9FE870</color>
+    <color name="weatherAccentBlue">#38BDF8</color>
+    <color name="weatherDivider">#36584E</color>
+
+    <color name="weatherIconBg">#263F2A</color>
+
+    <!-- ========================= -->
+    <!-- WEATHER OVERLAY - DARK -->
+    <!-- ========================= -->
+    <color name="weatherOverlayStart">#F2071F1F</color>
+    <color name="weatherOverlayCenter">#D9071F1F</color>
+    <color name="weatherOverlayEnd">#33071F1F</color>
 
     <!-- ========================= -->
     <!-- BASIC COLORS -->

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="weatherCardBg" format="color" />
+    <attr name="weatherCardBgDeep" format="color" />
+    <attr name="weatherCardBorderColor" format="color" />
+
+    <attr name="weatherTextPrimaryColor" format="color" />
+    <attr name="weatherTextSecondaryColor" format="color" />
+    <attr name="weatherTextMutedColor" format="color" />
+
+    <attr name="weatherAccentGreenColor" format="color" />
+    <attr name="weatherAccentBlueColor" format="color" />
+    <attr name="weatherDividerColor" format="color" />
+    <attr name="weatherIconBgColor" format="color" />
+
+    <attr name="weatherOverlayStartColor" format="color" />
+    <attr name="weatherOverlayCenterColor" format="color" />
+    <attr name="weatherOverlayEndColor" format="color" />
+
+</resources>
