@@ -83,6 +83,7 @@
     <!-- ========================= -->
     <color name="buttonPrimary">#2E7D32</color>
     <color name="buttonPrimaryPressed">#1B5E20</color>
+    <color name="buttonPrimaryText">#FFFFFF</color>
     <color name="buttonSecondary">#EEF6EE</color>
     <color name="buttonDisabled">#D5DDD5</color>
 
@@ -105,8 +106,8 @@
     <!-- LIGHT PREMIUM GRADIENTS -->
     <!-- Mostly white / soft green -->
     <!-- ========================= -->
-    <color name="gradient_organic_start">#F8FFF8</color>
-    <color name="gradient_organic_end">#E8F5E9</color>
+    <color name="gradient_organic_start">#02613B</color>
+    <color name="gradient_organic_end">#0A4A30</color>
 
     <color name="gradient_forest_start">#FAFCFA</color>
     <color name="gradient_forest_end">#E8F5E9</color>
@@ -117,9 +118,9 @@
     <color name="gradient_rain_start">#F0FBFF</color>
     <color name="gradient_rain_end">#FAFCFA</color>
 
-    <color name="gradient_soft_start">#FFFFFF</color>
+    <color name="gradient_soft_start">#E8F5E9</color>
     <color name="gradient_soft_center">#FAFCFA</color>
-    <color name="gradient_soft_end">#E8F5E9</color>
+    <color name="gradient_soft_end">#FFFFFF</color>
 
     <!-- ========================= -->
     <!-- OVERLAYS -->

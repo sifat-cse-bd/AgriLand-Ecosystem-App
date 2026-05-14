@@ -55,17 +55,17 @@
     <string name="agri_description">Agriculture is the first development phase of AgroVenture. In this section, landowners, farmers, and agri-merchants can work together through one offline Android app.</string>
     <string name="agri_features_title">Agriculture Features</string>
     <string name="agri_features_list">
-        • Landowners can hire farmers\n
-        • Farmers can view and apply for jobs\n
-        • Farmers can rent agricultural equipment\n
-        • Agri-Merchants can manage tractor and equipment rental\n
-        • Irrigation service management\n
-        • Cultivation service management\n
-        • Harvesting service management\n
-        • Ratings and feedback system\n
-        • Admin can verify users\n
-        • Admin can approve or reject services\n
-        • Offline SQLite-based local storage
+        \u2022 Landowners can hire farmers\n
+        \u2022 Farmers can view and apply for jobs\n
+        \u2022 Farmers can rent agricultural equipment\n
+        \u2022 Agri-Merchants can manage tractor and equipment rental\n
+        \u2022 Irrigation service management\n
+        \u2022 Cultivation service management\n
+        \u2022 Harvesting service management\n
+        \u2022 Ratings and feedback system\n
+        \u2022 Admin can verify users\n
+        \u2022 Admin can approve or reject services\n
+        \u2022 Offline SQLite-based local storage
     </string>
 
     <!-- Rural Transport Strings -->
@@ -73,13 +73,13 @@
     <string name="transport_description">Rural Transport will help village people request local transport services for goods, crops, farming tools, and daily movement.</string>
     <string name="transport_features_title">Possible Transport Features</string>
     <string name="transport_features_list">
-        • Crop transport request\n
-        • Local vehicle booking\n
-        • Tractor or van availability\n
-        • Goods delivery inside village\n
-        • Transport provider profile\n
-        • Service request tracking\n
-        • Ratings and feedback
+        \u2022 Crop transport request\n
+        \u2022 Local vehicle booking\n
+        \u2022 Tractor or van availability\n
+        \u2022 Goods delivery inside village\n
+        \u2022 Transport provider profile\n
+        \u2022 Service request tracking\n
+        \u2022 Ratings and feedback
     </string>
 
     <!-- Cottage Services Strings -->
@@ -87,15 +87,15 @@
     <string name="cottage_description">Cottage Services will create employment opportunities for different types of village people. Anyone with a skill can provide services, and general users can take those services.</string>
     <string name="cottage_features_title">Possible Cottage Service Features</string>
     <string name="cottage_features_list">
-        • Small industry service listing\n
-        • Nokshi Kantha service\n
-        • Handmade craft service\n
-        • Tailoring service\n
-        • Food processing service\n
-        • Skilled worker profile\n
-        • Customer service request\n
-        • Local earning opportunity\n
-        • Ratings and feedback
+        \u2022 Small industry service listing\n
+        \u2022 Nokshi Kantha service\n
+        \u2022 Handmade craft service\n
+        \u2022 Tailoring service\n
+        \u2022 Food processing service\n
+        \u2022 Skilled worker profile\n
+        \u2022 Customer service request\n
+        \u2022 Local earning opportunity\n
+        \u2022 Ratings and feedback
     </string>
 
     <!-- Booth Service Strings -->
@@ -103,13 +103,13 @@
     <string name="booth_description">Each village can have a booth service to help users who cannot use the app properly. Booth operators can assist farmers, landowners, service providers, and general users.</string>
     <string name="booth_features_title">Booth Service Features</string>
     <string name="booth_features_list">
-        • Help users create accounts\n
-        • Help farmers apply for jobs\n
-        • Help landowners request services\n
-        • Help agri-merchants manage listings\n
-        • Provide app support for village people\n
-        • Collect local service requests\n
-        • Support offline users
+        \u2022 Help users create accounts\n
+        \u2022 Help farmers apply for jobs\n
+        \u2022 Help landowners request services\n
+        \u2022 Help agri-merchants manage listings\n
+        \u2022 Provide app support for village people\n
+        \u2022 Collect local service requests\n
+        \u2022 Support offline users
     </string>
 
     <!-- Footer Strings -->

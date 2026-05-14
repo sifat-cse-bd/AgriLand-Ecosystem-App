@@ -15,7 +15,7 @@
     <!-- SECONDARY - MUTED DARK SAGE -->
     <!-- No golden / clay tone -->
     <!-- ========================= -->
-    <color name="secondary">#9AB89A</color>
+    <color name="secondary">#102016</color>
     <color name="onSecondary">#142216</color>
     <color name="secondaryContainer">#2F4230</color>
     <color name="onSecondaryContainer">#DDE9DD</color>
@@ -86,6 +86,14 @@
     <color name="buttonPrimary">#7FA36B</color>
     <color name="buttonPrimaryText">#10230D</color>
 
+    <!-- ========================= -->
+    <!-- CARD & INPUTS (Added) -->
+    <!-- ========================= -->
+    <color name="cardBackground">#102628</color>
+    <color name="cardBorder">#374237</color>
+    <color name="inputBackground">#1B241B</color>
+    <color name="inputFocusedBorder">#7FA36B</color>
+
     <color name="buttonSecondary">#2F4230</color>
     <color name="buttonSecondaryText">#DDE9DD</color>
 
@@ -99,7 +107,7 @@
     <color name="gradient_center">#1B241B</color>
     <color name="gradient_end">#263326</color>
 
-    <color name="gradient_organic_start">#1B241B</color>
+    <color name="gradient_organic_start">#253229</color>
     <color name="gradient_organic_center">#2F4230</color>
     <color name="gradient_organic_end">#3E553E</color>
 
@@ -108,6 +116,10 @@
 
     <color name="gradient_field_start">#263326</color>
     <color name="gradient_field_end">#121712</color>
+
+    <color name="gradient_soft_start">#091419</color>
+    <color name="gradient_soft_center">#0C151A</color>
+    <color name="gradient_soft_end">#0C1D20</color>
 
     <!-- ========================= -->
     <!-- COMPATIBILITY ALIASES -->

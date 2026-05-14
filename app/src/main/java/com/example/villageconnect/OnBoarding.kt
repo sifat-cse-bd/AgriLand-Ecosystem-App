@@ -16,7 +16,6 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.villageconnect.auth.Login
 import com.example.villageconnect.auth.Registration
 import com.example.villageconnect.fragments.AppOverview
-import kotlin.jvm.java
 
 class OnBoarding : AppCompatActivity() {
     lateinit var btnSkip: TextView

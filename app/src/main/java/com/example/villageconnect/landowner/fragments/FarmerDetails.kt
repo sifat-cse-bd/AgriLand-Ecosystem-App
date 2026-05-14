@@ -14,7 +14,7 @@ import com.example.villageconnect.utils.SessionManager
 import com.google.android.material.button.MaterialButton
 import java.util.Calendar
 
-class FarmerDetailsFragment : Fragment(R.layout.fragment_farmer_details) {
+class FarmerDetails : Fragment(R.layout.fragment_farmer_details) {
 
     private lateinit var tvName: TextView
     private lateinit var tvVillage: TextView
@@ -28,8 +28,8 @@ class FarmerDetailsFragment : Fragment(R.layout.fragment_farmer_details) {
     private var landownerId = -1
 
     companion object {
-        fun newInstance(farmerId: Int): FarmerDetailsFragment {
-            val fragment = FarmerDetailsFragment()
+        fun newInstance(farmerId: Int): FarmerDetails {
+            val fragment = FarmerDetails()
             val bundle = Bundle()
             bundle.putInt("farmer_id", farmerId)
             fragment.arguments = bundle
