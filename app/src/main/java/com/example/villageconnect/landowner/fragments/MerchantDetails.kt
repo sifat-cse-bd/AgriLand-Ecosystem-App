@@ -16,7 +16,7 @@ import com.example.villageconnect.landowner.models.AssetItem
 import com.example.villageconnect.utils.SessionManager
 import com.google.android.material.button.MaterialButton
 
-class MerchantDetailsFragment : Fragment(R.layout.fragment_merchant_details) {
+class MerchantDetails : Fragment(R.layout.fragment_merchant_details) {
 
     private lateinit var tvName: TextView
     private lateinit var tvAddress: TextView
@@ -29,8 +29,8 @@ class MerchantDetailsFragment : Fragment(R.layout.fragment_merchant_details) {
     private var selectedAssetId = -1
 
     companion object {
-        fun newInstance(merchantId: Int): MerchantDetailsFragment {
-            val fragment = MerchantDetailsFragment()
+        fun newInstance(merchantId: Int): MerchantDetails {
+            val fragment = MerchantDetails()
             val bundle = Bundle()
             bundle.putInt("merchant_id", merchantId)
             fragment.arguments = bundle

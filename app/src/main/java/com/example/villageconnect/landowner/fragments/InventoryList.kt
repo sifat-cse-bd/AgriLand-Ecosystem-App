@@ -15,7 +15,7 @@ import com.example.villageconnect.landowner.adapters.InventoryAdapter
 import com.example.villageconnect.landowner.models.InventoryItem
 import com.example.villageconnect.utils.SessionManager
 
-class InventoryListFragment : Fragment(R.layout.fragment_inventory_list) {
+class InventoryList : Fragment(R.layout.fragment_inventory_list) {
 
     private lateinit var rvInventory: RecyclerView
 

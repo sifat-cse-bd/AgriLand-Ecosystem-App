@@ -11,10 +11,12 @@
     <TextView
         android:text="Find Farmers"
         android:textColor="@color/colorTextPrimary"
+        android:layout_marginTop="30dp"
         android:textSize="28sp"
         android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+    
 
     <TextView
         android:text="Hire skilled farmers from your village"

@@ -2,6 +2,7 @@ package com.example.villageconnect.landowner.fragments
 
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -13,7 +14,7 @@ import com.example.villageconnect.landowner.adapters.FarmerAdapter
 import com.example.villageconnect.landowner.models.FarmerItem
 import com.example.villageconnect.utils.SessionManager
 
-class FarmerListFragment : Fragment(R.layout.fragment_farmer_list) {
+class FarmerList() : Fragment(R.layout.fragment_farmer_list) {
 
     private lateinit var rvFarmers: RecyclerView
     private var landownerId = -1

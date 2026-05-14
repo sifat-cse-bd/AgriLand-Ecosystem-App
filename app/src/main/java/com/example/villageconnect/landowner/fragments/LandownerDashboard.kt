@@ -13,9 +13,12 @@ import com.example.villageconnect.landowner.LandownerMainActivity
 import com.example.villageconnect.landowner.adapters.DashboardAdapter
 import com.example.villageconnect.landowner.models.DashboardItem
 import com.example.villageconnect.utils.SessionManager
+import java.time.LocalTime
+import java.util.Calendar
 
-class LandownerDashboardFragment : Fragment(R.layout.fragment_landowner_dashboard) {
+class LandownerDashboard : Fragment(R.layout.fragment_landowner_dashboard) {
 
+    private lateinit var tvGreeting: TextView
     private lateinit var tvLandownerName: TextView
     private lateinit var tvVillage: TextView
     private lateinit var tvFarmerCount: TextView
@@ -27,6 +30,7 @@ class LandownerDashboardFragment : Fragment(R.layout.fragment_landowner_dashboar
     private var villageName: String? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        tvGreeting = view.findViewById(R.id.tvGreeting)
         tvLandownerName = view.findViewById(R.id.tvLandownerName)
         tvVillage = view.findViewById(R.id.tvVillage)
         tvFarmerCount = view.findViewById(R.id.tvFarmerCount)
@@ -60,9 +64,21 @@ class LandownerDashboardFragment : Fragment(R.layout.fragment_landowner_dashboar
                 val name = it.getString(it.getColumnIndexOrThrow(DBHelper.COL_FULL_NAME))
                 villageName = it.getString(it.getColumnIndexOrThrow(DBHelper.COL_VILLAGE_NAME))
 
+                tvGreeting.text = getGreeting()
                 tvLandownerName.text = name
                 tvVillage.text = "Village: ${villageName ?: "Not updated"}"
             }
+        }
+    }
+
+    private fun getGreeting(): String {
+        val hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
+        return when(hour)
+        {
+            in 5..11 -> "Good Morning,"
+            in 12..16 -> "Good Afternoon,"
+            in 17..20 -> "Good Evening,"
+            else -> "Good Night,"
         }
     }
 
@@ -109,7 +125,8 @@ class LandownerDashboardFragment : Fragment(R.layout.fragment_landowner_dashboar
             DashboardItem("📋", "My Activity", "View hire, booking and order history")
         )
 
-        rvDashboardCards.layoutManager = LinearLayoutManager(requireContext())
+        rvDashboardCards.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         rvDashboardCards.adapter = DashboardAdapter(items) { item ->
             val activity = requireActivity() as LandownerMainActivity
 

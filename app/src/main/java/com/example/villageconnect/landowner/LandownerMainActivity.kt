@@ -1,6 +1,7 @@
 package com.example.villageconnect.landowner
 
 import android.os.Bundle
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.villageconnect.R
@@ -14,7 +15,7 @@ class LandownerMainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_landowner_main)
-
+        window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
         bottomNavigation = findViewById(R.id.bottomNavigation)
 
         loadFragment(LandownerDashboard())

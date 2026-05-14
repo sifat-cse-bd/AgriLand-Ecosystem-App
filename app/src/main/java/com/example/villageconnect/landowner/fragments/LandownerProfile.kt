@@ -11,7 +11,7 @@ import com.example.villageconnect.data.DataAccess
 import com.example.villageconnect.utils.SessionManager
 import com.google.android.material.button.MaterialButton
 
-class LandownerProfileFragment : Fragment(R.layout.fragment_landowner_profile) {
+class LandownerProfile : Fragment(R.layout.fragment_landowner_profile) {
 
     private lateinit var edtProfileName: EditText
     private lateinit var edtProfilePhone: EditText

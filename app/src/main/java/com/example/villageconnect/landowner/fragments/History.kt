@@ -13,7 +13,7 @@ import com.example.villageconnect.landowner.models.HistoryItem
 import com.example.villageconnect.utils.SessionManager
 import com.google.android.material.chip.Chip
 
-class HistoryFragment : Fragment(R.layout.fragment_history) {
+class History : Fragment(R.layout.fragment_history) {
 
     private lateinit var chipHire: Chip
     private lateinit var chipService: Chip
