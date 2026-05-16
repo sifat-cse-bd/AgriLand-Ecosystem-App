@@ -17,6 +17,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.villageconnect.R
 import com.example.villageconnect.data.DBHelper
 import com.example.villageconnect.data.DataAccess
+import com.example.villageconnect.farmer.FarmerMainActivity
 //import com.example.villageconnect.farmer.FarmerDashboardActivity
 import com.example.villageconnect.landowner.LandownerMainActivity
 //import com.example.villageconnect.merchant.MerchantDashboardActivity
@@ -187,7 +188,7 @@ class Login : AppCompatActivity() {
             }
 
             DBHelper.ROLE_FARMER -> {
-//                startActivity(Intent(this, FarmerDashboardActivity::class.java))
+                startActivity(Intent(this, FarmerMainActivity::class.java))
                 finish()
             }
 
