@@ -1,14 +1,165 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/editFarmerScrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".farmer.fragments.EditFarmerProfile">
+    android:padding="16dp"
+    android:background="@color/background">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:id="@+id/editFarmerContainer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="22dp"
+        android:gravity="center_horizontal">
 
-</FrameLayout>
+        <!-- Title -->
+        <TextView
+            android:id="@+id/tvEditFarmerTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edit Farmer"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/textPrimary"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Name -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Name"
+            android:textSize="16sp"
+            android:textColor="@color/textPrimary"
+            android:layout_marginTop="8dp"/>
+        <EditText
+            android:id="@+id/etFarmerName"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Enter name"
+            android:inputType="textPersonName"
+            android:padding="12dp"
+            android:background="@color/inputBackground"
+            android:textColor="@color/textPrimary"
+            android:textColorHint="@color/placeholder"
+            android:drawableTint="@color/inputFocusedBorder"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- Phone -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Phone"
+            android:textSize="16sp"
+            android:textColor="@color/textPrimary"
+            android:layout_marginTop="8dp"/>
+        <EditText
+            android:id="@+id/etFarmerPhone"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Enter phone number"
+            android:inputType="phone"
+            android:padding="12dp"
+            android:background="@color/inputBackground"
+            android:textColor="@color/textPrimary"
+            android:textColorHint="@color/placeholder"
+            android:drawableTint="@color/inputFocusedBorder"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- Experience -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Experience (years)"
+            android:textSize="16sp"
+            android:textColor="@color/textPrimary"
+            android:layout_marginTop="8dp"/>
+        <EditText
+            android:id="@+id/etFarmerExperience"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Enter experience"
+            android:inputType="number"
+            android:padding="12dp"
+            android:background="@color/inputBackground"
+            android:textColor="@color/textPrimary"
+            android:textColorHint="@color/placeholder"
+            android:drawableTint="@color/inputFocusedBorder"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- Availability -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Availability"
+            android:textSize="16sp"
+            android:textColor="@color/textPrimary"
+            android:layout_marginTop="8dp"/>
+        <!-- Availability Section -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Availability"
+            android:textSize="16sp"
+            android:textColor="@color/textPrimary"
+            android:layout_marginTop="8dp"/>
+
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:id="@+id/availabilityToggleGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            app:singleSelection="true"
+            app:selectionRequired="true">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnAvailable"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="Available"
+                android:textColor="@color/textPrimary"
+                android:backgroundTint="@color/surface"
+                android:strokeColor="@color/inputFocusedBorder"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnBusy"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="Busy"
+                android:textColor="@color/textPrimary"
+                android:backgroundTint="@color/surface"
+                android:strokeColor="@color/inputFocusedBorder"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnOnLeave"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="On Leave"
+                android:textColor="@color/textPrimary"
+                android:backgroundTint="@color/surface"
+                android:strokeColor="@color/inputFocusedBorder"/>
+
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+
+        <!-- Save Button -->
+        <Button
+            android:id="@+id/btnSaveFarmer"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="Save"
+            android:textColor="@color/buttonPrimaryText"
+            android:backgroundTint="@color/buttonPrimary"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"/>
+
+    </LinearLayout>
+</ScrollView>
