@@ -57,33 +57,47 @@
 
             <!-- Title row -->
             <LinearLayout
-                android:id="@+id/weatherTitleRow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/tvWeatherIcon"
-                    android:layout_width="34dp"
-                    android:layout_height="34dp"
-                    android:background="@drawable/bg_weather_small_icon"
-                    android:gravity="center"
-                    android:text="☁"
-                    android:textColor="?attr/weatherAccentBlueColor"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/tvWeatherTitle"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:id="@+id/weatherTitleRow"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:text="Weather &amp; Advice"
-                    android:textColor="?attr/weatherTextPrimaryColor"
-                    android:textSize="17sp"
-                    android:textStyle="bold" />
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
+                    <TextView
+                        android:id="@+id/tvWeatherIcon"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:background="@drawable/bg_weather_small_icon"
+                        android:gravity="center"
+                        android:text="☁"
+                        android:textColor="?attr/weatherAccentBlueColor"
+                        android:textSize="18sp" />
+
+
+                    <TextView
+                        android:id="@+id/tvWeatherTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="Weather &amp; Advice"
+                        android:textColor="?attr/weatherTextPrimaryColor"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/tvWeatherUpdateStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="48dp"
+                    android:textSize="9sp"
+                    android:visibility="gone"
+                    android:text="Updating...."/>
             </LinearLayout>
+
 
             <!-- Temperature -->
             <TextView
