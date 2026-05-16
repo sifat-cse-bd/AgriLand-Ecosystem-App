@@ -19,7 +19,7 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
         android:layout_width="0dp"
-        android:layout_height="140dp"
+        android:layout_height="125dp"
         android:paddingBottom="36dp"
         android:background="@color/cardBackground"
         app:elevation="10dp"

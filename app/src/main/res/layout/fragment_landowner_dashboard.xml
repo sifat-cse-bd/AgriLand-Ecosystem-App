@@ -1,85 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_landowner_root"
     android:fillViewport="true"
-    android:orientation="vertical"
-    android:background="@drawable/bg_landowner_root">
+    android:orientation="vertical">
 
-        <!-- Premium Header -->
-        <LinearLayout
+    <!-- Premium Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:background="@drawable/bg_landowner_header"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/tvGreeting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Good Morning,"
+            android:textColor="@color/onPrimary"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tvLandownerName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Landowner"
+            android:textColor="@color/onPrimary"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvVillage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Village: Not updated"
+            android:textColor="@color/onPrimary"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tvCurrentLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:drawableStart="@drawable/ic_near_me"
+            android:drawablePadding="8dp"
+            android:gravity="center_vertical"
+            android:text="Village: Not updated"
+            android:textColor="@color/onPrimary"
+            android:textSize="14sp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="280dp"
-            android:orientation="vertical"
-            android:padding="20dp"
-            android:background="@drawable/bg_landowner_header">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="Search farmer, service, product"
+            app:boxBackgroundColor="@color/glass_overlay"
+            app:boxCornerRadiusBottomEnd="24dp"
+            app:boxCornerRadiusBottomStart="24dp"
+            app:boxCornerRadiusTopEnd="24dp"
+            app:boxCornerRadiusTopStart="24dp"
+            app:boxStrokeColor="@color/onPrimary"
+            app:hintTextColor="@color/onPrimary">
 
-            <TextView
-                android:id="@+id/tvGreeting"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="Good Morning,"
-                android:textColor="@color/onPrimary"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/tvLandownerName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Landowner"
-                android:textColor="@color/onPrimary"
-                android:textSize="30sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tvVillage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="Village: Not updated"
-                android:textColor="@color/onPrimary"
-                android:textSize="14sp" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtDashboardSearch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:hint="Search farmer, service, product"
-                app:boxBackgroundColor="@color/glass_overlay"
-                app:boxCornerRadiusBottomEnd="24dp"
-                app:boxCornerRadiusBottomStart="24dp"
-                app:boxCornerRadiusTopEnd="24dp"
-                app:boxCornerRadiusTopStart="24dp"
-                app:boxStrokeColor="@color/onPrimary"
-                app:hintTextColor="@color/onPrimary">
+                android:inputType="text"
+                android:textColor="@color/onPrimary"
+                android:textColorHint="@color/onPrimary" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edtDashboardSearch"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:textColor="@color/onPrimary"
-                    android:textColorHint="@color/onPrimary" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-            </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
 
-        </LinearLayout>
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="-48dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:paddingHorizontal="20dp"
-            android:paddingBottom="20dp"
-            android:layout_marginTop="-38dp">
+            android:paddingHorizontal="20dp">
+
+
+            <include
+                android:id="@+id/weatherAdvicePanel"
+                layout="@layout/item_weather_advice_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
             <!-- Summary Card -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 app:cardBackgroundColor="@color/cardBackground"
                 app:cardCornerRadius="28dp"
                 app:cardElevation="8dp"
@@ -101,26 +124,26 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:text="👨‍🌾"
-                            android:textSize="24sp"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:text="👨‍🌾"
+                            android:textSize="24sp" />
 
                         <TextView
                             android:id="@+id/tvFarmerCount"
-                            android:text="0"
-                            android:textStyle="bold"
-                            android:textSize="20sp"
-                            android:textColor="@color/colorTextPrimary"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textColor="@color/colorTextPrimary"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
 
                         <TextView
-                            android:text="Farmers"
-                            android:textSize="12sp"
-                            android:textColor="@color/colorTextSecondary"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:text="Farmers"
+                            android:textColor="@color/colorTextSecondary"
+                            android:textSize="12sp" />
 
                     </LinearLayout>
 
@@ -132,26 +155,26 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:text="🚜"
-                            android:textSize="24sp"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:text="🚜"
+                            android:textSize="24sp" />
 
                         <TextView
                             android:id="@+id/tvServiceCount"
-                            android:text="0"
-                            android:textStyle="bold"
-                            android:textSize="20sp"
-                            android:textColor="@color/colorTextPrimary"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textColor="@color/colorTextPrimary"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
 
                         <TextView
-                            android:text="Services"
-                            android:textSize="12sp"
-                            android:textColor="@color/colorTextSecondary"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:text="Services"
+                            android:textColor="@color/colorTextSecondary"
+                            android:textSize="12sp" />
 
                     </LinearLayout>
 
@@ -163,26 +186,26 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:text="🌾"
-                            android:textSize="24sp"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:text="🌾"
+                            android:textSize="24sp" />
 
                         <TextView
                             android:id="@+id/tvOrderCount"
-                            android:text="0"
-                            android:textStyle="bold"
-                            android:textSize="20sp"
-                            android:textColor="@color/colorTextPrimary"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textColor="@color/colorTextPrimary"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
 
                         <TextView
-                            android:text="Orders"
-                            android:textSize="12sp"
-                            android:textColor="@color/colorTextSecondary"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:text="Orders"
+                            android:textColor="@color/colorTextSecondary"
+                            android:textSize="12sp" />
 
                     </LinearLayout>
 
@@ -190,31 +213,24 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-            <include
-                android:id="@+id/weatherAdvicePanel"
-                layout="@layout/item_weather_advice_card"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:text="Landowner Services"
                 android:textColor="@color/colorTextPrimary"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_marginTop="24dp" />
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvDashboardCards"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:layout_marginTop="12dp"
-                android:padding="8dp"
-                android:clipToPadding="false" />
+                android:clipToPadding="false"
+                android:padding="8dp" />
         </LinearLayout>
 
-
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </LinearLayout>
