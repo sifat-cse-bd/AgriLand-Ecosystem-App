@@ -1,34 +1,16 @@
 package com.example.villageconnect.farmer.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.example.villageconnect.R
+import com.google.android.material.button.MaterialButtonToggleGroup
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [EditFarmerProfile.newInstance] factory method to
- * create an instance of this fragment.
- */
 class EditFarmerProfile : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var toggleGroup: MaterialButtonToggleGroup
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,23 +20,33 @@ class EditFarmerProfile : Fragment() {
         return inflater.inflate(R.layout.fragment_edit_farmer_profile, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment EditFarmerProfile.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            EditFarmerProfile().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        toggleGroup = view.findViewById(R.id.availabilityToggleGroup)
+
+
+        val initialSelectedId = toggleGroup.checkedButtonId
+        val initialSelection = when (initialSelectedId) {
+            R.id.btnAvailable -> "Available"
+            R.id.btnBusy -> "Busy"
+            R.id.btnOnLeave -> "On Leave"
+            else -> "None"
+        }
+        Log.d("FarmerEdit", "Initial availability: $initialSelection")
+
+
+        toggleGroup.addOnButtonCheckedListener { group, checkedId, isChecked ->
+            if (isChecked) {
+                val selected = when (checkedId) {
+                    R.id.btnAvailable -> "Available"
+                    R.id.btnBusy -> "Busy"
+                    R.id.btnOnLeave -> "On Leave"
+                    else -> ""
                 }
+                Log.d("FarmerEdit", "Selected availability: $selected")
             }
+        }
     }
 }

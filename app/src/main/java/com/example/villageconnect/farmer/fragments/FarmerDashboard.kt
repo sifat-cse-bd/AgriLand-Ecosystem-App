@@ -9,6 +9,7 @@ import com.example.villageconnect.R
 
 
 class FarmerDashboard : Fragment() {
+    id
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

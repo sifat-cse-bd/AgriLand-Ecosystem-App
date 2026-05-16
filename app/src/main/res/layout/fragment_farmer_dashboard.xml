@@ -193,14 +193,92 @@
                     android:textColor="#444444"
                     android:textSize="15sp" />
 
-                <TextView
-                    android:id="@+id/tvFarmerWage"
-                    android:layout_width="wrap_content"
+                <!-- Wage Adjustment Card -->
+                <LinearLayout
+                    android:id="@+id/llWageCard"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:text="Daily Wage: 800 BDT"
-                    android:textColor="#444444"
-                    android:textSize="15sp" />
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_narrow_radial_card"
+                    android:padding="16dp"
+                    android:layout_marginTop="16dp">
+
+                    <!-- Summary -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:clickable="true"
+                        android:id="@+id/WageSummary">
+
+                        <TextView
+                            android:id="@+id/tvWageTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Daily Wage"
+                            android:textColor="@color/textPrimary"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvWageAmount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="7dp"
+                            android:text="800 BDT"
+                            android:textColor="@color/textPrimary"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <!-- Expandable Controls -->
+                    <LinearLayout
+                        android:id="@+id/WageControls"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="12dp"
+                        android:visibility="gone"
+                        android:weightSum="3">
+
+                            <Button
+                                android:id="@+id/btnDecrease50"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="48dp"
+                                android:text="-50"
+                                android:textColor="@color/textPrimary"
+                                android:backgroundTint="@color/surfaceContainerHigh"
+                                android:layout_marginEnd="4dp"
+                                android:stateListAnimator="@null"
+                                android:background="@drawable/btn_wage_background"/>
+
+                            <Button
+                                android:id="@+id/btnIncrease50"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="48dp"
+                                android:text="+50"
+                                android:textColor="@color/textPrimary"
+                                android:backgroundTint="@color/surfaceContainerHigh"
+                                android:layout_marginEnd="4dp"
+                                android:stateListAnimator="@null"
+                                android:background="@drawable/btn_wage_background"/>
+
+                            <Button
+                                android:id="@+id/btnIncrease100"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="48dp"
+                                android:text="+100"
+                                android:textColor="@color/textPrimary"
+                                android:backgroundTint="@color/surfaceContainerHigh"
+                                android:stateListAnimator="@null"
+                                android:background="@drawable/btn_wage_background"/>
+                    </LinearLayout>
+
+                </LinearLayout>
 
                 <Button
                     android:id="@+id/btnEditProfile"
