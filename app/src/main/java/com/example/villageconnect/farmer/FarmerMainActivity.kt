@@ -9,7 +9,6 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import com.example.villageconnect.R
 import com.example.villageconnect.farmer.fragments.FarmerDashboard
-import com.example.villageconnect.farmer.fragments.FarmerProfile
 import com.example.villageconnect.farmer.fragments.JobOffers
 import com.example.villageconnect.farmer.fragments.MyJobs
 import com.google.android.material.bottomnavigation.BottomNavigationView
