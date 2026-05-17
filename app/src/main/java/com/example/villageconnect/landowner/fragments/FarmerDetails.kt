@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import com.example.villageconnect.R
 import com.example.villageconnect.data.DBHelper
 import com.example.villageconnect.data.DataAccess
+import com.example.villageconnect.models.AutoIdGenerator
 import com.example.villageconnect.utils.SessionManager
 import com.google.android.material.button.MaterialButton
 import java.util.Calendar
@@ -26,6 +27,7 @@ class FarmerDetails : Fragment(R.layout.fragment_farmer_details) {
 
     private var farmerId = -1
     private var landownerId = -1
+
 
     companion object {
         fun newInstance(farmerId: Int): FarmerDetails {

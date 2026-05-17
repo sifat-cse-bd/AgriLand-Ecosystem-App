@@ -1,8 +1,13 @@
 package com.example.villageconnect.auth
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
+import android.animation.ValueAnimator
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
@@ -17,6 +22,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.villageconnect.R
 import com.example.villageconnect.data.DBHelper
 import com.example.villageconnect.data.DataAccess
+import com.example.villageconnect.farmer.FarmerMainActivity
 //import com.example.villageconnect.farmer.FarmerDashboardActivity
 import com.example.villageconnect.landowner.LandownerMainActivity
 //import com.example.villageconnect.merchant.MerchantDashboardActivity
@@ -32,6 +38,11 @@ class Login : AppCompatActivity() {
     private lateinit var tvForgotPassword: TextView
     private lateinit var tvSignUp: TextView
     private lateinit var btnLogin: MaterialButton
+    private lateinit var progressOverlay: View
+    private lateinit var dot1: View
+    private lateinit var dot2: View
+    private lateinit var dot3: View
+
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -72,6 +83,12 @@ class Login : AppCompatActivity() {
         tvSignUp = findViewById(R.id.tvSignUp)
 
         btnLogin = findViewById(R.id.btnLogin)
+
+        progressOverlay = findViewById(R.id.progressOverlay)
+        dot1 = findViewById(R.id.dot1)
+        dot2 = findViewById(R.id.dot2)
+        dot3 = findViewById(R.id.dot3)
+
     }
 
     private fun setupLiveValidation() {
@@ -147,16 +164,46 @@ class Login : AppCompatActivity() {
 
                 SessionManager(this).saveUserSession(userId, role)
 
-                Toast.makeText(this, getString(R.string.login_success_message), Toast.LENGTH_SHORT).show()
+                showLoadingWithDelay(2500) {
+                    openDashboardByRole(role)
+                }
+            } else {
+                Toast.makeText(this, getString(R.string.login_invalid_message), Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
 
-                openDashboardByRole(role)
-                return
+
+    private fun startBubbleAnimation() {
+        fun animateDot(view: View, delay: Long) {
+            val scaleX = ObjectAnimator.ofFloat(view, "scaleX", 1.0f, 1.5f, 1.0f)
+            val scaleY = ObjectAnimator.ofFloat(view, "scaleY", 1.0f, 1.5f, 1.0f)
+
+            scaleX.repeatCount = ValueAnimator.INFINITE
+            scaleY.repeatCount = ValueAnimator.INFINITE
+
+            AnimatorSet().apply {
+                playTogether(scaleX, scaleY)
+                duration = 600
+                startDelay = delay
+                start()
             }
         }
 
-        Toast.makeText(this, getString(R.string.login_invalid_message), Toast.LENGTH_SHORT).show()
+        animateDot(dot1, 0)
+        animateDot(dot2, 200)
+        animateDot(dot3, 400)
     }
 
+    private fun showLoadingWithDelay(delayMillis: Long, onDelayComplete: () -> Unit) {
+        progressOverlay.visibility = View.VISIBLE
+        startBubbleAnimation() // call animation
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            progressOverlay.visibility = View.GONE
+            onDelayComplete()
+        }, delayMillis)
+    }
     private fun validateLoginForm(phone: String, password: String): Boolean {
         var isValid = true
 
@@ -187,7 +234,7 @@ class Login : AppCompatActivity() {
             }
 
             DBHelper.ROLE_FARMER -> {
-//                startActivity(Intent(this, FarmerDashboardActivity::class.java))
+                startActivity(Intent(this, FarmerMainActivity::class.java))
                 finish()
             }
 

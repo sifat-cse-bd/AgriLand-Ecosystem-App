@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navHome"
+        android:title="Home"
+        android:icon="@drawable/ic_home"/>
+
+    <item
+        android:id="@+id/navJobOffers"
+        android:title="Job Offers"
+        android:icon="@drawable/ic_work_update"/>
+    <item
+        android:id="@+id/navMyJobs"
+        android:title="My Jobs"
+        android:icon="@drawable/ic_work"/>
+
+
+    <item
+        android:id="@+id/navProfile"
+        android:title="Profile"
+        android:icon="@drawable/ic_profile"/>
+</menu>

@@ -2,6 +2,7 @@ package com.example.villageconnect.auth
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -62,8 +63,7 @@ class Registration : AppCompatActivity() {
         }
 
         tvSignIn.setOnClickListener {
-            // Login activity thakle ekhane open korba
-            // startActivity(Intent(this, Login::class.java))
+            startActivity(Intent(this, Login::class.java))
             finish()
         }
     }
@@ -165,9 +165,8 @@ class Registration : AppCompatActivity() {
             Toast.makeText(this, "Registration Successful", Toast.LENGTH_SHORT).show()
             clearForm()
 
-            // Login page e pathate chaile uncomment korba
-            // startActivity(Intent(this, Login::class.java))
-            // finish()
+            startActivity(Intent(this, Login::class.java))
+            finish()
 
         } else {
             Toast.makeText(

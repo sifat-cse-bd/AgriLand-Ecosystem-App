@@ -5,6 +5,7 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.widget.Toast
 import com.example.villageconnect.auth.Registration
+import android.util.Log
 
 object DataAccess {
     private var dbHelper: DBHelper? = null
@@ -46,6 +47,7 @@ object DataAccess {
             val db = openReadableDatabase(context)
             db.rawQuery(sql, args)
         } catch (ex: Exception) {
+            Log.e("Query Error: ", "${ex.message}")
             Toast.makeText(context, "Query Error: ${ex.message}", Toast.LENGTH_LONG).show()
             null
         }

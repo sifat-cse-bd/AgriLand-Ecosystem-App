@@ -1,4 +1,4 @@
-package com.example.villageconnect.landowner.fragments
+package com.example.villageconnect.farmer.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -14,10 +14,10 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [ItemDashboardCard.newInstance] factory method to
+ * Use the [MyJobs.newInstance] factory method to
  * create an instance of this fragment.
  */
-class ItemDashboardCard : Fragment() {
+class MyJobs : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -35,7 +35,7 @@ class ItemDashboardCard : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.item_dashboard_card, container, false)
+        return inflater.inflate(R.layout.fragment_my_jobs, container, false)
     }
 
     companion object {
@@ -45,12 +45,12 @@ class ItemDashboardCard : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment ItemDashboardCard.
+         * @return A new instance of fragment MyJobs.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            ItemDashboardCard().apply {
+            MyJobs().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

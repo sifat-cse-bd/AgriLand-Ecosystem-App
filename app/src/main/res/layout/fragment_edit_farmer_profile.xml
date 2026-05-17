@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/editFarmerScrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@color/background">
+
+    <LinearLayout
+        android:id="@+id/editFarmerContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="22dp"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/tvEditFarmerTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edit Profile"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/textPrimary"
+            android:layout_marginBottom="24dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Full Name"
+            android:textSize="16sp"
+            android:textColor="@color/textPrimary"/>
+        <EditText
+            android:id="@+id/etFarmerName"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Enter full name"
+            android:inputType="textPersonName"
+            android:padding="12dp"
+            android:background="@color/inputBackground"
+            android:textColor="@color/textPrimary"/>
+        <TextView
+            android:id="@+id/tvWarningName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="12dp"
+            android:textColor="@color/colorError"
+            android:textSize="12sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Phone"
+            android:textSize="16sp"
+            android:textColor="@color/textPrimary"/>
+        <EditText
+            android:id="@+id/etFarmerPhone"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Enter phone number"
+            android:inputType="phone"
+            android:padding="12dp"
+            android:background="@color/inputBackground"
+            android:textColor="@color/textPrimary" />
+        <TextView
+            android:id="@+id/tvWarningPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="12dp"
+            android:textColor="@color/colorError"
+            android:textSize="12sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="District"
+            android:textSize="16sp"
+            android:textColor="@color/textPrimary"/>
+        <EditText
+            android:id="@+id/etFarmerDistrict"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="e.g. Bogura"
+            android:inputType="text"
+            android:padding="12dp"
+            android:background="@color/inputBackground"
+            android:textColor="@color/textPrimary"/>
+        <TextView
+            android:id="@+id/tvWarningDistrict"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="12dp"
+            android:textColor="@color/colorError"
+            android:textSize="12sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Upazila"
+            android:textSize="16sp"
+            android:textColor="@color/textPrimary"/>
+        <EditText
+            android:id="@+id/etFarmerUpazila"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="e.g. Shajahanpur"
+            android:inputType="text"
+            android:padding="12dp"
+            android:background="@color/inputBackground"
+            android:textColor="@color/textPrimary"/>
+        <TextView
+            android:id="@+id/tvWarningUpazila"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="12dp"
+            android:textColor="@color/colorError"
+            android:textSize="12sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Village Name"
+            android:textSize="16sp"
+            android:textColor="@color/textPrimary"/>
+        <EditText
+            android:id="@+id/etFarmerVillage"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Enter village name"
+            android:inputType="text"
+            android:padding="12dp"
+            android:background="@color/inputBackground"
+            android:textColor="@color/textPrimary"/>
+        <TextView
+            android:id="@+id/tvWarningVillage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="12dp"
+            android:textColor="@color/colorError"
+            android:textSize="12sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Skills"
+            android:textSize="16sp"
+            android:textColor="@color/textPrimary"/>
+        <EditText
+            android:id="@+id/etFarmerSkills"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="e.g. Paddy Harvesting, Plowing"
+            android:inputType="text"
+            android:padding="12dp"
+            android:background="@color/inputBackground"
+            android:textColor="@color/textPrimary"/>
+        <TextView
+            android:id="@+id/tvWarningSkills"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="12dp"
+            android:textColor="@color/colorError"
+            android:textSize="12sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Experience (years)"
+            android:textSize="16sp"
+            android:textColor="@color/textPrimary"/>
+        <EditText
+            android:id="@+id/etFarmerExperience"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Enter experience"
+            android:inputType="number"
+            android:padding="12dp"
+            android:background="@color/inputBackground"
+            android:textColor="@color/textPrimary"/>
+        <TextView
+            android:id="@+id/tvWarningExperience"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="12dp"
+            android:textColor="@color/colorError"
+            android:textSize="12sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Daily Wage (BDT)"
+            android:textSize="16sp"
+            android:textColor="@color/textPrimary"/>
+        <EditText
+            android:id="@+id/etFarmerWage"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="e.g. 500"
+            android:inputType="numberDecimal"
+            android:padding="12dp"
+            android:background="@color/inputBackground"
+            android:textColor="@color/textPrimary"/>
+        <TextView
+            android:id="@+id/tvWarningWage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="12dp"
+            android:textColor="@color/colorError"
+            android:textSize="12sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Short Bio"
+            android:textSize="16sp"
+            android:textColor="@color/textPrimary"/>
+        <EditText
+            android:id="@+id/etFarmerBio"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:hint="Tell landowners about your expertise..."
+            android:inputType="textMultiLine"
+            android:gravity="top|start"
+            android:padding="12dp"
+            android:background="@color/inputBackground"
+            android:textColor="@color/textPrimary"/>
+        <TextView
+            android:id="@+id/tvWarningBio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="24dp"
+            android:textColor="@color/colorError"
+            android:textSize="12sp"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btnSaveFarmer"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="Save Profile"
+            android:textColor="@color/buttonPrimaryText"
+            android:backgroundTint="@color/buttonPrimary"
+            android:layout_marginBottom="32dp"/>
+
+    </LinearLayout>
+</ScrollView>
