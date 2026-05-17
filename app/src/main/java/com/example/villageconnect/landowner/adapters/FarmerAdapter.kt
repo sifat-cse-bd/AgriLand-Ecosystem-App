@@ -7,16 +7,19 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.villageconnect.R
 import com.example.villageconnect.landowner.models.FarmerItem
+import com.google.android.material.button.MaterialButton
 
 class FarmerAdapter(
     private val items: List<FarmerItem>,
-    private val onClick: (FarmerItem) -> Unit
+    private val onCardClick: (FarmerItem) -> Unit,
+    private val onButtonClick: (FarmerItem) -> Unit
 ) : RecyclerView.Adapter<FarmerAdapter.ViewHolder>() {
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val name: TextView = view.findViewById(R.id.tvFarmerName)
         val skills: TextView = view.findViewById(R.id.tvFarmerSkills)
         val wage: TextView = view.findViewById(R.id.tvFarmerWage)
+        val btnRequest: MaterialButton = view.findViewById(R.id.btnRequest)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -34,8 +37,21 @@ class FarmerAdapter(
         holder.skills.text = "Skills: ${farmer.skills ?: "Not added"}"
         holder.wage.text = "Daily wage: ৳${farmer.dailyWage ?: 0.0}"
 
+        // Update button text/color based on pending request
+        if (farmer.hasPendingRequest) {
+            holder.btnRequest.text = "Cancel Request"
+        } else {
+            holder.btnRequest.text = "Send Request"
+        }
+
+        // Card click
         holder.itemView.setOnClickListener {
-            onClick(farmer)
+            onCardClick(farmer)
+        }
+
+        // Button click
+        holder.btnRequest.setOnClickListener {
+            onButtonClick(farmer)
         }
     }
 }

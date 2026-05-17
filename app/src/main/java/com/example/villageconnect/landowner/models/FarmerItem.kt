@@ -7,5 +7,6 @@ data class FarmerItem(
     val village: String?,
     val skills: String?,
     val experience: String?,
-    val dailyWage: Double?
+    val dailyWage: Double?,
+    var hasPendingRequest: Boolean = false
 )
