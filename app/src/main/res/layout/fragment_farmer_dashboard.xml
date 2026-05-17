@@ -193,6 +193,14 @@
                     android:textColor="#444444"
                     android:textSize="15sp" />
 
+<!--                warning pop up-->
+
+                <include
+                    android:id="@+id/editProfilePopUp"
+                    android:visibility="gone"
+                    layout="@layout/item_profile_update_popup"
+                    android:layout_width="match_parent"/>
+
                 <!-- Wage Adjustment Card -->
                 <LinearLayout
                     android:id="@+id/llWageCard"
