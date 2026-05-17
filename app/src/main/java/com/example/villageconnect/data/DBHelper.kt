@@ -12,10 +12,9 @@ class DBHelper(context: Context) : SQLiteOpenHelper(
 ) {
 
     companion object {
-
         // Database Info
         const val DATABASE_NAME = "village_connect.db"
-        const val DATABASE_VERSION = 1
+        const val DATABASE_VERSION = 2  // Updated version
 
         // Table Names
         const val TABLE_USERS = "users"
@@ -25,6 +24,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(
         const val TABLE_INVENTORY = "inventory"
         const val TABLE_INVENTORY_ORDERS = "inventory_orders"
         const val TABLE_HIRE_REQUESTS = "hire_requests"
+        const val TABLE_HIRE_WORK = "hire_work" // New optional table
 
         // Common Columns
         const val COL_ID = "id"
@@ -75,6 +75,11 @@ class DBHelper(context: Context) : SQLiteOpenHelper(
         // Hire Request Columns
         const val COL_FARMER_ID = "farmer_id"
         const val COL_WORK_DATE = "work_date"
+        const val COL_REQUEST_STATUS = "request_status" // New
+        const val COL_WORK_STATUS = "work_status"       // New
+        const val COL_CREATED_AT = "created_at"         // New
+        const val COL_UPDATED_AT = "updated_at"         // New
+        const val COL_HIRE_REQUEST_ID = "hire_request_id" // for hire_work table FK
 
         // Role Values
         const val ROLE_LANDOWNER = "landowner"
@@ -86,6 +91,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(
         const val STATUS_ACCEPTED = "Accepted"
         const val STATUS_REJECTED = "Rejected"
         const val STATUS_COMPLETED = "Completed"
+        const val STATUS_CANCELLED = "Cancelled"
         const val STATUS_AVAILABLE = "Available"
         const val STATUS_ON_WORK = "On-Work"
 
@@ -177,16 +183,31 @@ class DBHelper(context: Context) : SQLiteOpenHelper(
             )
         """
 
-        // Create Hire Requests Table
+        // Updated Hire Requests Table
         const val CREATE_HIRE_REQUESTS_TABLE = """
             CREATE TABLE hire_requests (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 landowner_id INTEGER,
                 farmer_id INTEGER,
-                work_date TEXT,
-                status TEXT DEFAULT 'Pending',
+                work_date TEXT NOT NULL,
+                request_status TEXT DEFAULT 'Pending',
+                work_status TEXT DEFAULT 'Pending',
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 FOREIGN KEY (landowner_id) REFERENCES users(id),
                 FOREIGN KEY (farmer_id) REFERENCES users(id)
+            )
+        """
+
+        // Optional: hire_work table for work phase
+        const val CREATE_HIRE_WORK_TABLE = """
+            CREATE TABLE hire_work (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                hire_request_id INTEGER NOT NULL,
+                work_status TEXT DEFAULT 'Pending',
+                started_at TIMESTAMP,
+                completed_at TIMESTAMP,
+                FOREIGN KEY (hire_request_id) REFERENCES hire_requests(id) ON DELETE CASCADE
             )
         """
     }
@@ -201,6 +222,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(
         db.execSQL(CREATE_INVENTORY_TABLE)
         db.execSQL(CREATE_INVENTORY_ORDERS_TABLE)
         db.execSQL(CREATE_HIRE_REQUESTS_TABLE)
+        db.execSQL(CREATE_HIRE_WORK_TABLE)
 
         createIndexes(db)
     }
@@ -219,6 +241,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(
         db.execSQL("CREATE INDEX IF NOT EXISTS idx_order_merchant ON inventory_orders(merchant_id)")
         db.execSQL("CREATE INDEX IF NOT EXISTS idx_hire_landowner ON hire_requests(landowner_id)")
         db.execSQL("CREATE INDEX IF NOT EXISTS idx_hire_farmer ON hire_requests(farmer_id)")
+        db.execSQL("CREATE INDEX IF NOT EXISTS idx_hire_work_request ON hire_work(hire_request_id)")
     }
 
     override fun onOpen(db: SQLiteDatabase) {
@@ -227,14 +250,15 @@ class DBHelper(context: Context) : SQLiteOpenHelper(
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        db.execSQL("DROP TABLE IF EXISTS hire_requests")
-        db.execSQL("DROP TABLE IF EXISTS inventory_orders")
-        db.execSQL("DROP TABLE IF EXISTS inventory")
-        db.execSQL("DROP TABLE IF EXISTS service_bookings")
-        db.execSQL("DROP TABLE IF EXISTS merchant_assets")
-        db.execSQL("DROP TABLE IF EXISTS farmer_profiles")
-        db.execSQL("DROP TABLE IF EXISTS users")
-        onCreate(db)
-    }
+        if(oldVersion < 2){
+            // Upgrade hire_requests table
+            db.execSQL("ALTER TABLE hire_requests ADD COLUMN request_status TEXT DEFAULT 'Pending'")
+            db.execSQL("ALTER TABLE hire_requests ADD COLUMN work_status TEXT DEFAULT 'Pending'")
+            db.execSQL("ALTER TABLE hire_requests ADD COLUMN created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+            db.execSQL("ALTER TABLE hire_requests ADD COLUMN updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 
+            // Create hire_work table
+            db.execSQL(CREATE_HIRE_WORK_TABLE)
+        }
+    }
 }
