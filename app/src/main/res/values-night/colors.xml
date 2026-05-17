@@ -55,7 +55,7 @@
     <!-- ========================= -->
     <color name="outline">#374237</color>
     <color name="outlineVariant">#2D382D</color>
-    <color name="divider">#2D382D</color>
+    <color name="divider">#E8EEE8</color>
     <color name="borderSoft">#2A352A</color>
     <color name="scrim">#000000</color>
 

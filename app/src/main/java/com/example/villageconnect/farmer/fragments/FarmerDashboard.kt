@@ -108,8 +108,6 @@ class FarmerDashboard : Fragment() {
                         village = it.getString(it.getColumnIndexOrThrow(DBHelper.COL_VILLAGE_NAME)) ?: "",
                         upazila = it.getString(it.getColumnIndexOrThrow(DBHelper.COL_UPAZILA)) ?: "",
                         district = it.getString(it.getColumnIndexOrThrow(DBHelper.COL_DISTRICT)) ?: "",
-
-                        // Profile table-er data null paile dynamic default vabe faka "" ba 0.0 set hobe
                         skills = it.getString(it.getColumnIndexOrThrow(DBHelper.COL_SKILLS)) ?: "",
                         experience = it.getString(it.getColumnIndexOrThrow(DBHelper.COL_EXPERIENCE)) ?: "",
                         dailyWage = it.getDouble(it.getColumnIndexOrThrow(DBHelper.COL_DAILY_WAGE)),
