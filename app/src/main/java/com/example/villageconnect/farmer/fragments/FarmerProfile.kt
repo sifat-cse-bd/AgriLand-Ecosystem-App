@@ -133,7 +133,7 @@ class FarmerProfile : Fragment() {
             // Set Professional Details
             tvDailyWage.text = "৳ ${item.dailyWage.toInt()} / day"
 
-            tvSkills.text = if (item.skills.isNotEmpty()) item.skills else "No skills added yet"
+            tvSkills.text = if (item.skills.isNotEmpty()) "${item.skills} years" else "No skills added yet"
             tvExperience.text = if (item.experience.isNotEmpty()) item.experience else "No experience details added"
             tvBio.text = if (item.bio.isNotEmpty()) item.bio else "No bio written yet"
         } ?: run {

@@ -178,7 +178,7 @@ class FarmerDashboard : Fragment() {
         checkAddress()
         tvPendingJobsCount.text = pendingOffersCount()
         tvAcceptedJobsCount.text = completedJobsCount()
-        tvFarmerSkills.text = "Skills: ${farmerProfileItem.skills}"
+        tvFarmerSkills.text = "Skills: ${farmerProfileItem.skills} years"
         tvFarmerExperience.text = "Experience: ${farmerProfileItem.experience}"
         tvWageAmount.text = "${farmerProfileItem.dailyWage} BDT"
     }
