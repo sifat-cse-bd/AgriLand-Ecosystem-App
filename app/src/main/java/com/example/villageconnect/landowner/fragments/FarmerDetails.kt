@@ -107,14 +107,32 @@ class FarmerDetails : Fragment(R.layout.fragment_farmer_details) {
         if (workDate.isEmpty()) {
             Toast.makeText(requireContext(), "Select work date", Toast.LENGTH_SHORT).show()
             return
+
         }
 
-        val sql = """
-            INSERT INTO ${DBHelper.TABLE_HIRE_REQUESTS}
-            (${DBHelper.COL_LANDOWNER_ID}, ${DBHelper.COL_FARMER_ID}, ${DBHelper.COL_WORK_DATE}, ${DBHelper.COL_STATUS})
-            VALUES (?, ?, ?, ?)
-        """
+        // 1️⃣ Check for existing pending request
+        val checkSql = """
+        SELECT COUNT(*) FROM ${DBHelper.TABLE_HIRE_REQUESTS}
+        WHERE ${DBHelper.COL_LANDOWNER_ID} = ?
+          AND ${DBHelper.COL_FARMER_ID} = ?
+          AND ${DBHelper.COL_STATUS} = '${DBHelper.STATUS_PENDING}'
+    """
+        val cursor = DataAccess.executeQuery(requireContext(), checkSql, arrayOf(landownerId.toString(), farmerId.toString()))
+        val count = cursor?.use {
+            if (it.moveToFirst()) it.getInt(0) else 0
+        } ?: 0
 
+        if (count > 0) {
+            Toast.makeText(requireContext(), "You already have a pending request for this farmer", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        // 2️⃣ Insert new hire request
+        val sql = """
+        INSERT INTO ${DBHelper.TABLE_HIRE_REQUESTS}
+        (${DBHelper.COL_LANDOWNER_ID}, ${DBHelper.COL_FARMER_ID}, ${DBHelper.COL_WORK_DATE}, ${DBHelper.COL_STATUS})
+        VALUES (?, ?, ?, ?)
+    """
         val result = DataAccess.executeDMLQuery(
             requireContext(),
             sql,
