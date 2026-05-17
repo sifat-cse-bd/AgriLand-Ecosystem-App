@@ -1,10 +1,65 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".farmer.models.JobOfferItem">
+    android:id="@+id/main"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    android:background="@color/cardBackground">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tvLandownerName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Landowner Name"
+            android:textStyle="bold"
+            android:textColor="@color/colorTextPrimary"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/tvRequestDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Request Date"
+            android:textColor="@color/textSecondary"
+            android:layout_marginBottom="7dp"/>
+        <TextView
+            android:id="@+id/tvAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Address: not found"
+            android:textColor="@color/textSecondary"
+            android:layout_marginBottom="8dp"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2">
+
+            <Button
+                android:id="@+id/btnAccept"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Accept"
+                android:background="@color/colorSurface"
+                android:textColor="@color/white"/>
+
+            <Button
+                android:id="@+id/btnReject"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Reject"
+                android:background="@color/colorError"
+                android:textColor="@color/white"
+                android:layout_marginStart="8dp"/>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
