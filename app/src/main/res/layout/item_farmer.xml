@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -17,6 +18,7 @@
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
+        <!-- Farmer Avatar -->
         <TextView
             android:id="@+id/tvFarmerAvatar"
             android:layout_width="58dp"
@@ -26,6 +28,7 @@
             android:textSize="28sp"
             android:background="@drawable/bg_soft_chip" />
 
+        <!-- Farmer Info -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -60,21 +63,30 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
+            <!-- Optional: Selected date display -->
+            <TextView
+                android:id="@+id/tvSelectedDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No date selected"
+                android:textColor="@color/colorTextSecondary"
+                android:textSize="12sp"
+                android:layout_marginTop="2dp"/>
         </LinearLayout>
 
-        <!-- Action Button -->
+        <!-- Send / Select Day Button -->
         <Button
             android:id="@+id/btnRequest"
             android:layout_width="wrap_content"
             android:layout_height="36dp"
-            android:text="Send Request"
-            android:textColor="@color/white"
-            android:backgroundTint="@color/colorPrimary"
             android:layout_marginStart="8dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:gravity="center"
             android:paddingStart="12dp"
             android:paddingEnd="12dp"
-            android:textSize="14sp"
-            android:gravity="center"/>
+            android:text="Select Day"
+            android:textColor="@color/white"
+            android:textSize="10sp" />
 
     </LinearLayout>
 

@@ -219,13 +219,27 @@
 
         </LinearLayout>
 
+        <!-- Change Password Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnChangePassword"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="16dp"
+            android:text="Change Password"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimary"
+            app:cornerRadius="16dp"
+            app:strokeColor="@color/colorPrimary"
+            app:layout_constraintTop_toBottomOf="@id/cardDetails" />
+
         <!-- Logout Button -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnLogout"
             style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="12dp"
             android:layout_marginBottom="8dp"
             android:backgroundTint="#FFF0F0"
             android:text="Log Out"
@@ -237,7 +251,7 @@
             app:icon="@android:drawable/ic_lock_power_off"
             app:iconGravity="textStart"
             app:iconTint="@color/colorError"
-            app:layout_constraintTop_toBottomOf="@id/cardDetails"
+            app:layout_constraintTop_toBottomOf="@id/btnChangePassword"
             app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,40 +4,99 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_root"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:background="@drawable/bg_root">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="20dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="16dp">
 
-        <TextView
-            android:text="My Profile"
-            android:textSize="28sp"
-            android:textStyle="bold"
-            android:textColor="@color/colorTextPrimary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:text="Update your village information for local services"
-            android:textColor="@color/colorTextSecondary"
-            android:textSize="14sp"
-            android:layout_marginTop="4dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
+        <!-- Header Card -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="22dp"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="24dp"
             app:cardBackgroundColor="@color/cardBackground"
-            app:cardCornerRadius="28dp"
-            app:cardElevation="6dp"
-            app:strokeColor="@color/cardBorder"
-            app:strokeWidth="1dp">
+            app:cardElevation="6dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <!-- Edit Button -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnEditProfile"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Edit"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorPrimary"
+                    app:icon="@android:drawable/ic_menu_edit"
+                    app:iconTint="@color/colorPrimary"
+                    android:layout_gravity="end" />
+
+                <!-- Avatar -->
+                <LinearLayout
+                    android:layout_width="74dp"
+                    android:layout_height="74dp"
+                    android:layout_marginTop="12dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:background="@color/colorPrimary"
+                    android:clipToOutline="true"
+                    android:outlineProvider="background">
+
+                    <TextView
+                        android:id="@+id/tvProfileInitial"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="L"
+                        android:textColor="@android:color/white"
+                        android:textSize="28sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- Name -->
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tvProfileName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Landowner Name"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorTextPrimary"
+                    android:layout_marginTop="8dp"
+                    android:background="@null"
+                    android:inputType="textPersonName"
+                    android:importantForAutofill="no" />
+
+                <!-- Phone -->
+                <TextView
+                    android:id="@+id/tvProfilePhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="017XXXXXXXX"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_marginTop="4dp" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Details Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="24dp"
+            app:cardBackgroundColor="@color/cardBackground"
+            app:cardElevation="4dp"
+            android:padding="16dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -45,101 +104,102 @@
                 android:padding="18dp"
                 android:orientation="vertical">
 
+                <!-- District Spinner -->
                 <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Full Name"
-                    app:boxStrokeColor="@color/inputFocusedBorder">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edtProfileName"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/colorTextPrimary" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_marginTop="12dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Phone Number"
-                    app:boxStrokeColor="@color/inputFocusedBorder">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edtProfilePhone"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:enabled="false"
-                        android:textColor="@color/colorTextSecondary" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_marginTop="12dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="District"
-                    app:boxStrokeColor="@color/inputFocusedBorder">
+                    app:boxStrokeColor="@color/colorPrimary">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edtDistrict"
+                    <Spinner
+                        android:id="@+id/spinnerDistrict"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/colorTextPrimary" />
-
+                        android:enabled="false"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <!-- Upazila Spinner -->
                 <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_marginTop="12dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Upazila"
-                    app:boxStrokeColor="@color/inputFocusedBorder">
+                    app:boxStrokeColor="@color/colorPrimary">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edtUpazila"
+                    <Spinner
+                        android:id="@+id/spinnerUpazila"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/colorTextPrimary" />
-
+                        android:enabled="false"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <!-- Village Name -->
                 <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_marginTop="12dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Village Name"
-                    app:boxStrokeColor="@color/inputFocusedBorder">
+                    app:boxStrokeColor="@color/colorPrimary">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edtVillageName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/colorTextPrimary" />
-
+                        android:enabled="false"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <!-- Update Button (small) -->
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnUpdateProfile"
                     android:layout_width="match_parent"
-                    android:layout_height="56dp"
-                    android:layout_marginTop="20dp"
-                    android:text="Update Profile"
+                    android:layout_height="48dp"
+                    android:text="Update"
                     android:textAllCaps="false"
-                    android:textStyle="bold"
-                    android:textColor="@color/buttonPrimaryText"
+                    android:layout_marginTop="16dp"
                     android:backgroundTint="@color/buttonPrimary"
-                    app:cornerRadius="18dp" />
+                    android:textColor="@color/white"
+                    app:cornerRadius="16dp" />
+
+                <!-- Change Password (transparent) -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnChangePassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="Change Password"
+                    android:textAllCaps="false"
+                    android:layout_marginTop="12dp"
+                    android:backgroundTint="@android:color/transparent"
+                    android:textColor="@color/colorPrimary"
+                    app:strokeColor="@color/colorPrimary"
+                    app:strokeWidth="1dp"
+                    app:cornerRadius="16dp" />
 
             </LinearLayout>
-
         </com.google.android.material.card.MaterialCardView>
+
+        <!-- Logout Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnLogout"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="Logout"
+            android:textAllCaps="false"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/colorRed"
+            android:textColor="@color/white"
+            app:cornerRadius="16dp" />
+
+        <!-- Delete Account Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnDeleteAccount"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="Delete Account"
+            android:textAllCaps="false"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="@color/colorRedDark"
+            android:textColor="@color/white"
+            app:cornerRadius="16dp" />
 
     </LinearLayout>
 
