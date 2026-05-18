@@ -18,6 +18,7 @@ import com.example.villageconnect.utils.SessionManager
 import com.google.android.material.button.MaterialButton
 import androidx.fragment.app.FragmentManager
 import com.example.villageconnect.farmer.fragments.EditFarmerProfile
+import com.example.villageconnect.fragments.ChangePassword
 
 class FarmerProfile : Fragment() {
 
@@ -31,6 +32,7 @@ class FarmerProfile : Fragment() {
     private lateinit var tvExperience: TextView
     private lateinit var tvBio: TextView
     private lateinit var btnEditProfile: MaterialButton
+    private lateinit var btnChangePassword: MaterialButton
     private lateinit var btnLogout: MaterialButton
 
     private var farmerId: Int = -1
@@ -64,6 +66,7 @@ class FarmerProfile : Fragment() {
         tvExperience = view.findViewById(R.id.tvExperience)
         tvBio = view.findViewById(R.id.tvBio)
         btnEditProfile = view.findViewById(R.id.btnEditProfile)
+        btnChangePassword = view.findViewById(R.id.btnChangePassword)
         btnLogout = view.findViewById(R.id.btnLogout)
     }
 
@@ -144,6 +147,10 @@ class FarmerProfile : Fragment() {
     private fun setupClickListeners() {
         btnEditProfile.setOnClickListener {
             loadFragment(EditFarmerProfile())
+        }
+
+        btnChangePassword.setOnClickListener {
+            loadFragment(ChangePassword())
         }
 
         btnLogout.setOnClickListener {

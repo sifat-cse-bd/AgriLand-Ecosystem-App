@@ -15,15 +15,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VillageConnect">
         <activity
-            android:name=".farmer.models.FarmerProfileItem"
-            android:exported="false" />
-        <activity
-            android:name=".farmer.models.JobOfferItem"
-            android:exported="false" />
-        <activity
-            android:name=".farmer.models.MyJobItem"
-            android:exported="false" />
-        <activity
             android:name=".farmer.FarmerMainActivity"
             android:exported="false" />
         <activity

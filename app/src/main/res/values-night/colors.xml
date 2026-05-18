@@ -140,6 +140,8 @@
     <color name="colorButtonSecondary">@color/buttonSecondary</color>
     <color name="card_stroke">@color/cardBorder</color>
     <color name="colorError">@color/error</color>
+    <color name="colorRed">#F87171</color>
+    <color name="colorRedDark">#EF4444</color>
 
     <!-- ========================= -->
     <!-- WEATHER CARD - DARK PREMIUM -->

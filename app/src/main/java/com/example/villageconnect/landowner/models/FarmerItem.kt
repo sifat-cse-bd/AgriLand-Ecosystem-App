@@ -8,5 +8,8 @@ data class FarmerItem(
     val skills: String?,
     val experience: String?,
     val dailyWage: Double?,
-    var hasPendingRequest: Boolean = false
+    var hasPendingRequest: Boolean = false,
+    var selectedDate: String? = null,
+    var requestStatus: String? = null,
+    var workStatus: String? = null
 )
