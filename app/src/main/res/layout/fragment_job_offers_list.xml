@@ -9,7 +9,7 @@
     android:padding="20dp">
 
     <TextView
-        android:text="Job Offers"
+        android:text="Job Offers List"
         android:textColor="@color/colorTextPrimary"
         android:layout_marginTop="30dp"
         android:textSize="28sp"
@@ -17,17 +17,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-
     <TextView
-        android:text="Confirm your job offers from your landowner"
+        android:text="All job offers - Pending, Accepted &amp; Rejected"
         android:textColor="@color/colorTextSecondary"
         android:textSize="14sp"
         android:layout_marginTop="4dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
+    <TextView
+        android:id="@+id/tvJobOffersListEmpty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="No job offers found"
+        android:gravity="center"
+        android:textColor="@color/colorTextSecondary"
+        android:textSize="16sp"
+        android:layout_marginTop="40dp"
+        android:visibility="gone" />
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvLandowner"
+        android:id="@+id/rvJobOffersList"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="14dp"

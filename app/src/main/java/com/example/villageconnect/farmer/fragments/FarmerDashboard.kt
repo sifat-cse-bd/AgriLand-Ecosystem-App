@@ -13,6 +13,7 @@ import com.example.villageconnect.data.DBHelper
 import com.example.villageconnect.data.DataAccess
 import com.example.villageconnect.farmer.models.FarmerProfileItem
 import com.example.villageconnect.utils.SessionManager
+import com.example.villageconnect.utils.WorkStatusManager
 
 class FarmerDashboard : Fragment() {
     private lateinit var tvFarmerWelcome: TextView
@@ -58,6 +59,9 @@ class FarmerDashboard : Fragment() {
         btnViewMyJobs = view.findViewById(R.id.btnViewMyJobs)
 
         farmerId = SessionManager(requireContext()).getUserId()
+
+        // Sync statuses (expiry/incomplete) before loading dashboard info
+        WorkStatusManager.checkAndUpdateStatuses(requireContext())
 
         setUpDashboardInfo()
 
@@ -122,7 +126,7 @@ class FarmerDashboard : Fragment() {
 
     private fun checkStatus(): String {
         val sql = """
-            SELECT ${DBHelper.COL_STATUS} 
+            SELECT ${DBHelper.COL_REQUEST_STATUS} 
             FROM ${DBHelper.TABLE_HIRE_REQUESTS} 
             WHERE ${DBHelper.COL_FARMER_ID} = ? 
             ORDER BY id DESC LIMIT 1
@@ -133,7 +137,7 @@ class FarmerDashboard : Fragment() {
             val cursor = db.executeQuery(requireContext(), sql, arrayOf(farmerId.toString()))
             cursor?.use {
                 if (it.moveToFirst()) {
-                    currentStatus = it.getString(it.getColumnIndexOrThrow(DBHelper.COL_STATUS)) ?: ""
+                    currentStatus = it.getString(0) ?: ""
                 }
             }
         } catch (e: Exception) {
@@ -152,13 +156,34 @@ class FarmerDashboard : Fragment() {
     }
 
     private fun pendingOffersCount(): String {
-        val sql = "SELECT COUNT(*) FROM ${DBHelper.TABLE_HIRE_REQUESTS} WHERE ${DBHelper.COL_FARMER_ID} = ? AND ${DBHelper.COL_STATUS} = ?"
-        return db.executeScalarInt(requireContext(), sql, arrayOf(farmerId.toString(), DBHelper.STATUS_PENDING)).toString()
+        // Only count pending requests that haven't expired
+        val sql = """
+            SELECT COUNT(*) FROM ${DBHelper.TABLE_HIRE_REQUESTS} 
+            WHERE ${DBHelper.COL_FARMER_ID} = ? 
+              AND ${DBHelper.COL_REQUEST_STATUS} = '${DBHelper.STATUS_PENDING}'
+              AND (expires_at > CURRENT_TIMESTAMP OR expires_at IS NULL)
+        """.trimIndent()
+        return db.executeScalarInt(requireContext(), sql, arrayOf(farmerId.toString())).toString()
+    }
+
+    private fun activeWorkCount(): String {
+        val sql = """
+            SELECT COUNT(*) FROM ${DBHelper.TABLE_HIRE_WORK} hw
+            JOIN ${DBHelper.TABLE_HIRE_REQUESTS} hr ON hw.${DBHelper.COL_HIRE_REQUEST_ID} = hr.${DBHelper.COL_ID}
+            WHERE hr.${DBHelper.COL_FARMER_ID} = ? 
+              AND hw.${DBHelper.COL_WORK_STATUS} = '${DBHelper.STATUS_ON_WORK}'
+        """.trimIndent()
+        return db.executeScalarInt(requireContext(), sql, arrayOf(farmerId.toString())).toString()
     }
 
     private fun completedJobsCount(): String {
-        val sql = "SELECT COUNT(*) FROM ${DBHelper.TABLE_HIRE_REQUESTS} WHERE ${DBHelper.COL_FARMER_ID} = ? AND ${DBHelper.COL_STATUS} = ?"
-        return db.executeScalarInt(requireContext(), sql, arrayOf(farmerId.toString(), DBHelper.STATUS_COMPLETED)).toString()
+        val sql = """
+            SELECT COUNT(*) FROM ${DBHelper.TABLE_HIRE_WORK} hw
+            JOIN ${DBHelper.TABLE_HIRE_REQUESTS} hr ON hw.${DBHelper.COL_HIRE_REQUEST_ID} = hr.${DBHelper.COL_ID}
+            WHERE hr.${DBHelper.COL_FARMER_ID} = ? 
+              AND hw.${DBHelper.COL_WORK_STATUS} = '${DBHelper.STATUS_COMPLETED}'
+        """.trimIndent()
+        return db.executeScalarInt(requireContext(), sql, arrayOf(farmerId.toString())).toString()
     }
 
     private fun checkAddress() {
@@ -172,14 +197,17 @@ class FarmerDashboard : Fragment() {
     }
 
     private fun setUpDashboardInfo() {
-        loadFarmerInfo() // Database step mapping parsed first
+        loadFarmerInfo() 
         tvFarmerWelcome.text = "Welcome, ${farmerProfileItem.fullName}"
         statusChangeDashboard()
         checkAddress()
+        
         tvPendingJobsCount.text = pendingOffersCount()
+        // We'll show Completed count in the second box as before, but updated logic
         tvAcceptedJobsCount.text = completedJobsCount()
-        tvFarmerSkills.text = "Skills: ${farmerProfileItem.skills} years"
+        
+        tvFarmerSkills.text = "Skills: ${farmerProfileItem.skills}"
         tvFarmerExperience.text = "Experience: ${farmerProfileItem.experience}"
-        tvWageAmount.text = "${farmerProfileItem.dailyWage} BDT"
+        tvWageAmount.text = "${farmerProfileItem.dailyWage.toInt()} BDT"
     }
 }

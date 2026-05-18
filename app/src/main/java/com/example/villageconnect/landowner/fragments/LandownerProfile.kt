@@ -3,10 +3,9 @@ package com.example.villageconnect.landowner.fragments
 import android.app.AlertDialog
 import android.os.Bundle
 import android.view.View
-import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import android.widget.EditText
-import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -21,8 +20,8 @@ import com.google.android.material.button.MaterialButton
 class LandownerProfile : Fragment(R.layout.fragment_landowner_profile) {
 
     private lateinit var edtProfileName: EditText
-    private lateinit var spinnerDistrict: Spinner
-    private lateinit var spinnerUpazila: Spinner
+    private lateinit var spinnerDistrict: AutoCompleteTextView
+    private lateinit var spinnerUpazila: AutoCompleteTextView
     private lateinit var edtVillageName: EditText
     private lateinit var btnEditProfile: MaterialButton
     private lateinit var btnUpdateProfile: MaterialButton
@@ -33,6 +32,7 @@ class LandownerProfile : Fragment(R.layout.fragment_landowner_profile) {
 
     private var landownerId = -1
     private var isEditMode = false
+    private var selectedDistrictId: Int = -1
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -73,9 +73,14 @@ class LandownerProfile : Fragment(R.layout.fragment_landowner_profile) {
                 edtVillageName.setText(it.getString(it.getColumnIndexOrThrow(DBHelper.COL_VILLAGE_NAME)) ?: "")
                 val district = it.getString(it.getColumnIndexOrThrow(DBHelper.COL_DISTRICT)) ?: ""
                 val upazila = it.getString(it.getColumnIndexOrThrow(DBHelper.COL_UPAZILA)) ?: ""
-                spinnerDistrict.setSelection(DropDownData.districts.indexOfFirst { d -> d.name == district }.coerceAtLeast(0))
-                loadUpazilaSpinner(district)
-                spinnerUpazila.setSelection(DropDownData.upazilas.entries.firstOrNull { it.value.contains(upazila) }?.value?.indexOf(upazila) ?: 0)
+                
+                spinnerDistrict.setText(district, false)
+                val districtItem = DropDownData.districts.find { d -> d.name == district }
+                if (districtItem != null) {
+                    selectedDistrictId = districtItem.id
+                    loadUpazilaSpinner(selectedDistrictId)
+                    spinnerUpazila.setText(upazila, false)
+                }
             }
         }
         toggleEditMode(false)
@@ -83,24 +88,21 @@ class LandownerProfile : Fragment(R.layout.fragment_landowner_profile) {
 
     private fun setupDistrictSpinner() {
         val districtNames = DropDownData.districts.map { it.name }
-        spinnerDistrict.adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, districtNames)
-        spinnerDistrict.isEnabled = false
+        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, districtNames)
+        spinnerDistrict.setAdapter(adapter)
 
-        spinnerDistrict.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                val selectedDistrict = districtNames[position]
-                loadUpazilaSpinner(selectedDistrict)
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
+        spinnerDistrict.setOnItemClickListener { _, _, position, _ ->
+            val selectedDistrict = DropDownData.districts[position]
+            selectedDistrictId = selectedDistrict.id
+            loadUpazilaSpinner(selectedDistrictId)
+            spinnerUpazila.setText("", false)
         }
-        spinnerUpazila.isEnabled = false
     }
 
-    private fun loadUpazilaSpinner(district: String) {
-        val districtItem = DropDownData.districts.firstOrNull { it.name == district }
-        val upazilaNames = districtItem?.id?.let { DropDownData.upazilas[it] } ?: emptyList()
-        spinnerUpazila.adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, upazilaNames)
+    private fun loadUpazilaSpinner(districtId: Int) {
+        val upazilas = DropDownData.upazilas[districtId] ?: emptyList()
+        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, upazilas)
+        spinnerUpazila.setAdapter(adapter)
     }
 
     private fun toggleEditMode(enable: Boolean) {
@@ -116,8 +118,8 @@ class LandownerProfile : Fragment(R.layout.fragment_landowner_profile) {
         if (!isEditMode) return
 
         val name = edtProfileName.text.toString().trim()
-        val district = spinnerDistrict.selectedItem.toString()
-        val upazila = spinnerUpazila.selectedItem.toString()
+        val district = spinnerDistrict.text.toString().trim()
+        val upazila = spinnerUpazila.text.toString().trim()
         val village = edtVillageName.text.toString().trim()
 
         if (name.isEmpty() || district.isEmpty() || upazila.isEmpty() || village.isEmpty()) {

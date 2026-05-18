@@ -1,9 +1,12 @@
 package com.example.villageconnect.farmer.models
 
-
 data class MyJobItem(
-    val requestId: Int,
+    val hireRequestId: Int,
+    val hireWorkId: Int?,
     val landownerName: String,
+    val phone: String,
+    val village: String,
     val workDate: String,
-    val status: String
+    val requestStatus: String,
+    val workStatus: String
 )

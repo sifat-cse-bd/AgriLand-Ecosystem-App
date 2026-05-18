@@ -11,5 +11,7 @@ data class FarmerItem(
     var hasPendingRequest: Boolean = false,
     var selectedDate: String? = null,
     var requestStatus: String? = null,
-    var workStatus: String? = null
+    var workStatus: String? = null,
+    val hireRequestId: Int? = null,
+    val hireWorkId: Int? = null
 )

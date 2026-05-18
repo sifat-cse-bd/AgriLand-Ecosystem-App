@@ -14,7 +14,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(
     companion object {
         // Database Info
         const val DATABASE_NAME = "village_connect.db"
-        const val DATABASE_VERSION = 2  // Updated version
+        const val DATABASE_VERSION = 4  // Updated for hiring logic constraints
 
         // Table Names
         const val TABLE_USERS = "users"
@@ -24,7 +24,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(
         const val TABLE_INVENTORY = "inventory"
         const val TABLE_INVENTORY_ORDERS = "inventory_orders"
         const val TABLE_HIRE_REQUESTS = "hire_requests"
-        const val TABLE_HIRE_WORK = "hire_work" // New optional table
+        const val TABLE_HIRE_WORK = "hire_work"
 
         // Common Columns
         const val COL_ID = "id"
@@ -80,6 +80,9 @@ class DBHelper(context: Context) : SQLiteOpenHelper(
         const val COL_CREATED_AT = "created_at"         // New
         const val COL_UPDATED_AT = "updated_at"         // New
         const val COL_HIRE_REQUEST_ID = "hire_request_id" // for hire_work table FK
+        const val COL_REQUEST_SENT_AT = "request_sent_at"
+        const val COL_CONFIRMED_AT = "confirmed_at"
+        const val COL_EXPIRES_AT = "expires_at"
 
         // Role Values
         const val ROLE_LANDOWNER = "landowner"
@@ -94,6 +97,8 @@ class DBHelper(context: Context) : SQLiteOpenHelper(
         const val STATUS_CANCELLED = "Cancelled"
         const val STATUS_AVAILABLE = "Available"
         const val STATUS_ON_WORK = "On-Work"
+        const val STATUS_INCOMPLETE = "Incomplete"
+        const val STATUS_EXPIRED = "Expired"
 
         // Create Users Table
         const val CREATE_USERS_TABLE = """
@@ -183,7 +188,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(
             )
         """
 
-        // Updated Hire Requests Table
+
         const val CREATE_HIRE_REQUESTS_TABLE = """
             CREATE TABLE hire_requests (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -191,15 +196,18 @@ class DBHelper(context: Context) : SQLiteOpenHelper(
                 farmer_id INTEGER,
                 work_date TEXT NOT NULL,
                 request_status TEXT DEFAULT 'Pending',
-                work_status TEXT DEFAULT 'Pending',
+                request_sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                confirmed_at TIMESTAMP,
+                expires_at TIMESTAMP,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 FOREIGN KEY (landowner_id) REFERENCES users(id),
-                FOREIGN KEY (farmer_id) REFERENCES users(id)
+                FOREIGN KEY (farmer_id) REFERENCES users(id),
+                UNIQUE(landowner_id, farmer_id, work_date)
             )
         """
 
-        // Optional: hire_work table for work phase
+        // Hire Work Table - Work progress tracking
         const val CREATE_HIRE_WORK_TABLE = """
             CREATE TABLE hire_work (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -207,6 +215,8 @@ class DBHelper(context: Context) : SQLiteOpenHelper(
                 work_status TEXT DEFAULT 'Pending',
                 started_at TIMESTAMP,
                 completed_at TIMESTAMP,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 FOREIGN KEY (hire_request_id) REFERENCES hire_requests(id) ON DELETE CASCADE
             )
         """
@@ -250,15 +260,23 @@ class DBHelper(context: Context) : SQLiteOpenHelper(
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        if(oldVersion < 2){
-            // Upgrade hire_requests table
-            db.execSQL("ALTER TABLE hire_requests ADD COLUMN request_status TEXT DEFAULT 'Pending'")
-            db.execSQL("ALTER TABLE hire_requests ADD COLUMN work_status TEXT DEFAULT 'Pending'")
-            db.execSQL("ALTER TABLE hire_requests ADD COLUMN created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-            db.execSQL("ALTER TABLE hire_requests ADD COLUMN updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-
-            // Create hire_work table
-            db.execSQL(CREATE_HIRE_WORK_TABLE)
+        if (oldVersion < 3) {
+            try {
+                db.execSQL("ALTER TABLE ${TABLE_HIRE_REQUESTS} ADD COLUMN $COL_REQUEST_SENT_AT TIMESTAMP")
+                db.execSQL("ALTER TABLE ${TABLE_HIRE_REQUESTS} ADD COLUMN $COL_CONFIRMED_AT TIMESTAMP")
+                db.execSQL("ALTER TABLE ${TABLE_HIRE_REQUESTS} ADD COLUMN $COL_EXPIRES_AT TIMESTAMP")
+                db.execSQL("ALTER TABLE ${TABLE_HIRE_WORK} ADD COLUMN $COL_CREATED_AT TIMESTAMP")
+                db.execSQL("ALTER TABLE ${TABLE_HIRE_WORK} ADD COLUMN $COL_UPDATED_AT TIMESTAMP")
+            } catch (e: Exception) {}
+        }
+        if (oldVersion < 4) {
+            // Drop and recreate to fix the UNIQUE constraint
+            try {
+                db.execSQL("DROP TABLE IF EXISTS ${TABLE_HIRE_WORK}")
+                db.execSQL("DROP TABLE IF EXISTS ${TABLE_HIRE_REQUESTS}")
+                db.execSQL(CREATE_HIRE_REQUESTS_TABLE)
+                db.execSQL(CREATE_HIRE_WORK_TABLE)
+            } catch (e: Exception) {}
         }
     }
 }

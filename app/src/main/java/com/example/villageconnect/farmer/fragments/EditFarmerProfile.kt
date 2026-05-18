@@ -6,6 +6,8 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -15,6 +17,7 @@ import androidx.fragment.app.Fragment
 import com.example.villageconnect.R
 import com.example.villageconnect.data.DBHelper
 import com.example.villageconnect.data.DataAccess
+import com.example.villageconnect.models.DropDownData
 import com.example.villageconnect.utils.SessionManager
 
 class EditFarmerProfile : Fragment() {
@@ -25,10 +28,10 @@ class EditFarmerProfile : Fragment() {
     private lateinit var etFarmerPhone: EditText
     private lateinit var tvWarningPhone: TextView
 
-    private lateinit var etFarmerDistrict: EditText
+    private lateinit var spinnerDistrict: AutoCompleteTextView
     private lateinit var tvWarningDistrict: TextView
 
-    private lateinit var etFarmerUpazila: EditText
+    private lateinit var spinnerUpazila: AutoCompleteTextView
     private lateinit var tvWarningUpazila: TextView
 
     private lateinit var etFarmerVillage: EditText
@@ -52,6 +55,8 @@ class EditFarmerProfile : Fragment() {
     private val db = DataAccess
     private var initialPhone = ""
 
+    private var selectedDistrictId: Int = -1
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -65,6 +70,7 @@ class EditFarmerProfile : Fragment() {
         initViews(view)
         farmerId = SessionManager(requireContext()).getUserId()
 
+        setupDistrictSpinner()
         loadCurrentProfileData()
         setupLiveValidation()
 
@@ -80,10 +86,10 @@ class EditFarmerProfile : Fragment() {
         etFarmerPhone = view.findViewById(R.id.etFarmerPhone)
         tvWarningPhone = view.findViewById(R.id.tvWarningPhone)
 
-        etFarmerDistrict = view.findViewById(R.id.etFarmerDistrict)
+        spinnerDistrict = view.findViewById(R.id.spinnerDistrict)
         tvWarningDistrict = view.findViewById(R.id.tvWarningDistrict)
 
-        etFarmerUpazila = view.findViewById(R.id.etFarmerUpazila)
+        spinnerUpazila = view.findViewById(R.id.spinnerUpazila)
         tvWarningUpazila = view.findViewById(R.id.tvWarningUpazila)
 
         etFarmerVillage = view.findViewById(R.id.etFarmerVillage)
@@ -104,11 +110,33 @@ class EditFarmerProfile : Fragment() {
         btnSaveFarmer = view.findViewById(R.id.btnSaveFarmer)
     }
 
+    private fun setupDistrictSpinner() {
+        val districtNames = DropDownData.districts.map { it.name }
+        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, districtNames)
+        spinnerDistrict.setAdapter(adapter)
+
+        spinnerDistrict.setOnItemClickListener { _, _, position, _ ->
+            val selectedDistrict = DropDownData.districts[position]
+            selectedDistrictId = selectedDistrict.id
+            showSuccess(tvWarningDistrict, "District selected")
+            updateUpazilaSpinner(selectedDistrictId)
+            spinnerUpazila.setText("", false)
+        }
+    }
+
+    private fun updateUpazilaSpinner(districtId: Int) {
+        val upazilas = DropDownData.upazilas[districtId] ?: emptyList()
+        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, upazilas)
+        spinnerUpazila.setAdapter(adapter)
+
+        spinnerUpazila.setOnItemClickListener { _, _, _, _ ->
+            showSuccess(tvWarningUpazila, "Upazila selected")
+        }
+    }
+
     private fun setupLiveValidation() {
-        // Name Validation
         setUpValidation(etFarmerName, tvWarningName, { it.isNotEmpty() }, "Valid name", "Name cannot be empty")
 
-        // Phone Live validation
         etFarmerPhone.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 val phone = s.toString().trim()
@@ -130,9 +158,8 @@ class EditFarmerProfile : Fragment() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         })
 
-        // Common Text valid logic fields
-        setUpValidation(etFarmerDistrict, tvWarningDistrict, { it.isNotEmpty() }, "Valid entry", "District is required")
-        setUpValidation(etFarmerUpazila, tvWarningUpazila, { it.isNotEmpty() }, "Valid entry", "Upazila is required")
+        setUpValidation(spinnerDistrict, tvWarningDistrict, { it.isNotEmpty() }, "Valid entry", "District is required")
+        setUpValidation(spinnerUpazila, tvWarningUpazila, { it.isNotEmpty() }, "Valid entry", "Upazila is required")
         setUpValidation(etFarmerVillage, tvWarningVillage, { it.isNotEmpty() }, "Valid entry", "Village is required")
         setUpValidation(etFarmerSkills, tvWarningSkills, { it.isNotEmpty() }, "Valid entry", "Skills are required")
         setUpValidation(etFarmerExperience, tvWarningExperience, { it.toIntOrNull() != null }, "Valid entry", "Enter a valid number of years")
@@ -181,8 +208,20 @@ class EditFarmerProfile : Fragment() {
 
                 etFarmerName.setText(it.getString(it.getColumnIndexOrThrow(DBHelper.COL_FULL_NAME)) ?: "")
                 etFarmerPhone.setText(initialPhone)
-                etFarmerDistrict.setText(it.getString(it.getColumnIndexOrThrow(DBHelper.COL_DISTRICT)) ?: "")
-                etFarmerUpazila.setText(it.getString(it.getColumnIndexOrThrow(DBHelper.COL_UPAZILA)) ?: "")
+
+                val district = it.getString(it.getColumnIndexOrThrow(DBHelper.COL_DISTRICT)) ?: ""
+                val upazila = it.getString(it.getColumnIndexOrThrow(DBHelper.COL_UPAZILA)) ?: ""
+
+                spinnerDistrict.setText(district, false)
+                
+                // Find district ID to load upazilas
+                val districtItem = DropDownData.districts.find { d -> d.name == district }
+                if (districtItem != null) {
+                    selectedDistrictId = districtItem.id
+                    updateUpazilaSpinner(selectedDistrictId)
+                    spinnerUpazila.setText(upazila, false)
+                }
+
                 etFarmerVillage.setText(it.getString(it.getColumnIndexOrThrow(DBHelper.COL_VILLAGE_NAME)) ?: "")
                 etFarmerSkills.setText(it.getString(it.getColumnIndexOrThrow(DBHelper.COL_SKILLS)) ?: "")
                 etFarmerExperience.setText(it.getString(it.getColumnIndexOrThrow(DBHelper.COL_EXPERIENCE)) ?: "")
@@ -214,8 +253,8 @@ class EditFarmerProfile : Fragment() {
         if (!phone.matches(Regex("^01[3-9][0-9]{8}$"))) { showError(tvWarningPhone, "Invalid phone number"); isValid = false }
         if (phone != initialPhone && isPhoneExists(phone)) { showError(tvWarningPhone, "Phone already exists"); isValid = false }
 
-        if (etFarmerDistrict.text.toString().trim().isEmpty()) { showError(tvWarningDistrict, "District required"); isValid = false }
-        if (etFarmerUpazila.text.toString().trim().isEmpty()) { showError(tvWarningUpazila, "Upazila required"); isValid = false }
+        if (spinnerDistrict.text.toString().trim().isEmpty()) { showError(tvWarningDistrict, "District required"); isValid = false }
+        if (spinnerUpazila.text.toString().trim().isEmpty()) { showError(tvWarningUpazila, "Upazila required"); isValid = false }
         if (etFarmerVillage.text.toString().trim().isEmpty()) { showError(tvWarningVillage, "Village required"); isValid = false }
         if (etFarmerSkills.text.toString().trim().isEmpty()) { showError(tvWarningSkills, "Skills required"); isValid = false }
         if (etFarmerExperience.text.toString().trim().toIntOrNull() == null) { showError(tvWarningExperience, "Invalid experience"); isValid = false }
@@ -229,8 +268,8 @@ class EditFarmerProfile : Fragment() {
 
         val name = etFarmerName.text.toString().trim()
         val phone = etFarmerPhone.text.toString().trim()
-        val district = etFarmerDistrict.text.toString().trim()
-        val upazila = etFarmerUpazila.text.toString().trim()
+        val district = spinnerDistrict.text.toString().trim()
+        val upazila = spinnerUpazila.text.toString().trim()
         val village = etFarmerVillage.text.toString().trim()
         val skills = etFarmerSkills.text.toString().trim()
         val experience = etFarmerExperience.text.toString().trim()

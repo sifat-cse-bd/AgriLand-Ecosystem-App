@@ -26,7 +26,7 @@ class JobOffersAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_farmer, parent, false)
+            .inflate(R.layout.item_job_offer, parent, false)
         return ViewHolder(view)
     }
 
@@ -36,8 +36,30 @@ class JobOffersAdapter(
         val jobOffer = items[position]
 
         holder.name.text = jobOffer.landownerName
-        holder.requestDate.text = "Request Date: ${jobOffer.workDate}"
-        holder.address.text = "Address: ${jobOffer.village}, ${jobOffer.upazila}, ${jobOffer.district}"
+        holder.requestDate.text = "Work Date: ${jobOffer.workDate}"
+        holder.address.text = "${jobOffer.village}, ${jobOffer.upazila}"
+
+        // Show status and enable/disable buttons based on request status
+        when(jobOffer.status) {
+            "Pending" -> {
+                holder.btnAccept.isEnabled = true
+                holder.btnReject.isEnabled = true
+                holder.btnAccept.text = "Accept"
+                holder.btnReject.text = "Reject"
+            }
+            "Accepted" -> {
+                holder.btnAccept.isEnabled = false
+                holder.btnReject.isEnabled = false
+                holder.btnAccept.text = "✓ Accepted"
+                holder.btnReject.text = "Accepted"
+            }
+            "Rejected" -> {
+                holder.btnAccept.isEnabled = false
+                holder.btnReject.isEnabled = false
+                holder.btnAccept.text = "❌ Rejected"
+                holder.btnReject.text = "Rejected"
+            }
+        }
 
         // Row item click listener
         holder.itemView.setOnClickListener {

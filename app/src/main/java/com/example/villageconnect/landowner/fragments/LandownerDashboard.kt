@@ -373,16 +373,20 @@ class LandownerDashboard : Fragment(R.layout.fragment_landowner_dashboard) {
     private fun loadCounts() {
         tvFarmerCount.text = getCount(
             """
-            SELECT COUNT(*) FROM ${DBHelper.TABLE_USERS}
-            WHERE ${DBHelper.COL_ROLE} = ? AND ${DBHelper.COL_VILLAGE_NAME} = ?
+            SELECT COUNT(*) FROM ${DBHelper.TABLE_HIRE_REQUESTS}
+            WHERE ${DBHelper.COL_LANDOWNER_ID} = ? 
+              AND ${DBHelper.COL_REQUEST_STATUS} = '${DBHelper.STATUS_PENDING}'
+              AND (${DBHelper.COL_EXPIRES_AT} > CURRENT_TIMESTAMP OR ${DBHelper.COL_EXPIRES_AT} IS NULL)
             """,
-            arrayOf(DBHelper.ROLE_FARMER, villageName ?: "")
+            arrayOf(landownerId.toString())
         ).toString()
 
         tvServiceCount.text = getCount(
             """
-            SELECT COUNT(*) FROM ${DBHelper.TABLE_SERVICE_BOOKINGS}
-            WHERE ${DBHelper.COL_LANDOWNER_ID} = ?
+            SELECT COUNT(*) FROM ${DBHelper.TABLE_HIRE_WORK} hw
+            JOIN ${DBHelper.TABLE_HIRE_REQUESTS} hr ON hw.${DBHelper.COL_HIRE_REQUEST_ID} = hr.${DBHelper.COL_ID}
+            WHERE hr.${DBHelper.COL_LANDOWNER_ID} = ? 
+              AND hw.${DBHelper.COL_WORK_STATUS} = '${DBHelper.STATUS_ON_WORK}'
             """,
             arrayOf(landownerId.toString())
         ).toString()

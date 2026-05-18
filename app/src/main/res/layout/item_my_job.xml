@@ -1,10 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".farmer.models.MyJobItem">
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    app:cardBackgroundColor="@color/cardBackground"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="3dp"
+    app:strokeColor="@color/cardBorder"
+    app:strokeWidth="1dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Header: Landowner Name + Status -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tvLandownerName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Landowner Name"
+                android:textColor="@color/colorTextPrimary"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvSelectedDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="⏳ Pending"
+                android:textColor="@color/colorTextSecondary"
+                android:textSize="12sp"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="4dp"
+                android:background="@drawable/bg_soft_chip" />
+        </LinearLayout>
+
+        <!-- Work Date -->
+        <TextView
+            android:id="@+id/tvRequestDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Work Date: 2026-05-20"
+            android:textColor="@color/colorTextSecondary"
+            android:textSize="13sp"
+            android:layout_marginTop="8dp" />
+
+        <!-- Address -->
+        <TextView
+            android:id="@+id/tvAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Village | 01700000000"
+            android:textColor="@color/colorTextSecondary"
+            android:textSize="13sp"
+            android:layout_marginTop="4dp" />
+
+        <TextView
+            android:id="@+id/tvHireIds"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Req: 123 | Work: 456"
+            android:textSize="12sp"
+            android:textColor="@color/colorTextSecondary"
+            android:layout_marginTop="2dp"/>
+
+        <!-- Buttons Container -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="end"
+            android:layout_marginTop="12dp"
+            android:spacing="8dp">
+
+            <Button
+                android:id="@+id/btnSecondary"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:text="Cancel"
+                android:textColor="@color/white"
+                android:textSize="10sp"
+                android:backgroundTint="#FF6B6B"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/btnRequest"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:text="Start Work"
+                android:textColor="@color/white"
+                android:textSize="10sp"
+                android:backgroundTint="@color/colorPrimary"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

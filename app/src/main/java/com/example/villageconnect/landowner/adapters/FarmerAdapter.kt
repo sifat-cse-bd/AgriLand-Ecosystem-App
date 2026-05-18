@@ -22,6 +22,7 @@ class FarmerAdapter(
         val wage: TextView = view.findViewById(R.id.tvFarmerWage)
         val btnRequest: MaterialButton = view.findViewById(R.id.btnRequest)
         val selectedDate: TextView = view.findViewById(R.id.tvSelectedDate)
+        val tvHireIds: TextView = view.findViewById(R.id.tvHireIds)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -38,35 +39,56 @@ class FarmerAdapter(
         holder.name.text = farmer.name
         holder.skills.text = "Skills: ${farmer.skills ?: "Not added"}"
         holder.wage.text = "Daily wage: ৳${farmer.dailyWage ?: 0.0}"
+        
+        // Hide IDs in Hire tab as it's for general profiles, show in other tabs for specific requests
+        if (filterType == "hire") {
+            holder.tvHireIds.visibility = View.GONE
+            holder.selectedDate.visibility = View.GONE
+        } else {
+            holder.tvHireIds.visibility = View.VISIBLE
+            holder.selectedDate.visibility = View.VISIBLE
+            val reqIdStr = if (farmer.hireRequestId != null) "R-${farmer.hireRequestId}" else "N/A"
+            val workIdStr = if (farmer.hireWorkId != null) "W-${farmer.hireWorkId}" else "N/A"
+            holder.tvHireIds.text = "Req: $reqIdStr | Work: $workIdStr"
+        }
 
         // ---------- Dynamic Button + Status ----------
         when(filterType){
             "hire" -> {
                 holder.btnRequest.visibility = View.VISIBLE
-                holder.btnRequest.text = if(farmer.hasPendingRequest) "Cancel Request" else "Select Day"
-                holder.selectedDate.visibility = View.VISIBLE
-                holder.selectedDate.text = farmer.selectedDate ?: "No date selected"
+                holder.btnRequest.text = "Send Request"
             }
             "active" -> {
                 holder.btnRequest.visibility = View.VISIBLE
-                holder.btnRequest.text = "Cancel"
-                holder.selectedDate.visibility = View.VISIBLE
-                holder.selectedDate.text = "Status: ${farmer.workStatus ?: "Pending"}"
+                
+                val statusDisplay = when {
+                    farmer.workStatus == "On-Work" -> "🔴 On Work"
+                    farmer.requestStatus == "Accepted" -> "✓ Accepted"
+                    farmer.requestStatus == "Pending" -> "⏳ Pending"
+                    else -> "Processing"
+                }
+                
+                // Only show Cancel button if it's not already On-Work
+                if (farmer.workStatus == "On-Work") {
+                    holder.btnRequest.visibility = View.GONE
+                } else {
+                    holder.btnRequest.text = "Cancel"
+                    holder.btnRequest.visibility = View.VISIBLE
+                }
+                
+                holder.selectedDate.text = "$statusDisplay (${farmer.selectedDate ?: ""})"
             }
             "completed" -> {
                 holder.btnRequest.visibility = View.GONE
-                holder.selectedDate.visibility = View.VISIBLE
-                holder.selectedDate.text = "Completed"
+                holder.selectedDate.text = "✅ Completed (${farmer.selectedDate ?: ""})"
             }
             "cancelled" -> {
                 holder.btnRequest.visibility = View.GONE
-                holder.selectedDate.visibility = View.VISIBLE
-                holder.selectedDate.text = "Cancelled"
+                holder.selectedDate.text = "❌ Cancelled"
             }
             "history" -> {
                 holder.btnRequest.visibility = View.GONE
-                holder.selectedDate.visibility = View.VISIBLE
-                holder.selectedDate.text = farmer.selectedDate ?: "Past work"
+                holder.selectedDate.text = "📅 ${farmer.selectedDate ?: "Past work"}"
             }
         }
 

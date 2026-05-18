@@ -10,8 +10,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.villageconnect.R
 import com.example.villageconnect.data.DBHelper
+import com.example.villageconnect.data.DataAccess
 import com.example.villageconnect.farmer.adapters.JobOffersAdapter
 import com.example.villageconnect.farmer.models.JobOfferItem
+import com.example.villageconnect.utils.SessionManager
 
 class JobOffers : Fragment() {
 
@@ -48,7 +50,7 @@ class JobOffers : Fragment() {
         val dbHelper = DBHelper(requireContext())
         val db = dbHelper.readableDatabase
 
-        val farmerId = 1 // Replace with actual logged-in farmer ID
+        val farmerId = SessionManager(requireContext()).getUserId()
         val statusPending = DBHelper.STATUS_PENDING
 
         val sql = """
@@ -60,12 +62,12 @@ class JobOffers : Fragment() {
                u.${DBHelper.COL_UPAZILA} AS upazila,
                u.${DBHelper.COL_DISTRICT} AS district,
                hr.${DBHelper.COL_WORK_DATE} AS workDate,
-               hr.${DBHelper.COL_STATUS} AS status
+               hr.${DBHelper.COL_REQUEST_STATUS} AS status
         FROM ${DBHelper.TABLE_HIRE_REQUESTS} hr
         JOIN ${DBHelper.TABLE_USERS} u
           ON hr.${DBHelper.COL_LANDOWNER_ID} = u.${DBHelper.COL_ID}
         WHERE hr.${DBHelper.COL_FARMER_ID} = ?
-          AND hr.${DBHelper.COL_STATUS} = ?
+          AND hr.${DBHelper.COL_REQUEST_STATUS} = ?
     """.trimIndent()
 
         val cursor = db.rawQuery(sql, arrayOf(farmerId.toString(), statusPending))
@@ -93,20 +95,45 @@ class JobOffers : Fragment() {
     }
 
     private fun acceptRequest(item: JobOfferItem) {
-        val dbHelper = DBHelper(requireContext())
-        val db = dbHelper.writableDatabase
-        db.execSQL(
-            "UPDATE ${DBHelper.TABLE_HIRE_REQUESTS} SET ${DBHelper.COL_STATUS} = ? WHERE ${DBHelper.COL_ID} = ?",
-            arrayOf(DBHelper.STATUS_ACCEPTED, item.requestId)
+        val context = requireContext()
+        val farmerId = SessionManager(context).getUserId()
+
+        // 1. Accept the selected request
+        val acceptSql = """
+            UPDATE ${DBHelper.TABLE_HIRE_REQUESTS} 
+            SET ${DBHelper.COL_REQUEST_STATUS} = ?, ${DBHelper.COL_UPDATED_AT} = CURRENT_TIMESTAMP 
+            WHERE ${DBHelper.COL_ID} = ?
+        """
+        DataAccess.executeDMLQuery(context, acceptSql, arrayOf(DBHelper.STATUS_ACCEPTED, item.requestId))
+
+        // 2. Automatically reject other pending requests for the SAME farmer on the SAME date
+        val rejectOthersSql = """
+            UPDATE ${DBHelper.TABLE_HIRE_REQUESTS}
+            SET ${DBHelper.COL_REQUEST_STATUS} = ?, ${DBHelper.COL_UPDATED_AT} = CURRENT_TIMESTAMP
+            WHERE ${DBHelper.COL_FARMER_ID} = ? 
+              AND ${DBHelper.COL_WORK_DATE} = ?
+              AND ${DBHelper.COL_REQUEST_STATUS} = ?
+              AND ${DBHelper.COL_ID} != ?
+        """
+        DataAccess.executeDMLQuery(
+            context, 
+            rejectOthersSql, 
+            arrayOf(DBHelper.STATUS_REJECTED, farmerId, item.workDate, DBHelper.STATUS_PENDING, item.requestId)
         )
+
         loadJobOffers()
+        android.widget.Toast.makeText(context, "Request accepted. Other requests for this date have been rejected.", android.widget.Toast.LENGTH_SHORT).show()
     }
 
     private fun rejectRequest(item: JobOfferItem) {
-        val dbHelper = DBHelper(requireContext())
-        val db = dbHelper.writableDatabase
-        db.execSQL(
-            "UPDATE ${DBHelper.TABLE_HIRE_REQUESTS} SET ${DBHelper.COL_STATUS} = ? WHERE ${DBHelper.COL_ID} = ?",
+        val sql = """
+            UPDATE ${DBHelper.TABLE_HIRE_REQUESTS} 
+            SET ${DBHelper.COL_REQUEST_STATUS} = ?, ${DBHelper.COL_UPDATED_AT} = CURRENT_TIMESTAMP 
+            WHERE ${DBHelper.COL_ID} = ?
+        """
+        DataAccess.executeDMLQuery(
+            requireContext(),
+            sql,
             arrayOf(DBHelper.STATUS_REJECTED, item.requestId)
         )
         loadJobOffers()

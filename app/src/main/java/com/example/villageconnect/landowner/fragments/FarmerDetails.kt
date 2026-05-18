@@ -1,7 +1,7 @@
 package com.example.villageconnect.landowner.fragments
 
-import android.app.DatePickerDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
@@ -10,10 +10,12 @@ import androidx.fragment.app.Fragment
 import com.example.villageconnect.R
 import com.example.villageconnect.data.DBHelper
 import com.example.villageconnect.data.DataAccess
-import com.example.villageconnect.models.AutoIdGenerator
 import com.example.villageconnect.utils.SessionManager
+import com.example.villageconnect.utils.DaySliderDialog
 import com.google.android.material.button.MaterialButton
-import java.util.Calendar
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.LocalTime
 
 class FarmerDetails : Fragment(R.layout.fragment_farmer_details) {
 
@@ -27,7 +29,6 @@ class FarmerDetails : Fragment(R.layout.fragment_farmer_details) {
 
     private var farmerId = -1
     private var landownerId = -1
-
 
     companion object {
         fun newInstance(farmerId: Int): FarmerDetails {
@@ -51,6 +52,10 @@ class FarmerDetails : Fragment(R.layout.fragment_farmer_details) {
         farmerId = arguments?.getInt("farmer_id") ?: -1
         landownerId = SessionManager(requireContext()).getUserId()
 
+        view.findViewById<View>(R.id.btnBackFarmerDetails).setOnClickListener {
+            parentFragmentManager.popBackStack()
+        }
+
         loadFarmerDetails()
         setupDatePicker()
 
@@ -61,19 +66,13 @@ class FarmerDetails : Fragment(R.layout.fragment_farmer_details) {
 
     private fun loadFarmerDetails() {
         val sql = """
-            SELECT u.${DBHelper.COL_FULL_NAME},
-                   u.${DBHelper.COL_VILLAGE_NAME},
-                   fp.${DBHelper.COL_SKILLS},
-                   fp.${DBHelper.COL_EXPERIENCE},
-                   fp.${DBHelper.COL_DAILY_WAGE}
+            SELECT u.${DBHelper.COL_FULL_NAME}, u.${DBHelper.COL_VILLAGE_NAME},
+                   fp.${DBHelper.COL_SKILLS}, fp.${DBHelper.COL_EXPERIENCE}, fp.${DBHelper.COL_DAILY_WAGE}
             FROM ${DBHelper.TABLE_USERS} u
-            LEFT JOIN ${DBHelper.TABLE_FARMER_PROFILES} fp
-            ON u.${DBHelper.COL_ID} = fp.${DBHelper.COL_USER_ID}
+            LEFT JOIN ${DBHelper.TABLE_FARMER_PROFILES} fp ON u.${DBHelper.COL_ID} = fp.${DBHelper.COL_USER_ID}
             WHERE u.${DBHelper.COL_ID} = ?
         """
-
         val cursor = DataAccess.executeQuery(requireContext(), sql, arrayOf(farmerId.toString()))
-
         cursor?.use {
             if (it.moveToFirst()) {
                 tvName.text = it.getString(0)
@@ -87,60 +86,59 @@ class FarmerDetails : Fragment(R.layout.fragment_farmer_details) {
 
     private fun setupDatePicker() {
         edtWorkDate.setOnClickListener {
-            val calendar = Calendar.getInstance()
+            val bookedDates = getFarmerBookedDates(farmerId)
+            val selectableDates = mutableListOf<LocalDate>()
+            val today = LocalDate.now()
+            
+            // Available dates logic (next 10 days)
+            if(LocalTime.now().isBefore(LocalTime.of(7,0))) selectableDates.add(today)
+            for(i in 1..10) selectableDates.add(today.plusDays(i.toLong()))
+            
+            val filteredSelectable = selectableDates.filter { !bookedDates.contains(it) }
 
-            DatePickerDialog(
-                requireContext(),
-                { _, year, month, day ->
-                    edtWorkDate.setText("$day/${month + 1}/$year")
-                },
-                calendar.get(Calendar.YEAR),
-                calendar.get(Calendar.MONTH),
-                calendar.get(Calendar.DAY_OF_MONTH)
-            ).show()
+            val dialog = DaySliderDialog(requireContext(), filteredSelectable.toMutableList(), bookedDates.toList()) { selectedDate ->
+                edtWorkDate.setText(selectedDate.toString())
+            }
+            dialog.show()
         }
     }
 
-    private fun sendHireRequest() {
-        val workDate = edtWorkDate.text.toString().trim()
+    private fun getFarmerBookedDates(farmerId: Int): Set<LocalDate> {
+        val bookedDates = mutableSetOf<LocalDate>()
+        val sql = "SELECT ${DBHelper.COL_WORK_DATE} FROM ${DBHelper.TABLE_HIRE_REQUESTS} WHERE ${DBHelper.COL_FARMER_ID} = ? AND ${DBHelper.COL_REQUEST_STATUS} = '${DBHelper.STATUS_ACCEPTED}'"
+        val cursor = DataAccess.executeQuery(requireContext(), sql, arrayOf(farmerId.toString()))
+        cursor?.use {
+            while (it.moveToNext()) {
+                try { bookedDates.add(LocalDate.parse(it.getString(0))) } catch (e: Exception) {}
+            }
+        }
+        return bookedDates
+    }
 
-        if (workDate.isEmpty()) {
+    private fun sendHireRequest() {
+        val workDateStr = edtWorkDate.text.toString().trim()
+        if (workDateStr.isEmpty()) {
             Toast.makeText(requireContext(), "Select work date", Toast.LENGTH_SHORT).show()
             return
-
         }
 
-        // 1️⃣ Check for existing pending request
-        val checkSql = """
-        SELECT COUNT(*) FROM ${DBHelper.TABLE_HIRE_REQUESTS}
-        WHERE ${DBHelper.COL_LANDOWNER_ID} = ?
-          AND ${DBHelper.COL_FARMER_ID} = ?
-          AND ${DBHelper.COL_STATUS} = '${DBHelper.STATUS_PENDING}'
-    """
-        val cursor = DataAccess.executeQuery(requireContext(), checkSql, arrayOf(landownerId.toString(), farmerId.toString()))
-        val count = cursor?.use {
-            if (it.moveToFirst()) it.getInt(0) else 0
-        } ?: 0
+        val workDate = LocalDate.parse(workDateStr)
+        val expiryTime = LocalDateTime.of(workDate.minusDays(if(workDate == LocalDate.now()) 0 else 1), LocalTime.of(7, 0))
 
-        if (count > 0) {
-            Toast.makeText(requireContext(), "You already have a pending request for this farmer", Toast.LENGTH_SHORT).show()
-            return
-        }
-
-        // 2️⃣ Insert new hire request
         val sql = """
-        INSERT INTO ${DBHelper.TABLE_HIRE_REQUESTS}
-        (${DBHelper.COL_LANDOWNER_ID}, ${DBHelper.COL_FARMER_ID}, ${DBHelper.COL_WORK_DATE}, ${DBHelper.COL_STATUS})
-        VALUES (?, ?, ?, ?)
-    """
-        val result = DataAccess.executeDMLQuery(
-            requireContext(),
-            sql,
-            arrayOf(landownerId, farmerId, workDate, DBHelper.STATUS_PENDING)
-        )
+            INSERT INTO ${DBHelper.TABLE_HIRE_REQUESTS} 
+            (${DBHelper.COL_LANDOWNER_ID}, ${DBHelper.COL_FARMER_ID}, ${DBHelper.COL_WORK_DATE}, ${DBHelper.COL_REQUEST_STATUS}, ${DBHelper.COL_EXPIRES_AT})
+            VALUES (?, ?, ?, ?, ?)
+            ON CONFLICT(landowner_id, farmer_id, work_date) DO UPDATE SET
+                ${DBHelper.COL_REQUEST_STATUS} = EXCLUDED.${DBHelper.COL_REQUEST_STATUS},
+                ${DBHelper.COL_EXPIRES_AT} = EXCLUDED.${DBHelper.COL_EXPIRES_AT},
+                ${DBHelper.COL_UPDATED_AT} = CURRENT_TIMESTAMP
+        """
+        val result = DataAccess.executeDMLQuery(requireContext(), sql, arrayOf<Any>(landownerId, farmerId, workDate.toString(), DBHelper.STATUS_PENDING, expiryTime.toString()))
 
         if (result) {
             Toast.makeText(requireContext(), "Hire request sent", Toast.LENGTH_SHORT).show()
+            parentFragmentManager.popBackStack()
         } else {
             Toast.makeText(requireContext(), "Request failed", Toast.LENGTH_SHORT).show()
         }

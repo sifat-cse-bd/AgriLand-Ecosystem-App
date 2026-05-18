@@ -4,270 +4,308 @@
     android:id="@+id/editFarmerScrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    android:background="@color/background">
+    android:background="@drawable/bg_root"
+    android:fillViewport="true">
 
     <LinearLayout
         android:id="@+id/editFarmerContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="22dp"
-        android:gravity="center_horizontal">
+        android:padding="20dp">
 
+        <!-- Header -->
         <TextView
             android:id="@+id/tvEditFarmerTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Edit Profile"
-            android:textSize="24sp"
+            android:text="✏️ Edit Profile"
+            android:layout_marginTop="28dp"
+            android:textSize="28sp"
             android:textStyle="bold"
-            android:textColor="@color/textPrimary"
-            android:layout_marginBottom="24dp" />
+            android:textColor="@color/colorTextPrimary"
+            android:layout_marginBottom="4dp" />
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Keep your information up to date for better reach"
+            android:textSize="14sp"
+            android:textColor="@color/colorTextSecondary"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Full Name -->
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Full Name"
-            android:textSize="16sp"
-            android:textColor="@color/textPrimary"/>
-        <EditText
-            android:id="@+id/etFarmerName"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:hint="Enter full name"
-            android:inputType="textPersonName"
-            android:padding="12dp"
-            android:background="@color/inputBackground"
-            android:textColor="@color/textPrimary"/>
+            android:hint="👤 Full Name"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxStrokeColor="@color/inputFocusedBorder"
+            app:hintTextColor="@color/colorTextSecondary"
+            android:layout_marginBottom="8dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etFarmerName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:textColor="@color/colorTextPrimary"/>
+        </com.google.android.material.textfield.TextInputLayout>
         <TextView
             android:id="@+id/tvWarningName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:layout_marginTop="2dp"
             android:layout_marginBottom="12dp"
             android:textColor="@color/colorError"
             android:textSize="12sp"
             android:visibility="gone" />
 
-        <TextView
+        <!-- Phone -->
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Phone"
-            android:textSize="16sp"
-            android:textColor="@color/textPrimary"/>
-        <EditText
-            android:id="@+id/etFarmerPhone"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:hint="Enter phone number"
-            android:inputType="phone"
-            android:padding="12dp"
-            android:background="@color/inputBackground"
-            android:textColor="@color/textPrimary" />
+            android:hint="📱 Phone Number"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxStrokeColor="@color/inputFocusedBorder"
+            android:layout_marginBottom="8dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etFarmerPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="phone"
+                android:textColor="@color/colorTextPrimary" />
+        </com.google.android.material.textfield.TextInputLayout>
         <TextView
             android:id="@+id/tvWarningPhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:layout_marginTop="2dp"
             android:layout_marginBottom="12dp"
             android:textColor="@color/colorError"
             android:textSize="12sp"
             android:visibility="gone" />
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="District"
-            android:textSize="16sp"
-            android:textColor="@color/textPrimary"/>
-        <EditText
-            android:id="@+id/etFarmerDistrict"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:hint="e.g. Bogura"
-            android:inputType="text"
-            android:padding="12dp"
-            android:background="@color/inputBackground"
-            android:textColor="@color/textPrimary"/>
-        <TextView
-            android:id="@+id/tvWarningDistrict"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginBottom="12dp"
-            android:textColor="@color/colorError"
-            android:textSize="12sp"
-            android:visibility="gone" />
+            android:orientation="horizontal"
+            android:baselineAligned="false">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Upazila"
-            android:textSize="16sp"
-            android:textColor="@color/textPrimary"/>
-        <EditText
-            android:id="@+id/etFarmerUpazila"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:hint="e.g. Shajahanpur"
-            android:inputType="text"
-            android:padding="12dp"
-            android:background="@color/inputBackground"
-            android:textColor="@color/textPrimary"/>
-        <TextView
-            android:id="@+id/tvWarningUpazila"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginBottom="12dp"
-            android:textColor="@color/colorError"
-            android:textSize="12sp"
-            android:visibility="gone" />
+            <!-- District Spinner -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="📍 District"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="8dp">
+                <AutoCompleteTextView
+                    android:id="@+id/spinnerDistrict"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:dropDownHeight="250dp"
+                    android:textColor="@color/colorTextPrimary"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
+            <!-- Upazila Spinner -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="🏘️ Upazila"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_marginStart="4dp"
+                android:layout_marginBottom="8dp">
+                <AutoCompleteTextView
+                    android:id="@+id/spinnerUpazila"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:dropDownHeight="250dp"
+                    android:textColor="@color/colorTextPrimary"/>
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Village Name"
-            android:textSize="16sp"
-            android:textColor="@color/textPrimary"/>
-        <EditText
-            android:id="@+id/etFarmerVillage"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/tvWarningDistrict"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="4dp"
+                android:layout_marginBottom="12dp"
+                android:textColor="@color/colorError"
+                android:textSize="12sp"
+                android:visibility="gone" />
+            <TextView
+                android:id="@+id/tvWarningUpazila"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="4dp"
+                android:layout_marginBottom="12dp"
+                android:textColor="@color/colorError"
+                android:textSize="12sp"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <!-- Village Name -->
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:hint="Enter village name"
-            android:inputType="text"
-            android:padding="12dp"
-            android:background="@color/inputBackground"
-            android:textColor="@color/textPrimary"/>
+            android:layout_height="wrap_content"
+            android:hint="🏠 Village Name"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_marginBottom="8dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etFarmerVillage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:textColor="@color/colorTextPrimary"/>
+        </com.google.android.material.textfield.TextInputLayout>
         <TextView
             android:id="@+id/tvWarningVillage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:layout_marginTop="2dp"
             android:layout_marginBottom="12dp"
             android:textColor="@color/colorError"
             android:textSize="12sp"
             android:visibility="gone" />
 
-        <TextView
+        <!-- Skills -->
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Skills"
-            android:textSize="16sp"
-            android:textColor="@color/textPrimary"/>
-        <EditText
-            android:id="@+id/etFarmerSkills"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:hint="e.g. Paddy Harvesting, Plowing"
-            android:inputType="text"
-            android:padding="12dp"
-            android:background="@color/inputBackground"
-            android:textColor="@color/textPrimary"/>
+            android:hint="🛠️ Skills (e.g. Paddy Harvesting, Plowing)"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_marginBottom="8dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etFarmerSkills"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:textColor="@color/colorTextPrimary"/>
+        </com.google.android.material.textfield.TextInputLayout>
         <TextView
             android:id="@+id/tvWarningSkills"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:layout_marginTop="2dp"
             android:layout_marginBottom="12dp"
             android:textColor="@color/colorError"
             android:textSize="12sp"
             android:visibility="gone" />
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Experience (years)"
-            android:textSize="16sp"
-            android:textColor="@color/textPrimary"/>
-        <EditText
-            android:id="@+id/etFarmerExperience"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:hint="Enter experience"
-            android:inputType="number"
-            android:padding="12dp"
-            android:background="@color/inputBackground"
-            android:textColor="@color/textPrimary"/>
-        <TextView
-            android:id="@+id/tvWarningExperience"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginBottom="12dp"
-            android:textColor="@color/colorError"
-            android:textSize="12sp"
-            android:visibility="gone" />
+            android:orientation="horizontal"
+            android:baselineAligned="false">
+            <!-- Experience -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="📊 Experience (Years)"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="8dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etFarmerExperience"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:textColor="@color/colorTextPrimary"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Daily Wage (BDT)"
-            android:textSize="16sp"
-            android:textColor="@color/textPrimary"/>
-        <EditText
-            android:id="@+id/etFarmerWage"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:hint="e.g. 500"
-            android:inputType="numberDecimal"
-            android:padding="12dp"
-            android:background="@color/inputBackground"
-            android:textColor="@color/textPrimary"/>
-        <TextView
-            android:id="@+id/tvWarningWage"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginBottom="12dp"
-            android:textColor="@color/colorError"
-            android:textSize="12sp"
-            android:visibility="gone" />
+            <!-- Daily Wage -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="💰 Daily Wage (BDT)"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_marginStart="4dp"
+                android:layout_marginBottom="8dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etFarmerWage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:textColor="@color/colorTextPrimary"/>
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Short Bio"
-            android:textSize="16sp"
-            android:textColor="@color/textPrimary"/>
-        <EditText
-            android:id="@+id/etFarmerBio"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/tvWarningExperience"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="4dp"
+                android:layout_marginBottom="12dp"
+                android:textColor="@color/colorError"
+                android:textSize="12sp"
+                android:visibility="gone" />
+            <TextView
+                android:id="@+id/tvWarningWage"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="4dp"
+                android:layout_marginBottom="12dp"
+                android:textColor="@color/colorError"
+                android:textSize="12sp"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <!-- Bio -->
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:hint="Tell landowners about your expertise..."
-            android:inputType="textMultiLine"
-            android:gravity="top|start"
-            android:padding="12dp"
-            android:background="@color/inputBackground"
-            android:textColor="@color/textPrimary"/>
+            android:layout_height="wrap_content"
+            android:hint="📝 Short Bio"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_marginBottom="12dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etFarmerBio"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:inputType="textMultiLine"
+                android:gravity="top|start"
+                android:textColor="@color/colorTextPrimary"/>
+        </com.google.android.material.textfield.TextInputLayout>
         <TextView
             android:id="@+id/tvWarningBio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginBottom="24dp"
+            android:layout_marginBottom="12dp"
             android:textColor="@color/colorError"
             android:textSize="12sp"
             android:visibility="gone" />
 
-        <Button
+        <!-- Save Button -->
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSaveFarmer"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:text="Save Profile"
-            android:textColor="@color/buttonPrimaryText"
-            android:backgroundTint="@color/buttonPrimary"
-            android:layout_marginBottom="32dp"/>
+            android:layout_height="56dp"
+            android:text="💾 Save Profile"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:cornerRadius="12dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="32dp"
+            style="@style/Widget.MaterialComponents.Button" />
 
     </LinearLayout>
 </ScrollView>
