@@ -38,6 +38,15 @@
     <string name="login_invalid_message">Invalid phone number or password</string>
     <string name="login_success_message">Login Successful</string>
 
+    <!-- Forgot Password Strings -->
+    <string name="otp_sent_to">Code sent to %1$s</string>
+    <string name="user_not_found">User not found with this phone number</string>
+    <string name="invalid_otp_hint">Invalid OTP. Try 123456</string>
+    <string name="password_reset_success">Password reset successful! Please login.</string>
+    <string name="passwords_do_not_match">Passwords do not match</string>
+    <string name="enter_valid_phone">Enter a valid phone number</string>
+    <string name="failed_to_update_password">Failed to update password</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
